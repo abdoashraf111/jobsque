@@ -14,12 +14,11 @@ class Pageviews extends StatelessWidget {
         RichText(
           maxLines:3,
           textAlign: TextAlign.start,
-          overflow: TextOverflow.clip,
           text: const TextSpan(
               text: "Find a job,and ",style: TextStyle(
               color: Colors.blue,
               fontSize: 32,
-              // fontFamily: "lib/fonts/SFPRODISPLAYBLACKITALIC.OTF"
+              fontFamily: "lib/fonts/SFPRODISPLAYBLACKITALIC.OTF"
           ),
               children: [
             TextSpan(
@@ -32,7 +31,11 @@ class Pageviews extends StatelessWidget {
                           color: Colors.blue
                       ))]
     ),
-        )
+        ),
+        Text("Explore over 25,924 available job roles and upgrade your operator now.",style: TextStyle(
+          fontSize: 16,
+          color: Colors.grey
+        ),)
       ],
     );
   }

@@ -36,6 +36,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   get:
+  smooth_page_indicator: ^1.1.0
+  dots_indicator: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -82,9 +84,9 @@ flutter:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-    - family: SF Pro Display
-      fonts:
-        - asset: lib/fonts/SFPRODISPLAYBLACKITALIC.OTF
+  #    - family: SF Pro Display
+  #      fonts:
+  #        - asset: lib/fonts/SFPRODISPLAYBLACKITALIC.OTF
 
 
   #
