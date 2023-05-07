@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobsque/SplashScreen.dart';
-import 'SlidingPage.dart';
+import 'package:jobsque/screens/onbording/SlidingPage.dart';
+import 'package:jobsque/screens/onbording/SplashScreen.dart';
 
 void main() {
   runApp(const MyApp());
