@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../CustomItems/CustomButton.dart';
-import '../../CustomItems/Custom_textform.dart';
+import '../Signup/Signup.dart';
 import '../onbording/SlidingPage.dart';
 
 class CreateAccount extends StatelessWidget {
   CreateAccount({Key? key}) : super(key: key);
   bool _sufvar = false;
+  TextEditingController namecontroller=TextEditingController();
+  TextEditingController emailcontroller=TextEditingController();
+  TextEditingController passwordcontroller=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +22,7 @@ class CreateAccount extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -36,23 +40,24 @@ class CreateAccount extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                Text("Cereate Account",
+                const Text("Cereate Account",
                     style: TextStyle(fontSize: 28, color: Colors.black)),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text("Please create an account to find your dream job",
+                const Text("Please create an account to find your dream job",
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 16,
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 44,
                 ),
                 TextFormField(
+                  controller: namecontroller,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.person_outline),
@@ -61,10 +66,11 @@ class CreateAccount extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 TextFormField(
+                  controller: emailcontroller,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email_outlined),
@@ -73,10 +79,11 @@ class CreateAccount extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 TextFormField(
+                  controller: passwordcontroller,
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                       hintText: "Password",
@@ -84,7 +91,6 @@ class CreateAccount extends StatelessWidget {
                       suffixIcon: GestureDetector(
                           onTap: () {
                             _sufvar = !_sufvar;
-                            print(_sufvar);
                           },
                           child: Icon(_sufvar == false
                               ? Icons.visibility_off_outlined
@@ -93,49 +99,51 @@ class CreateAccount extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
-                Text("Password must be at least 8 characters",
+                const Text("Password must be at least 8 characters",
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 16,
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 105,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account?",
+                    const Text("Already have an account?",
                         style: TextStyle(color: Colors.grey, fontSize: 14)),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(()=>SignUp());
+                        },
                         child: Text(
                           "Login",
                           style: TextStyle(color: Colors.blue, fontSize: 14),
                         ))
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Center(
                   child: CustomButton(
                     text: "Create account",
-                    fun: () {
-
+                    fun: () async{
+                      // await Signup();
                     },
-                    buttoncolor: Color.fromRGBO(209, 213, 219, 1),
-                    textcolor: Color.fromRGBO(107, 114, 128, 1)
+                    buttoncolor: const Color.fromRGBO(209, 213, 219, 1),
+                    textcolor: const Color.fromRGBO(107, 114, 128, 1)
                   ,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     Expanded(
                       child: Divider(
                         height: 10,
@@ -158,7 +166,7 @@ class CreateAccount extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 Row(
@@ -212,3 +220,6 @@ class CreateAccount extends StatelessWidget {
     );
   }
 }
+// Signup(){
+//   Api().post(url: url, body: body, token: token)
+// }
