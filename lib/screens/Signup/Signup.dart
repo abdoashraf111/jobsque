@@ -182,6 +182,9 @@ class _SignUpState extends State<SignUp> {
                                 key: MyChachKey.email,
                                 value: emailcontroller.text);
                           }
+                          setState(() {
+                            clickEnable=true;
+                          });
                         }
                         // api.post(url: url, body: body, token: token);
                         // await Signup();
