@@ -73,6 +73,16 @@ class _SignUpState extends State<SignUp> {
                     height: 44,
                   ),
                   TextFormField(
+                    onChanged: (value){
+                      setState(() {
+                        if(FormKey.currentState!.validate()){
+                          setState(() {
+                            clickEnable=true;
+                          });
+                        }
+                        else{clickEnable=false;}
+                      });
+                    },
                     validator: (value) {
                       if (value == "") {
                         return "you should fill this ";
@@ -80,7 +90,7 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       }
                     },
-                    controller: namecontroller,
+                    controller: emailcontroller,
                     keyboardType: TextInputType.name,
                     decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.person_outline),
@@ -93,6 +103,14 @@ class _SignUpState extends State<SignUp> {
                     height: 24,
                   ),
                   TextFormField(
+                    onChanged: (value){
+                      setState(() {
+                        if(FormKey.currentState!.validate()){
+                          clickEnable=true;
+                        }
+                        else{clickEnable=false;}
+                      });
+                    },
                     validator: (value) {
                       if (value!.length < 5) {
                         return "it should more than 5 letters or numbers ";
@@ -169,7 +187,7 @@ class _SignUpState extends State<SignUp> {
                   Center(
                     child: CustomButton(
                       text: "Login",
-                      fun: () {
+                      fun: () async {
                         if (FormKey.currentState!.validate()) {
                           if (check == true) {
                             MyCache.SetString(
@@ -183,16 +201,25 @@ class _SignUpState extends State<SignUp> {
                                 value: emailcontroller.text);
                           }
                           setState(() {
-                            clickEnable=true;
+                            clickEnable = true;
                           });
                         }
-                        // api.post(url: url, body: body, token: token);
+                        Map<String, dynamic> data = await api.post(
+                          url: "http://164.92.246.77/api/auth/login",
+                          body: {
+                            "password": passwordcontroller.text,
+                            "email": emailcontroller.text,
+                          },
+                        );
+                        if (data.isNotEmpty) {
+                          print(data);
+                        }
                         // await Signup();
                       },
                       buttoncolor: clickEnable == true
-                          ? Colors.blue
+                          ? Color(0xff3366FF)
                           : Color.fromRGBO(209, 213, 219, 1),
-                      textcolor: const Color.fromRGBO(107, 114, 128, 1),
+                      textcolor: clickEnable==true?Colors.white: Color.fromRGBO(107, 114, 128, 1),
                     ),
                   ),
                   const SizedBox(
