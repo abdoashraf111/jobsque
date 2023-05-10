@@ -13,15 +13,18 @@ class Api {
     }
   }
 
-  Future<dynamic> post({required String url, required dynamic body, @required String? token}) async {
+  Future<dynamic> post({
+    required String url,
+    @required dynamic body,
+    @required String? token,
+  }) async {
     Map<String, String> headers = {};
     // if (token != null) {
     //   headers.addAll({'sdasd': 'dddd', 'sdasd': 'dddd',});
     // }
     http.Response response =
-        await http.post(Uri.parse(url), body: body,
-            headers: headers);
-    Map<String,dynamic>data =jsonDecode(response.body);
+        await http.post(Uri.parse(url), body: body, headers: headers);
+    Map<String, dynamic> data = jsonDecode(response.body);
     return data;
   }
 }

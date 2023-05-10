@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jobsque/screens/CreateAcount/CreatAcount2.dart';
 import 'package:jobsque/screens/CreateAcount/CreateAccount.dart';
 import 'package:jobsque/screens/Signup/Signup.dart';
 import 'package:jobsque/screens/onbording/SlidingPage.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home:
-      SignUp(),
+      CreateAccount2(),
       // SplashScreen(),
     );
   }

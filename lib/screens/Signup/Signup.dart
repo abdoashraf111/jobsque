@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jobsque/helper/sharedprefeances.dart';
+import 'package:jobsque/screens/CreateAcount/CreatAcount2.dart';
 import '../../CustomItems/CustomButton.dart';
 import '../../helper/api.dart';
 import '../CreateAcount/CreateAccount.dart';
@@ -22,7 +23,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passwordcontroller =
       TextEditingController(text: MyCache.GetString(key: MyChachKey.password));
   bool clickEnable = false;
-  bool check = false;
+  bool checkBox = false;
   GlobalKey<FormState> FormKey = GlobalKey<FormState>();
   Api api = Api();
   @override
@@ -91,10 +92,10 @@ class _SignUpState extends State<SignUp> {
                       }
                     },
                     controller: emailcontroller,
-                    keyboardType: TextInputType.name,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.person_outline),
-                        hintText: "Username",
+                        prefixIcon: const Icon(Icons.email_outlined),
+                        hintText: "Email",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         )),
@@ -146,10 +147,10 @@ class _SignUpState extends State<SignUp> {
                         shape: const ContinuousRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
-                        value: check,
+                        value: checkBox,
                         onChanged: (value) {
                           setState(() {
-                            check = value!;
+                            checkBox = value!;
                           });
                         },
                         activeColor: Colors.blue,
@@ -189,7 +190,7 @@ class _SignUpState extends State<SignUp> {
                       text: "Login",
                       fun: () async {
                         if (FormKey.currentState!.validate()) {
-                          if (check == true) {
+                          if (checkBox == true) {
                             MyCache.SetString(
                                 key: MyChachKey.password,
                                 value: passwordcontroller.text);
@@ -203,22 +204,25 @@ class _SignUpState extends State<SignUp> {
                           setState(() {
                             clickEnable = true;
                           });
-                        }
-                        Map<String, dynamic> data = await api.post(
-                          url: "http://164.92.246.77/api/auth/login",
-                          body: {
-                            "password": passwordcontroller.text,
-                            "email": emailcontroller.text,
-                          },
-                        );
-                        if (data.isNotEmpty) {
-                          print(data);
-                        }
+                          Map<String, dynamic> data = await api.post(
+                            url: "http://164.92.246.77/api/auth/login",
+                            body: {
+                              "password": passwordcontroller.text,
+                              "email": emailcontroller.text,
+                            },
+                          );
+                          if (data['status']==true) {
+                            print(data);
+                            // Get.to(()=>);
+                          }
+                          else{
+                            print("wrong");}
+                        }else{print("validation is wrong");}
                         // await Signup();
                       },
                       buttoncolor: clickEnable == true
-                          ? Color(0xff3366FF)
-                          : Color.fromRGBO(209, 213, 219, 1),
+                          ? const Color(0xff3366FF)
+                          : const Color.fromRGBO(209, 213, 219, 1),
                       textcolor: clickEnable==true?Colors.white: Color.fromRGBO(107, 114, 128, 1),
                     ),
                   ),
