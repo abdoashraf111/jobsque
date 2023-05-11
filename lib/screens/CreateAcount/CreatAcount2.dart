@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
+import 'package:jobsque/CustomItems/custom_icons.dart';
 
 import '../../CustomItems/Custom_Card.dart';
+import 'CreateAcount3.dart';
 
 class CreateAccount2 extends StatefulWidget {
    CreateAccount2({Key? key}) : super(key: key);
@@ -50,25 +54,75 @@ bool ontap=false;
                     Padding(
                       padding: const EdgeInsets.all(8),
                       child: CustomCard(
-                        image: 'lib/images/Vector.png',
+                        icon: CustomIcons.bezier,
                         text: "UI/UX Designer",
                         borderColor: Color(0xffD1D5DB),
                         backgroundColor: Color(0xffFAFAFA),
                           activeBorderColor:Color(0xff3366FF),
+                        activeBackcolor: Color(0xffD6E4FF),
 
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8),
                       child: CustomCard(
-                        image: 'lib/images/Vector.png',
-                        text: "UI/UX Designer",
+                        icon: CustomIcons.pen_tool_2,
+                        text: "Ilustrator Designer",
                         borderColor: Color(0xffD1D5DB),
                         backgroundColor: Color(0xffFAFAFA),
                         activeBorderColor:Color(0xff3366FF),
-
+                        activeBackcolor:Color(0xffD6E4FF),
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: CustomCard(
+                        icon: CustomIcons.code,
+                        text: "Developer",
+                        borderColor: Color(0xffD1D5DB),
+                        backgroundColor: Color(0xffFAFAFA),
+                        activeBorderColor:Color(0xff3366FF),
+                        activeBackcolor:Color(0xffD6E4FF),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: CustomCard(
+                        icon: CustomIcons.graph,
+                        text: "Management",
+                        borderColor: Color(0xffD1D5DB),
+                        backgroundColor: Color(0xffFAFAFA),
+                        activeBorderColor:Color(0xff3366FF),
+                        activeBackcolor:Color(0xffD6E4FF),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: CustomCard(
+                        icon: CustomIcons.monitor_mobbile,
+                        text: "Information Technology",
+                        borderColor: Color(0xffD1D5DB),
+                        backgroundColor: Color(0xffFAFAFA),
+                        activeBorderColor:Color(0xff3366FF),
+                        activeBackcolor:Color(0xffD6E4FF),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: CustomCard(
+                        icon: CustomIcons.cloud_add,
+                        text: "Research and Analytics",
+                        borderColor: Color(0xffD1D5DB),
+                        backgroundColor: Color(0xffFAFAFA),
+                        activeBorderColor:Color(0xff3366FF),
+                        activeBackcolor:Color(0xffD6E4FF),
+                      ),
+                    ),
+
+
+
+
+
 
                   ],
                 ),
@@ -78,7 +132,9 @@ bool ontap=false;
               ),
               CustomButton(
                   text: "Next",
-                  fun: (){},
+                  fun: (){
+                    Get.to(()=>CreateAccount3());
+                  },
                   buttoncolor: Color(0xff3366FF),
                   textcolor: Colors.white)
             ],
