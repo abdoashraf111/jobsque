@@ -77,20 +77,10 @@ class _CustomCardState extends State<CustomCard> {
 class CustomCity extends StatefulWidget {
   CustomCity(
       {Key? key,
-        required this.image,
-        required this.text,
-        required this.borderColor,
-        required this.backgroundColor,
-        required this.activeBorderColor,
-        required this.activeBackcolor
+        required this.index,
       })
       : super(key: key);
-  String image;
-  String text;
-  Color borderColor;
-  Color backgroundColor;
-  Color activeBorderColor;
-  Color activeBackcolor;
+  int index;
 
 
   @override
@@ -99,37 +89,71 @@ class CustomCity extends StatefulWidget {
 
 class _CustomCityState extends State<CustomCity> {
   bool ontap=false;
+  List city = [
+    "United States",
+    "Malaysia",
+    "Singapore",
+    "Indonesia",
+    "Philiphines",
+    "Polandia",
+    "India",
+    "Vietnam",
+    "China",
+    "Canada",
+    "Saudi Arabia",
+    "Argentina",
+    "Brazil"
+  ];
+  List flag=["lib/images/cities/united states.png",
+    "lib/images/cities/malaysia.png",
+    "lib/images/cities/singapore.png",
+    "lib/images/cities/indonesia.png",
+    "lib/images/cities/philiphines.png",
+    "lib/images/cities/polandia.png",
+    "lib/images/cities/india.png",
+    "lib/images/cities/vietnam.png",
+    "lib/images/cities/china.png",
+    "lib/images/cities/canada.png",
+    "lib/images/cities/saudi arabia.png",
+    "lib/images/cities/argentina.png",
+    "lib/images/cities/brazil.png",
+  ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 42,
-      decoration: BoxDecoration(
-          color: ontap==true? widget.activeBackcolor:widget.backgroundColor,
-          borderRadius: const BorderRadius.all(Radius.circular(20)),
-          border: Border.all(color: ontap==true?widget.activeBorderColor:widget.borderColor)),
-      child: Padding(
-        padding: const EdgeInsets.all(14),
-        child: InkWell(
-          onTap: (){
-            setState(() {
-              ontap=!ontap;
-            });
-          },
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CircleAvatar(
-                backgroundColor: ontap==true?widget.activeBorderColor:widget.borderColor,
-                radius: 25,
-                child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 24,
-                  child: Image.asset(widget.image),
-                  // Image.asset(widget.image)
+    return Padding(
+      padding: const EdgeInsets.only(right: 12,bottom:16 ),
+      child: Container(
+        height: 42,
+        decoration: BoxDecoration(
+            color: ontap==true? Color(0xffD6E4FF):Color(0xffFAFAFA),
+            borderRadius: const BorderRadius.all(Radius.circular(100)),
+            border: Border.all(color: ontap==true?Color(0xff3366FF):Color(0xffE5E7EB))),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: InkWell(
+            onTap: (){
+              setState(() {
+                ontap=!ontap;
+              });
+            },
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                CircleAvatar(
+                  backgroundColor: ontap==true?Color(0xff3366FF):Color(0xffE5E7EB),
+                  radius: 13,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 12,
+                    child: Image.asset(flag[widget.index]),
+                    // Image.asset(widget.image)
+                  ),
                 ),
-              ),
-              Text(widget.text, style: const TextStyle(fontSize: 16)),
-            ],
+                SizedBox(width: 8,),
+                Text(city[widget.index], style: const TextStyle(fontSize: 16)),
+              ],
+            ),
           ),
         ),
       ),
