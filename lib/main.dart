@@ -10,9 +10,9 @@ import 'package:jobsque/test.dart';
 
 void main() {
   runApp(const MyApp());
-  // Timer(Duration(seconds: 3), () {
-  //   Get.to(() => SlidingPage());
-  // });
+  Timer(Duration(seconds: 3), () {
+    Get.to(() => SlidingPage());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home:
 
-      CreateAccount2(),
-      // SplashScreen(),
+      // CreateAccount2(),
+      SplashScreen(),
     );
   }
 }
