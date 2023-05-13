@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jobsque/helper/sharedprefeances.dart';
-import 'package:jobsque/screens/CreateAcount/CreatAcount2.dart';
+import 'package:jobsque/screens/forgotpassword/forgotpassword.dart';
 import '../../CustomItems/CustomButton.dart';
 import '../../helper/api.dart';
 import '../CreateAcount/CreateAccount.dart';
 import '../onbording/SlidingPage.dart';
 
-class SignUp extends StatefulWidget {
-  SignUp({Key? key}) : super(key: key);
+class SignIn extends StatefulWidget {
+  SignIn({Key? key}) : super(key: key);
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignInState extends State<SignIn> {
   bool _sufvar = false;
   TextEditingController namecontroller =
       TextEditingController(text: MyCache.GetString(key: MyChachKey.name));
@@ -160,7 +160,9 @@ class _SignUpState extends State<SignUp> {
                         flex: 1,
                       ),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(()=>ForgotPassword());
+                          },
                           child: const Text("Forgot Password?"))
                     ],
                   ),
@@ -213,7 +215,7 @@ class _SignUpState extends State<SignUp> {
                           );
                           if (data['status']==true) {
                             print(data);
-                            // Get.to(()=>);
+                            // Get.replace(()=>);
                           }
                           else{
                             print("wrong");}

@@ -5,21 +5,10 @@ import 'package:jobsque/CustomItems/custom_icons.dart';
 class CustomCard extends StatefulWidget {
   CustomCard(
       {Key? key,
-      required this.icon,
-      required this.text,
-      required this.borderColor,
-      required this.backgroundColor,
-        required this.activeBorderColor,
-        required this.activeBackcolor
+        required this.index
       })
       : super(key: key);
-  IconData icon;
-  String text;
-  Color borderColor;
-  Color backgroundColor;
-  Color activeBorderColor;
-  Color activeBackcolor;
-
+  int index;
 
   @override
   State<CustomCard> createState() => _CustomCardState();
@@ -27,15 +16,32 @@ class CustomCard extends StatefulWidget {
 
 class _CustomCardState extends State<CustomCard> {
   bool ontap=false;
+  List text=[
+    "UI/UX Designer",
+    "Ilustrator Designer",
+    "Developer",
+    "Management",
+    "Information Technology",
+    "Research and Analytics",
+
+  ];
+  List<IconData> icon=[
+    CustomIcons.bezier,
+    CustomIcons.pen_tool_2,
+    CustomIcons.code,
+    CustomIcons.graph,
+    CustomIcons.monitor_mobbile,
+    CustomIcons.cloud_add,
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 125,
       width: 156,
       decoration: BoxDecoration(
-          color: ontap==true? widget.activeBackcolor:widget.backgroundColor,
+          color: ontap==true? Color(0xffD6E4FF):Color(0xffFAFAFA),
           borderRadius: const BorderRadius.all(Radius.circular(20)),
-          border: Border.all(color: ontap==true?widget.activeBorderColor:widget.borderColor)),
+          border: Border.all(color: ontap==true?Color(0xff3366FF):Color(0xffD1D5DB))),
       child: Padding(
         padding: const EdgeInsets.all(14),
         child: InkWell(
@@ -51,19 +57,19 @@ class _CustomCardState extends State<CustomCard> {
                 flex: 1,
               ),
               CircleAvatar(
-                backgroundColor: ontap==true?widget.activeBorderColor:widget.borderColor,
+                backgroundColor: ontap==true?Color(0xff3366FF):Color(0xffD1D5DB),
                 radius: 25,
                 child: CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 24,
-                    child: Icon(widget.icon,size: 24,color: ontap==true?widget.activeBorderColor:Colors.black,),
+                    child: Icon(icon[widget.index],color: ontap==true?Color(0xff3366FF):Colors.black,)
                     // Image.asset(widget.image)
                 ),
               ),
               const Spacer(
                 flex: 1,
               ),
-              Text(widget.text, style: const TextStyle(fontSize: 16)),
+              Text(text[widget.index], style: const TextStyle(fontSize: 16)),
               const Spacer(
                 flex: 1,
               ),

@@ -27,4 +27,9 @@ class Api {
     Map<String, dynamic> data = jsonDecode(response.body);
     return data;
   }
+  // Future<dynamic>put({required String url})async{
+  //   http.Response response =await http.put(Uri.parse(url), body: body, headers: headers);
+  //   Map<String,dynamic> data=jsonEncode(response.body) as Map<String, dynamic>;
+  //   return data;
+  // }
 }

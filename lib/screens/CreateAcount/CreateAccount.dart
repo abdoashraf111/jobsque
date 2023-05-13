@@ -4,12 +4,13 @@ import 'package:get/get_core/src/get_main.dart';
 import '../../CustomItems/CustomButton.dart';
 import '../../helper/api.dart';
 import '../../helper/sharedprefeances.dart';
-import '../Signup/Signup.dart';
+import '../Signin/Signin.dart';
+
 import '../onbording/SlidingPage.dart';
 import 'CreatAcount2.dart';
 
 class CreateAccount extends StatefulWidget {
-  CreateAccount({Key? key}) : super(key: key);
+  const CreateAccount({Key? key}) : super(key: key);
 
   @override
   State<CreateAccount> createState() => _CreateAccountState();
@@ -149,6 +150,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     },
                     controller: passwordcontroller,
                     keyboardType: TextInputType.visiblePassword,
+                    obscureText: !_sufvar,
                     decoration: InputDecoration(
                         hintText: "Password",
                         prefixIcon: Icon(Icons.lock_outline),
@@ -183,7 +185,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           style: TextStyle(color: Colors.grey, fontSize: 14)),
                       TextButton(
                           onPressed: () {
-                            Get.to(() => SignUp());
+                            Get.to(() => SignIn());
                           },
                           child: const Text(
                             "Login",
