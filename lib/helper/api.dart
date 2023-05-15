@@ -7,6 +7,7 @@ class Api {
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
+
     } else {
       throw Exception(
           'there is a problem with status code ${response.statusCode}');

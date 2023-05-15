@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomJob extends StatelessWidget {
-  const CustomJob({Key? key}) : super(key: key);
-
+   CustomJob({Key? key,required this.name}) : super(key: key);
+String name ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,8 +18,8 @@ class CustomJob extends StatelessWidget {
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text("Product Designer",
+                children:  [
+                  Text(name,
                       style: TextStyle(color: Colors.black, fontSize: 18)),
                   SizedBox(
                     height: 4,

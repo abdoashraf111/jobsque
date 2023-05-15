@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -115,10 +116,10 @@ class _CreateAccountState extends State<CreateAccount> {
                       });
                     },
                     validator: (value) {
-                      if (value!.length < 5) {
-                        return "it should more than 5 letters or numbers ";
+                      if (EmailValidator.validate(emailcontroller.text.trim())) {
+                        return null ;
                       } else {
-                        return null;
+                        return "Email Account is not accept ";
                       }
                     },
                     controller: emailcontroller,
@@ -147,11 +148,13 @@ class _CreateAccountState extends State<CreateAccount> {
                           if (value.length < 8) {
                             passWrong = 1;
                             return;
-                          } else {
+                          }
+                          else {
                             passWrong = 0;
                             return;
                           }
-                        } else {
+                        }
+                        else {
                           passWrong = 2;
                         }
                       });
@@ -171,7 +174,6 @@ class _CreateAccountState extends State<CreateAccount> {
                     onTap: () {
                       setState(() {
                         passActive = true;
-                        print(passActive);
                       });
                     },
                     controller: passwordcontroller,
@@ -244,6 +246,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 "http://164.92.246.77/api/auth/register?name=${namecontroller.text}&email=${emailcontroller.text}&password=${passwordcontroller.text}",
                           );
                           if (data['status'] == false) {
+                            print(data);
                             ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content:Text("The email has already been taken") ));
                           } else if (data['status'] == true) {

@@ -7,19 +7,12 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: CircleAvatar(
-            radius: 260,
-            backgroundColor:  Color.fromRGBO(214, 228, 255, 0.14),
-            child: CircleAvatar(
-              radius: 150,
-                backgroundColor: Color.fromRGBO(214, 228, 255, 0.14),
-              child: CircleAvatar(
-                  radius: 90,
-                  backgroundColor: Color.fromRGBO(214, 228, 255, 0.3),
-                  child: Image.asset("lib/images/Logo.png")),
-            ),
-          )),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(image:AssetImage("lib/images/Blur.png"),
+              fit: BoxFit.cover),
+        ),
+          child: Center(child: Image.asset("lib/images/Logo.png"))),
     );
   }
 }
