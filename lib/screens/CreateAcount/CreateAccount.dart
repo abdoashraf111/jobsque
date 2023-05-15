@@ -24,6 +24,8 @@ class _CreateAccountState extends State<CreateAccount> {
   bool clickEnable = false;
   GlobalKey<FormState> FormKey = GlobalKey<FormState>();
   Api api = Api();
+  int passWrong = 2;
+  bool passActive = false;
 
   @override
   Widget build(BuildContext context) {
@@ -140,13 +142,37 @@ class _CreateAccountState extends State<CreateAccount> {
                           clickEnable = false;
                         }
                       });
+                      setState(() {
+                        if (passActive == true) {
+                          if (value.length < 8) {
+                            passWrong = 1;
+                            return;
+                          } else {
+                            passWrong = 0;
+                            return;
+                          }
+                        } else {
+                          passWrong = 2;
+                        }
+                      });
                     },
                     validator: (value) {
-                      if (value!.length < 5) {
-                        return "it should more than 5 letters or numbers ";
-                      } else {
-                        return null;
-                      }
+                      setState(() {
+                        if (value!.length < 8) {
+                          passWrong = 1;
+                          return;
+                        } else {
+                          passWrong = 0;
+                          return;
+                        }
+                      });
+                      return null;
+                    },
+                    onTap: () {
+                      setState(() {
+                        passActive = true;
+                        print(passActive);
+                      });
                     },
                     controller: passwordcontroller,
                     keyboardType: TextInputType.visiblePassword,
@@ -170,9 +196,13 @@ class _CreateAccountState extends State<CreateAccount> {
                   const SizedBox(
                     height: 12,
                   ),
-                  const Text("Password must be at least 8 characters",
+                  Text("Password must be at least 8 characters",
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: passWrong == 0
+                            ? Colors.green
+                            : passWrong == 1
+                                ? Colors.red
+                                : Colors.grey,
                         fontSize: 16,
                       )),
                   const SizedBox(
@@ -209,25 +239,29 @@ class _CreateAccountState extends State<CreateAccount> {
                           MyCache.SetString(
                               key: MyChachKey.email,
                               value: emailcontroller.text);
-                          setState(() {
-                            clickEnable = true;
-                          });
                           Map<String, dynamic> data = await api.post(
-                            url: "http://164.92.246.77/api/auth/register?name=${namecontroller.text}&email=${emailcontroller.text}&password=${passwordcontroller.text}",
+                            url:
+                                "http://164.92.246.77/api/auth/register?name=${namecontroller.text}&email=${emailcontroller.text}&password=${passwordcontroller.text}",
                           );
-                          if (data.isNotEmpty) {
-                            print(data);
-                            Get.to(()=>CreateAccount2());
+                          if (data['status'] == false) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content:Text("The email has already been taken") ));
+                          } else if (data['status'] == true) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content:Text("The email has already been taken") ));
+                            print("done ssssssssssss");
+                            Get.to(() => CreateAccount2());
+                          } else {
+                            print("wronggggggggggg");
                           }
-                        }
-                        else{
-                          print("validation is wrong");
                         }
                       },
                       buttoncolor: clickEnable == true
                           ? const Color(0xff3366FF)
                           : const Color.fromRGBO(209, 213, 219, 1),
-                      textcolor: clickEnable==true?Colors.white: const Color.fromRGBO(107, 114, 128, 1),
+                      textcolor: clickEnable == true
+                          ? Colors.white
+                          : const Color.fromRGBO(107, 114, 128, 1),
                     ),
                   ),
                   const SizedBox(

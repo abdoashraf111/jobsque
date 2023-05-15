@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jobsque/helper/sharedprefeances.dart';
+import 'package:jobsque/screens/HomeScreen/HomeScreen.dart';
 import 'package:jobsque/screens/forgotpassword/forgotpassword.dart';
 import '../../CustomItems/CustomButton.dart';
 import '../../helper/api.dart';
@@ -74,14 +75,15 @@ class _SignInState extends State<SignIn> {
                     height: 44,
                   ),
                   TextFormField(
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
-                        if(FormKey.currentState!.validate()){
+                        if (FormKey.currentState!.validate()) {
                           setState(() {
-                            clickEnable=true;
+                            clickEnable = true;
                           });
+                        } else {
+                          clickEnable = false;
                         }
-                        else{clickEnable=false;}
                       });
                     },
                     validator: (value) {
@@ -104,12 +106,13 @@ class _SignInState extends State<SignIn> {
                     height: 24,
                   ),
                   TextFormField(
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
-                        if(FormKey.currentState!.validate()){
-                          clickEnable=true;
+                        if (FormKey.currentState!.validate()) {
+                          clickEnable = true;
+                        } else {
+                          clickEnable = false;
                         }
-                        else{clickEnable=false;}
                       });
                     },
                     validator: (value) {
@@ -161,7 +164,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       TextButton(
                           onPressed: () {
-                            Get.to(()=>ForgotPassword());
+                            Get.to(() => ForgotPassword());
                           },
                           child: const Text("Forgot Password?"))
                     ],
@@ -213,19 +216,27 @@ class _SignInState extends State<SignIn> {
                               "email": emailcontroller.text,
                             },
                           );
-                          if (data['status']==true) {
-                            print(data);
-                            // Get.replace(()=>);
+                          if (data['status'] == true) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text("you Sign in Successfully")));
+                            Get.to(() => HomeScreen());
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                content:
+                                    Text("wrong password or wrong email")));
                           }
-                          else{
-                            print("wrong");}
-                        }else{print("validation is wrong");}
+                        } else {
+                          print("validation is wrong");
+                        }
                         // await Signup();
                       },
                       buttoncolor: clickEnable == true
                           ? const Color(0xff3366FF)
                           : const Color.fromRGBO(209, 213, 219, 1),
-                      textcolor: clickEnable==true?Colors.white: Color.fromRGBO(107, 114, 128, 1),
+                      textcolor: clickEnable == true
+                          ? Colors.white
+                          : const Color.fromRGBO(107, 114, 128, 1),
                     ),
                   ),
                   const SizedBox(

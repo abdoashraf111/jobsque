@@ -1,12 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../CustomItems/CustomButton.dart';
-import 'newpassword.dart';
+import '../HomeScreen/HomeScreen.dart';
 
+class PassDone extends StatelessWidget {
+  const PassDone({Key? key}) : super(key: key);
 
-class CheckEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,29 +23,32 @@ class CheckEmail extends StatelessWidget {
               const SizedBox(
                 height: 24,
               ),
+
               const Spacer(
                 flex: 1,
               ),
-              Image.asset("lib/images/Email Ilustration.png"),
+              Image.asset("lib/images/Password Succesfully Ilustration.png"),
               const SizedBox(
                 height: 24,
               ),
-              const Text("Check your Email",
+              const Text("Password changed",
+                  style: TextStyle(fontSize: 24)),
+              const Text("succesfully!",
                   style: TextStyle(fontSize: 24)),
               const SizedBox(
                 height: 8,
               ),
-              const Text("We have sent a reset password to your email",
-                  style: TextStyle(fontSize: 14, color: Color(0xff6B7280))),
-              const Text("address",
-                  style: TextStyle(fontSize: 14, color: Color(0xff6B7280))),
+              const Text("Your password has been changed successfully, we will let you know if there are more problems",
+                  style: TextStyle(fontSize: 16, color: Color(0xff6B7280))),
+              const Text("with your account",
+                  style: TextStyle(fontSize: 16, color: Color(0xff6B7280))),
               const Spacer(
                 flex: 1,
               ),
               CustomButton(
-                  text: "Open email app",
+                  text: "Get Started",
                   fun: () {
-                    Get.to(()=>NewPass());
+                    Get.to(()=>HomeScreen());
                   },
                   buttoncolor: Color(0xff3366FF),
                   textcolor: Colors.white),
