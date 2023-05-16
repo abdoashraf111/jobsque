@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jobsque/CustomItems/custom_icons.dart';
 
 class CustomCredit extends StatelessWidget {
    CustomCredit({Key? key,required this.colorBack,required this.colorText}) : super(key: key);
@@ -32,7 +33,7 @@ Color colorText;
                 ],
               ),
               const SizedBox(width: 32,),
-              Icon(Icons.add_box_rounded,color: colorText,),
+              Icon(CustomIcons.archive_minus,color: colorText,),
             ],),
             const Spacer(flex: 1,),
             Row(
