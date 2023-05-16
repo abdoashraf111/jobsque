@@ -10,8 +10,8 @@ class HomeScreen extends StatelessWidget {
   ApiShowJobs serv= ApiShowJobs();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+    return
+       SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -139,8 +139,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-
-    );
+      );
   }
 }
