@@ -90,26 +90,29 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                FutureBuilder(
-                  future: serv.get(),
-                  builder: (context, snapshot) {
+                Container(
+                  height: 500,
+                  child: FutureBuilder(
+                    future: serv.get(),
+                    builder: (context, snapshot) {
 
-                    if(snapshot.hasData){
-                      Showjobs date=snapshot.data;
-                      return ListView.builder(
-                        itemCount:date.data!.length ,
-                        itemBuilder: (context, index) =>
-                            CustomJob(name:date.data![index].name.toString() ),
-                      );
-                    }
-                    else{
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
+                      if(snapshot.hasData){
+                        Showjobs date=snapshot.data;
+                        return ListView.builder(
+                          itemCount:2,
+                          itemBuilder: (context, index) =>
+                              CustomJob(name:date.data![index].name.toString() ),
+                        );
+                      }
+                      else{
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
 
-                    }
-                     ,
+                      }
+                       ,
+                  ),
                 ),
 
               ],
