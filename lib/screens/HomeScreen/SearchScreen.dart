@@ -58,18 +58,17 @@ class SearchScreen extends StatelessWidget {
                   ),
                 ) ,
                 ),
-              FutureBuilder(
-                future: serv.get(
-                    header: "",
-                    url: url),
-                  builder:(context, snapshot) {
-                    return ListView.builder(
-                      itemCount: ,
-
-                        itemBuilder: (context, index) {
-
-                        },);
-                  }, ),
+              // FutureBuilder(
+              //   future: serv.get(),
+              //     builder:(context, snapshot) {
+              //     If(snapshot.hasData){}
+              //       return ListView.builder(
+              //         itemCount: ,
+              //
+              //           itemBuilder: (context, index) {
+              //
+              //           },);
+              //     }, ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: 36,
