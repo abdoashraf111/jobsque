@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:jobsque/CustomItems/Custom_Credit.dart';
+import 'package:jobsque/CustomItems/custom_icons.dart';
 
 import '../../CustomItems/Custom_job.dart';
 import '../../helper/api_showjobs.dart';
 import '../../models/showjobs.dart';
+import 'SearchScreen.dart';
 
 class HomeScreen extends StatelessWidget {
    HomeScreen({Key? key}) : super(key: key);
@@ -46,15 +50,31 @@ class HomeScreen extends StatelessWidget {
                       )
                     ],),
                     const SizedBox(height: 28,),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.search),
-                          label: Text("Search...."),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(100)),
-                          )
+                    InkWell(
+                      onTap: (){ Get.to(()=>SearchScreen());},
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          border: Border.all(color:Colors.grey ),
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(13),
+                          child: Row(
+                            children: [
+                              Icon(CustomIcons.search_normal),
+                              SizedBox(width: 14,),
+                              Text("Search....",style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey
+                              )),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
+
                     const SizedBox(height: 20,),
                     Row(
                       children: [
@@ -100,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                             child: const Text("View all")),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 8),
                     SizedBox(
                       height: 226,
                       child: FutureBuilder(
@@ -110,6 +130,7 @@ class HomeScreen extends StatelessWidget {
                           if(snapshot.hasData){
                             Showjobs date=snapshot.data;
                             return ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
                               itemCount:2,
                               itemBuilder: (context, index) =>
                                   CustomJob(

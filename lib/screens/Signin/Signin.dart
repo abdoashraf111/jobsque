@@ -6,6 +6,7 @@ import 'package:jobsque/screens/forgotpassword/forgotpassword.dart';
 import '../../CustomItems/CustomButton.dart';
 import '../../helper/api.dart';
 import '../CreateAcount/CreateAccount.dart';
+import '../HomeScreen/HomeNavigationBar.dart';
 import '../onbording/SlidingPage.dart';
 
 class SignIn extends StatefulWidget {
@@ -220,7 +221,7 @@ class _SignInState extends State<SignIn> {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text("you Sign in Successfully")));
-                            Get.to(() => HomeScreen());
+                            Get.to(() => HomeNavigationBar());
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                 content:

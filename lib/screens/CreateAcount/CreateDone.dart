@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 import 'package:jobsque/screens/CreateAcount/CreatAcount2.dart';
 
+import '../HomeScreen/HomeNavigationBar.dart';
 import '../HomeScreen/HomeScreen.dart';
 
 class CreateDone extends StatelessWidget {
@@ -57,7 +58,7 @@ class CreateDone extends StatelessWidget {
               CustomButton(
                   text: "Get Started",
                   fun: () {
-                    Get.to(()=>HomeScreen());
+                    Get.to(()=>HomeNavigationBar());
                   },
                   buttoncolor: Color(0xff3366FF),
                   textcolor: Colors.white),

@@ -76,11 +76,11 @@ class _CustomJobState extends State<CustomJob> {
                     width: 73,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(100)),
-                      color: Color.fromRGBO(255, 255, 255, 0.14),
+                      color: Color.fromRGBO(214, 228, 255, 1),
                     ),
                     child: Center(
                         child:
-                            Text(widget.jobTime, style: TextStyle(color: Colors.blue))),
+                            Text(widget.jobTime, style: TextStyle(color: Colors.blue,fontSize: 12))),
                   ),
                   const Spacer(
                     flex: 1,
@@ -90,11 +90,11 @@ class _CustomJobState extends State<CustomJob> {
                     width: 73,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(100)),
-                      color: Color.fromRGBO(255, 255, 255, 0.14),
+                      color: Color.fromRGBO(214, 228, 255, 1),
                     ),
                     child: Center(
                         child:
-                            Text("Remote", style: TextStyle(color: Colors.blue))),
+                            Text("Remote", style: TextStyle(color: Colors.blue,fontSize: 12))),
                   ),
                   const Spacer(
                     flex: 1,
@@ -104,11 +104,11 @@ class _CustomJobState extends State<CustomJob> {
                     width: 73,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(100)),
-                      color: Color.fromRGBO(255, 255, 255, 0.14),
+                      color: Color.fromRGBO(214, 228, 255, 1),
                     ),
                     child: Center(
                         child:
-                            Text(widget.jobLevel, style: TextStyle(color: Colors.blue))),
+                            Text(widget.jobLevel, style: TextStyle(color: Colors.blue,fontSize: 12))),
                   ),
                   const Spacer(
                     flex: 1,
