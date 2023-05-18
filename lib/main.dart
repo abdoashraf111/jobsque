@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:jobsque/screens/HomeScreen/HomeScreen.dart';
 import 'package:jobsque/screens/HomeScreen/SearchScreen.dart';
 import 'package:jobsque/screens/onbording/SlidingPage.dart';
 import 'package:jobsque/screens/onbording/SplashScreen.dart';
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  GetMaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       home:
       // CreateAccount2(),
