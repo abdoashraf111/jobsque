@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../CustomItems/CustomButton.dart';
 import '../HomeScreen/HomeNavigationBar.dart';
-import '../HomeScreen/HomeScreen.dart';
+
 
 class PassDone extends StatelessWidget {
   const PassDone({Key? key}) : super(key: key);
@@ -49,7 +45,8 @@ class PassDone extends StatelessWidget {
               CustomButton(
                   text: "Get Started",
                   fun: () {
-                    Get.to(()=>HomeNavigationBar());
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) =>HomeNavigationBar() ,));
                   },
                   buttoncolor: Color(0xff3366FF),
                   textcolor: Colors.white),

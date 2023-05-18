@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 import 'package:jobsque/screens/CreateAcount/CreatAcount2.dart';
 
 import '../HomeScreen/HomeNavigationBar.dart';
-import '../HomeScreen/HomeScreen.dart';
+
 
 class CreateDone extends StatelessWidget {
   const CreateDone({Key? key}) : super(key: key);
@@ -31,7 +29,8 @@ class CreateDone extends StatelessWidget {
                     icon: const Icon(Icons.arrow_back_outlined, size: 24),
                     color: Colors.black,
                     onPressed: () {
-                      Get.to(() => CreateAccount2());
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) =>CreateAccount2() ,));
                     },
                   ),
                 ],
@@ -58,7 +57,8 @@ class CreateDone extends StatelessWidget {
               CustomButton(
                   text: "Get Started",
                   fun: () {
-                    Get.to(()=>HomeNavigationBar());
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) =>HomeNavigationBar() ,));
                   },
                   buttoncolor: Color(0xff3366FF),
                   textcolor: Colors.white),

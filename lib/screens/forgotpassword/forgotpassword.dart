@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 import 'package:jobsque/screens/Signin/Signin.dart';
 
@@ -24,7 +22,8 @@ class ForgotPassword extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {
-                        Get.to(() => SignIn());
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) =>SignIn() ,));
                       },
                       icon: const Icon(Icons.arrow_back)),
                   const Spacer(
@@ -77,7 +76,8 @@ class ForgotPassword extends StatelessWidget {
                   TextButton(
                     child: const Text("Login"),
                     onPressed: () {
-                      Get.to(() => SignIn());
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) =>SignIn() ,));
                     },
                   ),
                 ],
@@ -89,7 +89,8 @@ class ForgotPassword extends StatelessWidget {
                   text: "Request password reset",
                   fun: () {
                     if(FormKey.currentState!.validate()){
-                      Get.to(()=>CheckEmail());
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) =>CheckEmail() ,));
                     }
                     },
                   buttoncolor: const Color(0xff3366FF),

@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:jobsque/screens/HomeScreen/HomeNavigationBar.dart';
-import 'package:jobsque/screens/HomeScreen/HomeScreen.dart';
+
 
 import '../../CustomItems/custom_icons.dart';
 import '../../helper/api.dart';
@@ -25,7 +22,8 @@ class SearchScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     IconButton(onPressed: (){
-                      Get.to(()=>HomeNavigationBar());
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) =>HomeNavigationBar() ,));
                     },
                         icon: const Icon(Icons.arrow_back,color: Colors.black,)),
                     const Spacer(flex: 1,),

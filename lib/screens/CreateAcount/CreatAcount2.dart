@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 import '../../CustomItems/Custom_Card.dart';
 import 'CreateDone.dart';
@@ -174,7 +172,8 @@ class _CreateAccount2State extends State<CreateAccount2> {
                   text: "Next",
                   fun: () {
                     if (numpage == 1) {
-                      Get.to(() =>  const CreateDone());
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) =>CreateDone() ,));
                     } else {
                       _controller.nextPage(
                           duration: const Duration(seconds: 1), curve: Curves.linear);

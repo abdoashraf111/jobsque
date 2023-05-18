@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:jobsque/screens/forgotpassword/passChangeDone.dart';
 
 import '../../CustomItems/CustomButton.dart';
@@ -36,7 +34,8 @@ class _NewPassState extends State<NewPass> {
                   children: [
                     IconButton(
                         onPressed: () {
-                          Get.to(() => CheckEmail());
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) =>CheckEmail() ,));
                         },
                         icon: const Icon(Icons.arrow_back)),
                     const Spacer(
@@ -126,7 +125,8 @@ class _NewPassState extends State<NewPass> {
                     TextButton(
                       child: const Text("Login"),
                       onPressed: () {
-                        Get.to(() => PassDone());
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) =>PassDone() ,));
                       },
                     ),
                   ],
@@ -138,7 +138,8 @@ class _NewPassState extends State<NewPass> {
                     text: "Reset password",
                     fun: () {
                       if(FormKey.currentState!.validate()){
-                        Get.to(()=>PassDone());
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) =>PassDone() ,));
                       }
                     },
                     buttoncolor: const Color(0xff3366FF),

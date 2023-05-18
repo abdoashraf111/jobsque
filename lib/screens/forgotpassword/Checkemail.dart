@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../CustomItems/CustomButton.dart';
 import 'newpassword.dart';
 
@@ -43,7 +40,8 @@ class CheckEmail extends StatelessWidget {
               CustomButton(
                   text: "Open email app",
                   fun: () {
-                    Get.to(()=>NewPass());
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) =>NewPass() ,));
                   },
                   buttoncolor: Color(0xff3366FF),
                   textcolor: Colors.white),

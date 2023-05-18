@@ -7,24 +7,14 @@ class Api {
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
-
     } else {
       throw Exception(
           'there is a problem with status code ${response.statusCode}');
     }
   }
 
-  Future<dynamic> post({
-    required String url,
-    @required dynamic body,
-    @required String? token,
-  }) async {
-    Map<String, String> headers = {};
-    // if (token != null) {
-    //   headers.addAll({'sdasd': 'dddd', 'sdasd': 'dddd',});
-    // }
-    http.Response response =
-        await http.post(Uri.parse(url), body: body, headers: headers);
+  Future<dynamic> post({required String url, @required dynamic body,}) async {
+    http.Response response = await http.post(Uri.parse(url), body: body);
     Map<String, dynamic> data = jsonDecode(response.body);
     return data;
   }

@@ -1,7 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../../CustomItems/CustomButton.dart';
 import '../../helper/api.dart';
 import '../../helper/sharedprefeances.dart';
@@ -47,7 +45,8 @@ class _CreateAccountState extends State<CreateAccount> {
                     children: [
                       IconButton(
                           onPressed: () {
-                            Get.to(() => SlidingPage());
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) =>SlidingPage() ,));
                           },
                           icon: Icon(Icons.arrow_back, color: Colors.black)),
                       const Spacer(
@@ -217,7 +216,8 @@ class _CreateAccountState extends State<CreateAccount> {
                           style: TextStyle(color: Colors.grey, fontSize: 14)),
                       TextButton(
                           onPressed: () {
-                            Get.to(() => SignIn());
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) =>SignIn() ,));
                           },
                           child: const Text(
                             "Login",
@@ -253,7 +253,8 @@ class _CreateAccountState extends State<CreateAccount> {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content:Text("The email has already been taken") ));
                             print("done ssssssssssss");
-                            Get.to(() => CreateAccount2());
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) =>CreateAccount2() ,));
                           } else {
                             print("wronggggggggggg");
                           }

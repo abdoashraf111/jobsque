@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 import 'package:jobsque/screens/HomeScreen/AppliedScreen.dart';
-import 'package:jobsque/screens/HomeScreen/HomeScreen.dart';
 import 'package:jobsque/screens/HomeScreen/MassageScreen.dart';
 import 'package:jobsque/screens/HomeScreen/ProfileScreen.dart';
 import 'package:jobsque/screens/HomeScreen/SavedScreen.dart';
+
+import 'Home_Page/HomeScreen.dart';
 
 class HomeNavigationBar extends StatefulWidget {
   const HomeNavigationBar({Key? key}) : super(key: key);
