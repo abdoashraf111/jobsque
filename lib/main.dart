@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobsque/screens/HomeScreen/Home_Page/Cubit/home_screen_cubit.dart';
+import 'package:get/get.dart';
+import 'package:jobsque/screens/HomeScreen/HomeScreen.dart';
 import 'package:jobsque/screens/HomeScreen/SearchScreen.dart';
-import 'package:jobsque/screens/Signin/Cubit/sign_in_cubit.dart';
-import 'package:jobsque/screens/onbording/Cubit/onbording_cubit.dart';
 import 'package:jobsque/screens/onbording/SlidingPage.dart';
 import 'package:jobsque/screens/onbording/SplashScreen.dart';
 import 'package:jobsque/test.dart';
@@ -22,21 +20,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => HomeScreenCubit()),
-        BlocProvider(create: (context) => OnbordingCubit()),
-        BlocProvider(create: (context) => SignInCubit()),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home:
-        // SplashScreen(),
-        // CreateAccount2(),
-        // SearchScreen(),
-          SlidingPage(),
-        // HomeScreen() ,
-      ),);
+    return  GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home:
+      // CreateAccount2(),
+      // SplashScreen(),
+        SearchScreen(),
+      // HomeScreen() ,
+    );
   }
-
 }
