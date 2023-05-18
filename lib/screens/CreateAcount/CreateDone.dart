@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 import 'package:jobsque/screens/CreateAcount/CreatAcount2.dart';
 
-import '../HomeScreen/HomeNavigationBar.dart';
+import '../HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
 
 
 class CreateDone extends StatelessWidget {

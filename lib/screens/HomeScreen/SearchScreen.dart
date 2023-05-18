@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobsque/screens/HomeScreen/HomeNavigationBar.dart';
+import 'package:jobsque/screens/HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
 
 
 import '../../CustomItems/custom_icons.dart';

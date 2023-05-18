@@ -57,12 +57,12 @@ class _CustomCardState extends State<CustomCard> {
                 flex: 1,
               ),
               CircleAvatar(
-                backgroundColor: ontap==true?Color(0xff3366FF):Color(0xffD1D5DB),
+                backgroundColor: ontap==true?const Color(0xff3366FF):const Color(0xffD1D5DB),
                 radius: 25,
                 child: CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 24,
-                    child: Icon(icon[widget.index],color: ontap==true?Color(0xff3366FF):Colors.black,)
+                    child: Icon(icon[widget.index],color: ontap==true?const Color(0xff3366FF):Colors.black,)
                     // Image.asset(widget.image)
                 ),
               ),

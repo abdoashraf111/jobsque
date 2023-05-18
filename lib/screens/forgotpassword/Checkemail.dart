@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../CustomItems/CustomButton.dart';
-import 'newpassword.dart';
+import 'newpassword/newpassword.dart';
 
 
 class CheckEmail extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../CustomItems/CustomButton.dart';
-import '../HomeScreen/HomeNavigationBar.dart';
+import '../HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
 
 
 class PassDone extends StatelessWidget {
