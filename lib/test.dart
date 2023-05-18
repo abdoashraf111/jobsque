@@ -1,16 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/Custom_Card.dart';
+import 'package:jobsque/test_cubit.dart';
 
 class test extends StatelessWidget {
    test({Key? key}) : super(key: key);
-  List city=["us","malisia","egypt"];
-   List flag=["lib/images/cities/united states.png",
-     "lib/images/cities/china.png",
-     "lib/images/cities/india.png"];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-    );
+    return BlocConsumer(
+        builder: (context, state) {
+          return Scaffold(
+              body: Center(child: Text("fsdfdsfs")));
+        },
+        listener: (context, state) {
+
+        },)
+    ;
   }
 }
