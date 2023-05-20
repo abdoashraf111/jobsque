@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
-import '../../CustomItems/Custom_Card.dart';
+import '../../CustomItems/Custom_Card/Custom_Card.dart';
 import 'CreateDone.dart';
 
 class CreateAccount2 extends StatefulWidget {

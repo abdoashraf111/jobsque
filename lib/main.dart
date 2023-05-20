@@ -12,6 +12,8 @@ import 'package:jobsque/screens/onbording/SlidingPage.dart';
 import 'package:jobsque/screens/onbording/SplashScreen.dart';
 import 'package:jobsque/test.dart';
 
+import 'CustomItems/Custom_Card/custom_card_cubit.dart';
+
 void main() {
   runApp(const MyApp());
   // Timer(const Duration(seconds: 3), () {
@@ -32,7 +34,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => HomeScreenCubit(),),
           BlocProvider(create: (context) => HomeNavigationBarCubit(),),
           BlocProvider(create:(context) => NewPassWordCubit(),),
-          BlocProvider(create: (context) => JobDetailsCubit(),)
+          BlocProvider(create: (context) => JobDetailsCubit(),),
+          BlocProvider(create:(context) => CustomCardCubit(),)
         ],
         child:MaterialApp(
         debugShowCheckedModeBanner: false,

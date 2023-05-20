@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 
 class CustomCard extends StatefulWidget {
-  CustomCard(
-      {Key? key,
-        required this.index
-      })
-      : super(key: key);
+  CustomCard({Key? key, required this.index}) : super(key: key);
   int index;
 
   @override
@@ -15,17 +11,16 @@ class CustomCard extends StatefulWidget {
 }
 
 class _CustomCardState extends State<CustomCard> {
-  bool ontap=false;
-  List text=[
+  bool ontap = false;
+  List text = [
     "UI/UX Designer",
     "Ilustrator Designer",
     "Developer",
     "Management",
     "Information Technology",
     "Research and Analytics",
-
   ];
-  List<IconData> icon=[
+  List<IconData> icon = [
     CustomIcons.bezier,
     CustomIcons.pen_tool_2,
     CustomIcons.code,
@@ -39,15 +34,16 @@ class _CustomCardState extends State<CustomCard> {
       height: 125,
       width: 156,
       decoration: BoxDecoration(
-          color: ontap==true? Color(0xffD6E4FF):Color(0xffFAFAFA),
+          color: ontap == true ? Color(0xffD6E4FF) : Color(0xffFAFAFA),
           borderRadius: const BorderRadius.all(Radius.circular(20)),
-          border: Border.all(color: ontap==true?Color(0xff3366FF):Color(0xffD1D5DB))),
+          border: Border.all(
+              color: ontap == true ? Color(0xff3366FF) : Color(0xffD1D5DB))),
       child: Padding(
         padding: const EdgeInsets.all(14),
         child: InkWell(
-          onTap: (){
+          onTap: () {
             setState(() {
-              ontap=!ontap;
+              ontap = !ontap;
             });
           },
           child: Column(
@@ -57,14 +53,21 @@ class _CustomCardState extends State<CustomCard> {
                 flex: 1,
               ),
               CircleAvatar(
-                backgroundColor: ontap==true?const Color(0xff3366FF):const Color(0xffD1D5DB),
+                backgroundColor: ontap == true
+                    ? const Color(0xff3366FF)
+                    : const Color(0xffD1D5DB),
                 radius: 25,
                 child: CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 24,
-                    child: Icon(icon[widget.index],color: ontap==true?const Color(0xff3366FF):Colors.black,)
+                    child: Icon(
+                      icon[widget.index],
+                      color: ontap == true
+                          ? const Color(0xff3366FF)
+                          : Colors.black,
+                    )
                     // Image.asset(widget.image)
-                ),
+                    ),
               ),
               const Spacer(
                 flex: 1,
@@ -80,21 +83,20 @@ class _CustomCardState extends State<CustomCard> {
     );
   }
 }
-class CustomCity extends StatefulWidget {
-  CustomCity(
-      {Key? key,
-        required this.index,
-      })
-      : super(key: key);
-  int index;
 
+class CustomCity extends StatefulWidget {
+  CustomCity({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+  int index;
 
   @override
   State<CustomCity> createState() => _CustomCityState();
 }
 
 class _CustomCityState extends State<CustomCity> {
-  bool ontap=false;
+  bool ontap = false;
   List city = [
     "United States",
     "Malaysia",
@@ -110,7 +112,8 @@ class _CustomCityState extends State<CustomCity> {
     "Argentina",
     "Brazil"
   ];
-  List flag=["lib/images/cities/united states.png",
+  List flag = [
+    "lib/images/cities/united states.png",
     "lib/images/cities/malaysia.png",
     "lib/images/cities/singapore.png",
     "lib/images/cities/indonesia.png",
@@ -127,27 +130,28 @@ class _CustomCityState extends State<CustomCity> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 12,bottom:16 ),
+      padding: const EdgeInsets.only(right: 12, bottom: 16),
       child: Container(
         height: 42,
         decoration: BoxDecoration(
-            color: ontap==true? Color(0xffD6E4FF):Color(0xffFAFAFA),
+            color: ontap == true ? Color(0xffD6E4FF) : Color(0xffFAFAFA),
             borderRadius: const BorderRadius.all(Radius.circular(100)),
-            border: Border.all(color: ontap==true?Color(0xff3366FF):Color(0xffE5E7EB))),
+            border: Border.all(
+                color: ontap == true ? Color(0xff3366FF) : Color(0xffE5E7EB))),
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: InkWell(
-            onTap: (){
+            onTap: () {
               setState(() {
-                ontap=!ontap;
+                ontap = !ontap;
               });
             },
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 CircleAvatar(
-                  backgroundColor: ontap==true?Color(0xff3366FF):Color(0xffE5E7EB),
+                  backgroundColor:
+                      ontap == true ? Color(0xff3366FF) : Color(0xffE5E7EB),
                   radius: 13,
                   child: CircleAvatar(
                     backgroundColor: Colors.white,
@@ -156,7 +160,9 @@ class _CustomCityState extends State<CustomCity> {
                     // Image.asset(widget.image)
                   ),
                 ),
-                SizedBox(width: 8,),
+                SizedBox(
+                  width: 8,
+                ),
                 Text(city[widget.index], style: const TextStyle(fontSize: 16)),
               ],
             ),

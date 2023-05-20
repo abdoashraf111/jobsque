@@ -274,6 +274,7 @@ class SignIn extends StatelessWidget {
                       ),
                       Row(
                         children: [
+                          Spacer(flex: 1,),
                           InkWell(
                             onTap: () {},
                             child: Container(
@@ -325,8 +326,13 @@ class SignIn extends StatelessWidget {
                               ),
                             ),
                           ),
+                          Spacer(flex: 1,),
                         ],
-                      )
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+
                     ],
                   ),
                 ),
