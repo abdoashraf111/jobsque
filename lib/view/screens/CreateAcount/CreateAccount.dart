@@ -1,8 +1,9 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobsque/controller/data_cubit.dart';
 
 import '../../../CustomItems/CustomButton.dart';
-import '../../../helper/api.dart';
 import '../../../helper/sharedprefeances.dart';
 import '../Signin/Signin.dart';
 
@@ -23,7 +24,7 @@ class _CreateAccountState extends State<CreateAccount> {
   TextEditingController passwordcontroller = TextEditingController();
   bool clickEnable = false;
   GlobalKey<FormState> FormKey = GlobalKey<FormState>();
-  Api api = Api();
+
   int passWrong = 2;
   bool passActive = false;
 
@@ -242,10 +243,8 @@ class _CreateAccountState extends State<CreateAccount> {
                           MyCache.SetString(
                               key: MyChachKey.email,
                               value: emailcontroller.text);
-                          Map<String, dynamic> data = await api.post(
-                            url:
-                                "http://164.92.246.77/api/auth/register?name=${namecontroller.text}&email=${emailcontroller.text}&password=${passwordcontroller.text}",
-                          );
+                         Map<String, dynamic> data=await BlocProvider.of<DataCubit>(context).postAuth(
+                              url: "http://164.92.246.77/api/auth/register?name=${namecontroller.text}&email=${emailcontroller.text}&password=${passwordcontroller.text}");
                           if (data['status'] == false) {
                             print(data);
                             ScaffoldMessenger.of(context).showSnackBar(

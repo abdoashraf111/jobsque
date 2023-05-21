@@ -11,6 +11,7 @@ import 'package:jobsque/view/screens/onbording/Cubit/onbording_cubit.dart';
 import 'package:jobsque/view/screens/onbording/SlidingPage.dart';
 
 import 'CustomItems/Custom_Card/custom_card_cubit.dart';
+import 'controller/data_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => HomeNavigationBarCubit(),),
           BlocProvider(create:(context) => NewPassWordCubit(),),
           BlocProvider(create: (context) => JobDetailsCubit(),),
-          BlocProvider(create:(context) => CustomCardCubit(),)
+          BlocProvider(create:(context) => CustomCardCubit(),),
+          BlocProvider(create: (context) => DataCubit(),)
         ],
         child:MaterialApp(
         debugShowCheckedModeBanner: false,

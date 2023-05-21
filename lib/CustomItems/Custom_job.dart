@@ -5,18 +5,18 @@ import 'package:jobsque/CustomItems/custom_icons.dart';
 class CustomJob extends StatefulWidget {
    CustomJob({Key? key,
      required this.name,
-     required this.image,
-     required this.jobLevel,
-     required this.jobTime,
-     required this.salary,
-     required this.companyName
+     // required this.image,
+     // required this.jobLevel,
+     // required this.jobTime,
+     // required this.salary,
+     // required this.companyName
    }) : super(key: key);
 String name ;
-String image;
-String jobTime;
-String jobLevel;
-String salary;
-String companyName;
+String image="sdfsdf";
+ String jobTime="sdfsdf";
+ String jobLevel="sdfsdf";
+ String salary="sdfsdf";
+ String companyName="sdfsdf";
   @override
   State<CustomJob> createState() => _CustomJobState();
 }
@@ -31,7 +31,7 @@ class _CustomJobState extends State<CustomJob> {
           height: 103,
           child: Column(
             children: [
-              Spacer(flex: 1,
+              const Spacer(flex: 1,
               ),
               Row(
                 children: [
@@ -44,7 +44,7 @@ class _CustomJobState extends State<CustomJob> {
                     children:  [
                       Text(widget.name,
                           style: TextStyle(color: Colors.black, fontSize: 18)),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Text("${widget.companyName} • United States",

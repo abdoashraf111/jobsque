@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/showjobs.dart';
+import '../models/showjobsModel.dart';
 
 class ApiShowJobs {
   Future<dynamic> get() async {
@@ -17,15 +17,8 @@ print(model.data![1].name);
 
   }
 
-  Future<dynamic> post({
-    required String url,
-    @required dynamic body,
-    @required String? token,
-  }) async {
+  Future<dynamic> post({required String url, @required dynamic body, @required String? token,}) async {
     Map<String, String> headers = {};
-    // if (token != null) {
-    //   headers.addAll({'sdasd': 'dddd', 'sdasd': 'dddd',});
-    // }
     http.Response response =
     await http.post(Uri.parse(url), body: body, headers: headers);
     Map<String, dynamic> data = jsonDecode(response.body);

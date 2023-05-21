@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/Custom_Credit.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
+import 'package:jobsque/controller/data_cubit.dart';
 import '../../../../CustomItems/Custom_job.dart';
 import '../../../../helper/api_showjobs.dart';
-import '../../../../models/showjobs.dart';
+import '../../../../models/showjobsModel.dart';
 import '../../JobDetails/job_Details.dart';
 import '../SearchScreen.dart';
 import 'Cubit/home_screen_cubit.dart';
@@ -17,12 +18,9 @@ class HomeScreen extends StatelessWidget {
     return
        BlocBuilder<HomeScreenCubit, HomeScreenState>(
          builder: (context, state) {
-          if(state is HomeScreenLoading){
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          else {return SafeArea(
+           Showjobs dataa= BlocProvider.of<DataCubit>(context).getShowJob() as Showjobs;
+           var dataaa=BlocProvider.of<DataCubit>(context).modelShow;
+          return SafeArea(
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -131,12 +129,7 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         SizedBox(
                           height: 226,
-                          child: FutureBuilder(
-                            future: serv.get(),
-                            builder: (context, snapshot) {
-                              if(snapshot.hasData){
-                                Showjobs date=snapshot.data;
-                                return ListView.builder(
+                          child:ListView.builder(
                                   physics: const NeverScrollableScrollPhysics(),
                                   itemCount:2,
                                   itemBuilder: (context, index) =>
@@ -145,35 +138,20 @@ class HomeScreen extends StatelessWidget {
                                             MaterialPageRoute(builder: (context) => JobDetails(
                                             ),)) ,
                                         child: CustomJob(
-                                          name:date.data![index].name.toString(),
-                                          image: date.data![index].image.toString(),
-                                          jobLevel: date.data![index].jobLevel.toString(),
-                                          jobTime: date.data![index].jobTimeType.toString(),
-                                          salary: date.data![index].salary.toString(),
-                                          companyName: date.data![index].compName.toString(), ),
+                                          // name:dataaa["data"][0]["name"],
+                                          name:dataa.data![0]as String,
+                                          // date.data![index].name.toString(),
+                                        ),
                                       ),
-                                );
-                              }
-                              else{
-                                return const Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              }
-
-                            }
-                            ,
-                          ),
+                                ),),
+                          ]),
                         ),
                       ],
                     ),
                   ),
+          );
 
-
-                ],
-              ),
-            ),
-          );}
-         },
-       );
+          });
+         }
   }
-}
+

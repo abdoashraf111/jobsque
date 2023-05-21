@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/helper/sharedprefeances.dart';
 import '../../../CustomItems/CustomButton.dart';
-import '../../../helper/api.dart';
+import '../../../controller/data_cubit.dart';
+
 import '../CreateAcount/CreateAccount.dart';
 import '../HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
 import '../forgotpassword/forgotpassword.dart';
@@ -10,14 +11,17 @@ import '../onbording/SlidingPage.dart';
 import 'Cubit/sign_in_cubit.dart';
 
 class SignIn extends StatelessWidget {
-  TextEditingController namecontroller =
+  final TextEditingController namecontroller =
       TextEditingController(text: MyCache.GetString(key: MyChachKey.name));
-  TextEditingController emailcontroller =
+  final TextEditingController emailcontroller =
       TextEditingController(text: MyCache.GetString(key: MyChachKey.email));
-  TextEditingController passwordcontroller =
+  final TextEditingController passwordcontroller =
       TextEditingController(text: MyCache.GetString(key: MyChachKey.password));
-  GlobalKey<FormState> FormKey = GlobalKey<FormState>();
-  Api api = Api();
+  final  GlobalKey<FormState> FormKey = GlobalKey<FormState>();
+
+  SignIn({super.key});
+
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignInCubit, SignInState>(
@@ -206,16 +210,15 @@ class SignIn extends StatelessWidget {
                                     key: MyChachKey.email,
                                     value: emailcontroller.text);
                               }
-                              BlocProvider.of<SignInCubit>(context)
-                                  .trueClickEnable();
-                              Map<String, dynamic> data = await api.post(
-                                url: "http://164.92.246.77/api/auth/login",
-                                body: {
-                                  "password": passwordcontroller.text,
-                                  "email": emailcontroller.text,
-                                },
-                              );
-                              if (data['status'] == true) {
+                              BlocProvider.of<SignInCubit>(context).trueClickEnable();
+                              Map<String,dynamic> data= await BlocProvider.of<DataCubit>(context).postAuth(
+                                  url: "http://164.92.246.77/api/auth/login",
+                                  body:{
+                                    "password": passwordcontroller.text,
+                                    "email": emailcontroller.text,
+                                  }, ) ;
+
+                              if (data["status"] == true) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                         content:
@@ -223,7 +226,7 @@ class SignIn extends StatelessWidget {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => HomeNavigationBar(),
                                 ));
-                              } else {
+                              } else  {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                         content: Text(
