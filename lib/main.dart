@@ -1,16 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobsque/screens/HomeScreen/HomeNavigationBar/Cubit/home_navigation_bar_cubit.dart';
-import 'package:jobsque/screens/HomeScreen/Home_Page/Cubit/home_screen_cubit.dart';
-import 'package:jobsque/screens/HomeScreen/SearchScreen.dart';
-import 'package:jobsque/screens/JobDetails/job_details_cubit.dart';
-import 'package:jobsque/screens/Signin/Cubit/sign_in_cubit.dart';
-import 'package:jobsque/screens/forgotpassword/newpassword/new_pass_word_cubit.dart';
-import 'package:jobsque/screens/onbording/Cubit/onbording_cubit.dart';
-import 'package:jobsque/screens/onbording/SlidingPage.dart';
-import 'package:jobsque/screens/onbording/SplashScreen.dart';
 import 'package:jobsque/test.dart';
+import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/Cubit/home_navigation_bar_cubit.dart';
+import 'package:jobsque/view/screens/HomeScreen/Home_Page/Cubit/home_screen_cubit.dart';
+import 'package:jobsque/view/screens/JobDetails/job_details_cubit.dart';
+import 'package:jobsque/view/screens/Signin/Cubit/sign_in_cubit.dart';
+import 'package:jobsque/view/screens/forgotpassword/newpassword/new_pass_word_cubit.dart';
+import 'package:jobsque/view/screens/onbording/Cubit/onbording_cubit.dart';
+import 'package:jobsque/view/screens/onbording/SlidingPage.dart';
 
 import 'CustomItems/Custom_Card/custom_card_cubit.dart';
 

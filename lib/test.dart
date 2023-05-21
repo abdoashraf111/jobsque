@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobsque/CustomItems/Custom_Card/Custom_Card.dart';
-import 'package:jobsque/screens/CreateAcount/CreateAccount.dart';
+import 'package:jobsque/view/screens/CreateAcount/CreateAccount.dart';
 
 class test extends StatelessWidget {
    test({Key? key}) : super(key: key);
