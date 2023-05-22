@@ -18,8 +18,8 @@ class HomeScreen extends StatelessWidget {
     return
        BlocBuilder<HomeScreenCubit, HomeScreenState>(
          builder: (context, state) {
-           Showjobs dataa= BlocProvider.of<DataCubit>(context).getShowJob() as Showjobs;
-           var dataaa=BlocProvider.of<DataCubit>(context).modelShow;
+          Showjobs aafdd=  BlocProvider.of<DataCubit>(context).getShowJob() as Showjobs;
+
           return SafeArea(
             child: SingleChildScrollView(
               child: Column(
@@ -129,21 +129,25 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         SizedBox(
                           height: 226,
-                          child:ListView.builder(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount:2,
-                                  itemBuilder: (context, index) =>
-                                      InkWell(
-                                        onTap: () => Navigator.of(context).push(
-                                            MaterialPageRoute(builder: (context) => JobDetails(
-                                            ),)) ,
-                                        child: CustomJob(
-                                          // name:dataaa["data"][0]["name"],
-                                          name:dataa.data![0]as String,
-                                          // date.data![index].name.toString(),
+                          child:FutureBuilder(
+                            // future: ,
+                            builder: (context, snapshot) =>
+                              ListView.builder(
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemCount:2,
+                                    itemBuilder: (context, index) =>
+                                        InkWell(
+                                          onTap: () => Navigator.of(context).push(
+                                              MaterialPageRoute(builder: (context) => JobDetails(
+                                              ),)) ,
+                                          child: CustomJob(
+                                            // name:dataaa["data"][0]["name"],
+                                            name: aafdd.data["data"][0]["name"].toString()
+                                            // date.data![index].name.toString(),
+                                          ),
                                         ),
-                                      ),
-                                ),),
+                                  ),
+                          ),),
                           ]),
                         ),
                       ],

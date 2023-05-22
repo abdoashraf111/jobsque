@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create:(context) => NewPassWordCubit(),),
           BlocProvider(create: (context) => JobDetailsCubit(),),
           BlocProvider(create:(context) => CustomCardCubit(),),
-          BlocProvider(create: (context) => DataCubit(),)
+          BlocProvider(create: (context) => DataCubit()..getShowJob(),)
         ],
         child:MaterialApp(
         debugShowCheckedModeBanner: false,

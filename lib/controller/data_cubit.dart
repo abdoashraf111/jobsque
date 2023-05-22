@@ -37,7 +37,7 @@ class DataCubit extends Cubit<DataState> {
     return data;
   }
 
-  Future<dynamic> getShowJob() async {
+  Future<Showjobs> getShowJob() async {
     http.Response response = await http.get(
         Uri.parse("http://164.92.246.77/api/jobs",),headers:{
       'Authorization':'Bearer 649|cUYeN9T8Vgwikz3rBDPGVvAQnl8khwoda4A4jCuM'
@@ -47,6 +47,8 @@ class DataCubit extends Cubit<DataState> {
     print(model.data![1].name);
     modelShow=model;
     return model;
-
   }
+//   showFun()async{
+// modelShow =await
+//   }
 }

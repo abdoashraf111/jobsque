@@ -210,6 +210,8 @@ class SignIn extends StatelessWidget {
                                     key: MyChachKey.email,
                                     value: emailcontroller.text);
                               }
+                              var aa= await BlocProvider.of<DataCubit>(context).getShowJob();
+                              print(aa);
                               BlocProvider.of<SignInCubit>(context).trueClickEnable();
                               Map<String,dynamic> data= await BlocProvider.of<DataCubit>(context).postAuth(
                                   url: "http://164.92.246.77/api/auth/login",
@@ -329,7 +331,7 @@ class SignIn extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Spacer(flex: 1,),
+                          const Spacer(flex: 1,),
                         ],
                       ),
                       const SizedBox(
