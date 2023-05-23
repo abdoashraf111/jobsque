@@ -4,7 +4,7 @@ import 'package:jobsque/CustomItems/Custom_Credit.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 import 'package:jobsque/controller/data_cubit.dart';
 import '../../../../CustomItems/Custom_job.dart';
-import '../../../../helper/api_showjobs.dart';
+import '../../../../Services/api_showjobs.dart';
 import '../../../../models/showjobsModel.dart';
 import '../../JobDetails/job_Details.dart';
 import '../SearchScreen.dart';
@@ -18,7 +18,6 @@ class HomeScreen extends StatelessWidget {
     return
        BlocBuilder<HomeScreenCubit, HomeScreenState>(
          builder: (context, state) {
-          Showjobs aafdd=  BlocProvider.of<DataCubit>(context).getShowJob() as Showjobs;
 
           return SafeArea(
             child: SingleChildScrollView(
@@ -129,25 +128,21 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         SizedBox(
                           height: 226,
-                          child:FutureBuilder(
-                            // future: ,
-                            builder: (context, snapshot) =>
-                              ListView.builder(
-                                    physics: const NeverScrollableScrollPhysics(),
-                                    itemCount:2,
-                                    itemBuilder: (context, index) =>
-                                        InkWell(
-                                          onTap: () => Navigator.of(context).push(
-                                              MaterialPageRoute(builder: (context) => JobDetails(
-                                              ),)) ,
-                                          child: CustomJob(
-                                            // name:dataaa["data"][0]["name"],
-                                            name: aafdd.data["data"][0]["name"].toString()
-                                            // date.data![index].name.toString(),
-                                          ),
-                                        ),
-                                  ),
-                          ),),
+                          child:ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount:2,
+                                itemBuilder: (context, index) =>
+                                    InkWell(
+                                      onTap: () => Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (context) => JobDetails(
+                                          ),)) ,
+                                      child: CustomJob(
+                                        // name:dataaa["data"][0]["name"],
+                                        name: BlocProvider.of<DataCubit>(context).getJob()
+                                        // date.data![index].name.toString(),
+                                      ),
+                                    ),
+                              ),),
                           ]),
                         ),
                       ],

@@ -6,6 +6,7 @@ import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/Cubit/home_nav
 import 'package:jobsque/view/screens/HomeScreen/Home_Page/Cubit/home_screen_cubit.dart';
 import 'package:jobsque/view/screens/JobDetails/job_details_cubit.dart';
 import 'package:jobsque/view/screens/Signin/Cubit/sign_in_cubit.dart';
+import 'package:jobsque/view/screens/Signin/Signin.dart';
 import 'package:jobsque/view/screens/forgotpassword/newpassword/new_pass_word_cubit.dart';
 import 'package:jobsque/view/screens/onbording/Cubit/onbording_cubit.dart';
 import 'package:jobsque/view/screens/onbording/SlidingPage.dart';
@@ -35,12 +36,13 @@ class MyApp extends StatelessWidget {
           BlocProvider(create:(context) => NewPassWordCubit(),),
           BlocProvider(create: (context) => JobDetailsCubit(),),
           BlocProvider(create:(context) => CustomCardCubit(),),
-          BlocProvider(create: (context) => DataCubit()..getShowJob(),)
+          BlocProvider(create: (context) => DataCubit(),)
         ],
         child:MaterialApp(
         debugShowCheckedModeBanner: false,
         home:
-        SlidingPage(),
+        // SlidingPage(),
+            SignIn(),
         // CreateAccount2(),
         // SplashScreen(),
         //   SearchScreen(),

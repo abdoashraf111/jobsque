@@ -17,12 +17,4 @@ print(model.data![1].name);
 
   }
 
-  Future<dynamic> post({required String url,
-    @required dynamic body, @required String? token,}) async {
-    Map<String, String> headers = {};
-    http.Response response =
-    await http.post(Uri.parse(url), body: body, headers: headers);
-    Map<String, dynamic> data = jsonDecode(response.body);
-    return data;
-  }
 }

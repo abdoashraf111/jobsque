@@ -1,3 +1,30 @@
+class SignInModel {
+  SignInModel({
+      this.user, 
+      this.token, 
+      this.status,});
+
+  SignInModel.fromJson(dynamic json) {
+    user = json['user'] != null ? User.fromJson(json['user']) : null;
+    token = json['token'];
+    status = json['status'];
+  }
+  User? user;
+  String? token;
+  bool? status;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (user != null) {
+      map['user'] = user?.toJson();
+    }
+    map['token'] = token;
+    map['status'] = status;
+    return map;
+  }
+
+}
+
 class User {
   User({
       this.id, 
@@ -19,14 +46,14 @@ class User {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-  int id;
-  String name;
-  String otp;
+  int? id;
+  String? name;
+  String? otp;
   dynamic towStep;
-  String email;
+  String? email;
   dynamic emailVerifiedAt;
-  String createdAt;
-  String updatedAt;
+  String? createdAt;
+  String? updatedAt;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
-import '../../../helper/api_showjobs.dart';
+
+import '../../../Services/api_showjobs.dart';
 import '../HomeScreen/Home_Page/HomeScreen.dart';
 import 'job_details_cubit.dart';
 

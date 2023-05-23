@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/controller/data_cubit.dart';
 
 import '../../../CustomItems/CustomButton.dart';
-import '../../../helper/sharedprefeances.dart';
+import '../../../Services/sharedprefeances.dart';
 import '../Signin/Signin.dart';
 
 import '../onbording/SlidingPage.dart';

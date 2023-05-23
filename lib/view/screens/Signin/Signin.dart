@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobsque/helper/sharedprefeances.dart';
+import 'package:jobsque/models/SignInModel.dart';
 import '../../../CustomItems/CustomButton.dart';
+import '../../../Services/AuthAPI.dart';
+import '../../../Services/sharedprefeances.dart';
 import '../../../controller/data_cubit.dart';
 
 import '../CreateAcount/CreateAccount.dart';
@@ -18,7 +20,8 @@ class SignIn extends StatelessWidget {
   final TextEditingController passwordcontroller =
       TextEditingController(text: MyCache.GetString(key: MyChachKey.password));
   final  GlobalKey<FormState> FormKey = GlobalKey<FormState>();
-
+final  serv =AuthService();
+// var modd=SignInModel();
   SignIn({super.key});
 
 
@@ -29,6 +32,7 @@ class SignIn extends StatelessWidget {
         bool clickEnable = BlocProvider.of<SignInCubit>(context).clickEnable;
         bool checkBox = BlocProvider.of<SignInCubit>(context).checkBox;
         bool showPass = BlocProvider.of<SignInCubit>(context).showPass;
+        var modd=BlocProvider.of<DataCubit>(context);
         return Scaffold(
           body: SafeArea(
             child: Padding(
@@ -210,30 +214,35 @@ class SignIn extends StatelessWidget {
                                     key: MyChachKey.email,
                                     value: emailcontroller.text);
                               }
-                              var aa= await BlocProvider.of<DataCubit>(context).getShowJob();
-                              print(aa);
                               BlocProvider.of<SignInCubit>(context).trueClickEnable();
-                              Map<String,dynamic> data= await BlocProvider.of<DataCubit>(context).postAuth(
-                                  url: "http://164.92.246.77/api/auth/login",
-                                  body:{
-                                    "password": passwordcontroller.text,
-                                    "email": emailcontroller.text,
-                                  }, ) ;
+                              // Map<String,dynamic> data= await BlocProvider.of<DataCubit>(context).postAuth(
+                              //     url: "http://164.92.246.77/api/auth/login",
+                              //     body:{
+                              //       "password": passwordcontroller.text,
+                              //       "email": emailcontroller.text,
+                              //     }, ) ;
 
-                              if (data["status"] == true) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content:
-                                            Text("you Sign in Successfully")));
-                                Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => HomeNavigationBar(),
-                                ));
-                              } else  {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text(
-                                            "wrong password or wrong email")));
-                              }
+                            await BlocProvider.of<DataCubit>(context).postSignIn(password:passwordcontroller.text , email: emailcontroller.text);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                         SnackBar(
+                                            content:
+                                                Text( modd.MM!.token.toString())));
+
+
+                              // if (data["status"] == true) {
+                              //   ScaffoldMessenger.of(context).showSnackBar(
+                              //       const SnackBar(
+                              //           content:
+                              //               Text("you Sign in Successfully")));
+                              //   Navigator.of(context).push(MaterialPageRoute(
+                              //     builder: (context) => HomeNavigationBar(),
+                              //   ));
+                              // } else  {
+                              //   ScaffoldMessenger.of(context).showSnackBar(
+                              //       const SnackBar(
+                              //           content: Text(
+                              //               "wrong password or wrong email")));
+                              // }
                             } else {
                               print("validation is wrong");
                             }
