@@ -221,28 +221,26 @@ class SignIn extends StatelessWidget {
                               //       "password": passwordcontroller.text,
                               //       "email": emailcontroller.text,
                               //     }, ) ;
-                              BlocProvider.of<DataCubit>(context).postSignIn(password: passwordcontroller.text, email: emailcontroller.text);
-                            var vv=BlocProvider.of<DataCubit>(context).signModel;
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                         SnackBar(
-                                            content:
-                                                Text( vv.status.toString())));
-                              BlocProvider.of<DataCubit>(context).getJob();
+                               await BlocProvider.of<DataCubit>(context).postSignIn(
+                                  password: passwordcontroller.text, email: emailcontroller.text);
+                            var Data=BlocProvider.of<DataCubit>(context).modelSign;
 
-                              // if (data["status"] == true) {
-                              //   ScaffoldMessenger.of(context).showSnackBar(
-                              //       const SnackBar(
-                              //           content:
-                              //               Text("you Sign in Successfully")));
-                              //   Navigator.of(context).push(MaterialPageRoute(
-                              //     builder: (context) => HomeNavigationBar(),
-                              //   ));
-                              // } else  {
-                              //   ScaffoldMessenger.of(context).showSnackBar(
-                              //       const SnackBar(
-                              //           content: Text(
-                              //               "wrong password or wrong email")));
-                              // }
+                              if (Data.status == true) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content:
+                                            Text("you Sign in Successfully")));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => HomeNavigationBar(),
+                                ));
+                                // BlocProvider.of<DataCubit>(context).getJob();
+                              } else  {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(
+                                            "wrong password or wrong email")));
+                              }
+
                             } else {
                               print("validation is wrong");
                             }

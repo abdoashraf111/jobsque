@@ -5,7 +5,7 @@ import 'package:jobsque/CustomItems/custom_icons.dart';
 
 
 import '../AppliedScreen.dart';
-import '../Home_Page/HomeScreen.dart';
+import '../HomeScreen.dart';
 import '../MassageScreen.dart';
 import '../ProfileScreen.dart';
 import '../SavedScreen.dart';

@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 
-import '../../../Services/api_showjobs.dart';
-import '../HomeScreen/Home_Page/HomeScreen.dart';
+
+import '../HomeScreen/HomeScreen.dart';
 import 'job_details_cubit.dart';
 
 class JobDetails extends StatelessWidget {

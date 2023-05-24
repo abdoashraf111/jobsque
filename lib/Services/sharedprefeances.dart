@@ -45,5 +45,5 @@ enum MyChachKey{
   password,
   name,
   checked,
-  onboarding,
+  onBoarding,
 }

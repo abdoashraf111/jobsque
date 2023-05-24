@@ -3,11 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/Custom_Credit.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 import 'package:jobsque/controller/data_cubit.dart';
-import '../../../../CustomItems/Custom_job.dart';
-import '../../../../Services/api_showjobs.dart';
-import '../../../../models/showjobsModel.dart';
-import '../../JobDetails/job_Details.dart';
-import '../SearchScreen.dart';
+import '../../../CustomItems/Custom_job.dart';
+import '../JobDetails/job_Details.dart';
+import 'SearchScreen.dart';
 
 class HomeScreen extends StatelessWidget {
    HomeScreen({Key? key}) : super(key: key);
@@ -136,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                                           ),)) ,
                                       child: CustomJob(
                                         // name:dataaa["data"][0]["name"],
-                                        name: BlocProvider.of<DataCubit>(context).jobModel.status.toString()
+                                        name: BlocProvider.of<DataCubit>(context).modelJob.status.toString()
                                         // date.data![index].name.toString(),
                                       ),
                                     ),

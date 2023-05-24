@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
-import '../Services/api_showjobs.dart';
 import '../models/SignInModel.dart';
 import '../models/showjobsModel.dart';
 part 'data_state.dart';
@@ -11,6 +10,27 @@ part 'data_state.dart';
 class DataCubit extends Cubit<DataState> {
   DataCubit() : super(DataInitial());
 
+
+
+  SignInModel modelSign=SignInModel();
+  Future<SignInModel> postSignIn ({required String password,required String email})async {
+    try {
+      http.Response response = await http.post(
+          Uri.parse("http://164.92.246.77/api/auth/login",),
+          body: {
+            "password":password ,
+            "email": email,
+          }
+      );
+      SignInModel user=SignInModel.fromJson(jsonDecode(response.body));
+      modelSign=user;
+      // print(user.token);
+      // print(user.user?.name.toString());
+      return user;
+    } on Exception catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 
   // Future<dynamic> getAuth({required String url}) async {
   //   http.Response response = await http.get(Uri.parse(url));
@@ -24,21 +44,17 @@ class DataCubit extends Cubit<DataState> {
   //         'there is a problem with status code ${response.statusCode}');
   //   }
   // }
-  SignInModel signModel=SignInModel();
-  Future<dynamic> postAuth({required String url, dynamic body,
-  }) async {
+  SignInModel modelRegister=SignInModel();
+  Future<dynamic> postRegister({required String url, dynamic body,}) async {
     http.Response response = await http.post(Uri.parse(url), body: body);
     Map<String, dynamic> json = jsonDecode(response.body);
       SignInModel model=SignInModel.fromJson(json);
-      signModel=model;
-      print(signModel.token);
+      modelRegister=model;
+      print(modelRegister.token);
     return model;
   }
 
-
-
-
-  Showjobs jobModel=Showjobs();
+  Showjobs modelJob=Showjobs();
   Future<Showjobs> getJob() async {
     emit(DataLoading());
     try {
@@ -51,9 +67,9 @@ class DataCubit extends Cubit<DataState> {
           });
       Map<String,dynamic> json=jsonDecode(response.body);
       Showjobs model = Showjobs.fromJson(json);
-      print(model);
-      print(model.data![1].name);
-      jobModel=model;
+      print(model.status);
+      // print(model.data![1].name);
+      modelJob=model;
       return model;
     } on Exception catch (e) {
       throw Exception(e.toString());
@@ -64,25 +80,5 @@ class DataCubit extends Cubit<DataState> {
 
 
 
-
-  Future<SignInModel> postSignIn ({required String password,required String email})async
-  {
-    try {
-      final response = await http.post(
-          Uri.parse("http://164.92.246.77/api/auth/login",),
-          body: {
-            "password":password ,
-            "email": email,
-          }
-      );
-      SignInModel user=SignInModel.fromJson(jsonDecode(response.body));
-      print(user.token);
-      print(user.user?.name.toString());
-      return user;
-    } on Exception catch (e) {
-      throw Exception(e.toString());
-    }
-
-  }
 
 }

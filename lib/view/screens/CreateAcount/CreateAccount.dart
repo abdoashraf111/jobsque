@@ -243,7 +243,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           MyCache.SetString(
                               key: MyChachKey.email,
                               value: emailcontroller.text);
-                         Map<String, dynamic> data=await BlocProvider.of<DataCubit>(context).postAuth(
+                         Map<String, dynamic> data=await BlocProvider.of<DataCubit>(context).postRegister(
                               url: "http://164.92.246.77/api/auth/register?name=${namecontroller.text}&email=${emailcontroller.text}&password=${passwordcontroller.text}");
                           if (data['status'] == false) {
                             print(data);
