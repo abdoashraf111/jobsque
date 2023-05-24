@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/models/SignInModel.dart';
 import '../../../CustomItems/CustomButton.dart';
-import '../../../Services/AuthAPI.dart';
+
 import '../../../Services/sharedprefeances.dart';
 import '../../../controller/data_cubit.dart';
 
@@ -20,7 +20,7 @@ class SignIn extends StatelessWidget {
   final TextEditingController passwordcontroller =
       TextEditingController(text: MyCache.GetString(key: MyChachKey.password));
   final  GlobalKey<FormState> FormKey = GlobalKey<FormState>();
-final  serv =AuthService();
+
 // var modd=SignInModel();
   SignIn({super.key});
 
@@ -221,13 +221,13 @@ final  serv =AuthService();
                               //       "password": passwordcontroller.text,
                               //       "email": emailcontroller.text,
                               //     }, ) ;
-
-                            await BlocProvider.of<DataCubit>(context).postSignIn(password:passwordcontroller.text , email: emailcontroller.text);
+                              BlocProvider.of<DataCubit>(context).postSignIn(password: passwordcontroller.text, email: emailcontroller.text);
+                            var vv=BlocProvider.of<DataCubit>(context).signModel;
                               ScaffoldMessenger.of(context).showSnackBar(
                                          SnackBar(
                                             content:
-                                                Text( modd.MM!.token.toString())));
-
+                                                Text( vv.status.toString())));
+                              BlocProvider.of<DataCubit>(context).getJob();
 
                               // if (data["status"] == true) {
                               //   ScaffoldMessenger.of(context).showSnackBar(

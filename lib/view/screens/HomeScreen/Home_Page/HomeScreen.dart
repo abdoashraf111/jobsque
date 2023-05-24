@@ -8,15 +8,13 @@ import '../../../../Services/api_showjobs.dart';
 import '../../../../models/showjobsModel.dart';
 import '../../JobDetails/job_Details.dart';
 import '../SearchScreen.dart';
-import 'Cubit/home_screen_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
    HomeScreen({Key? key}) : super(key: key);
-  ApiShowJobs serv= ApiShowJobs();
   @override
   Widget build(BuildContext context) {
     return
-       BlocBuilder<HomeScreenCubit, HomeScreenState>(
+       BlocBuilder<DataCubit, DataState>(
          builder: (context, state) {
 
           return SafeArea(
@@ -138,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                                           ),)) ,
                                       child: CustomJob(
                                         // name:dataaa["data"][0]["name"],
-                                        name: BlocProvider.of<DataCubit>(context).getJob()
+                                        name: BlocProvider.of<DataCubit>(context).jobModel.status.toString()
                                         // date.data![index].name.toString(),
                                       ),
                                     ),

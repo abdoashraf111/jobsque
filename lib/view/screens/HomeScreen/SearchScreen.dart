@@ -8,7 +8,7 @@ import 'HomeNavigationBar/HomeNavigationBar.dart';
 class SearchScreen extends StatelessWidget {
    SearchScreen({Key? key}) : super(key: key);
   final TextEditingController _controller =TextEditingController();
-   ApiShowJobs serv=ApiShowJobs();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

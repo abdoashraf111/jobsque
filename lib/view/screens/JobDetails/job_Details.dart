@@ -11,7 +11,7 @@ import 'job_details_cubit.dart';
 class JobDetails extends StatelessWidget {
   JobDetails({Key? key,}) : super(key: key);
 
-  ApiShowJobs serv = ApiShowJobs();
+
   final _controller=PageController();
 
   @override
@@ -59,7 +59,7 @@ class JobDetails extends StatelessWidget {
                               const Text("Senior UI Designer"),
                               TextButton(
                                   onPressed: () async {
-                                    Map<String, dynamic> data = await serv.get();
+
                                   },
                                   child: const Text("Twitter • Jakarta, Indonesia ")),
                               Row(
