@@ -1,16 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobsque/test.dart';
 import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/Cubit/home_navigation_bar_cubit.dart';
-import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
-import 'package:jobsque/view/screens/HomeScreen/HomeScreen.dart';
 import 'package:jobsque/view/screens/JobDetails/job_details_cubit.dart';
 import 'package:jobsque/view/screens/Signin/Cubit/sign_in_cubit.dart';
 import 'package:jobsque/view/screens/Signin/Signin.dart';
 import 'package:jobsque/view/screens/forgotpassword/newpassword/new_pass_word_cubit.dart';
 import 'package:jobsque/view/screens/onbording/Cubit/onbording_cubit.dart';
-import 'package:jobsque/view/screens/onbording/SlidingPage.dart';
+
 
 import 'CustomItems/Custom_Card/custom_card_cubit.dart';
 import 'Services/sharedprefeances.dart';

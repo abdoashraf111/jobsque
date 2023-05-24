@@ -14,13 +14,16 @@ import 'Cubit/home_navigation_bar_cubit.dart';
 
 
 class HomeNavigationBar extends StatelessWidget {
-  List<Widget> pages = [
+  HomeNavigationBar({super.key});
+  final List<Widget> pages = [
     HomeScreen(),
     MassageScreen(),
     AppliedScreen(),
     SavedScreen(),
     ProfileScreen(),
   ];
+
+
 
 
 

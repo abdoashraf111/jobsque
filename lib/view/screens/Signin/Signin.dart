@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobsque/models/SignInModel.dart';
 import '../../../CustomItems/CustomButton.dart';
-
 import '../../../Services/sharedprefeances.dart';
 import '../../../controller/data_cubit.dart';
-
 import '../CreateAcount/CreateAccount.dart';
 import '../HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
 import '../forgotpassword/forgotpassword.dart';
@@ -32,7 +29,6 @@ class SignIn extends StatelessWidget {
         bool clickEnable = BlocProvider.of<SignInCubit>(context).clickEnable;
         bool checkBox = BlocProvider.of<SignInCubit>(context).checkBox;
         bool showPass = BlocProvider.of<SignInCubit>(context).showPass;
-        var modd=BlocProvider.of<DataCubit>(context);
         return Scaffold(
           body: SafeArea(
             child: Padding(
