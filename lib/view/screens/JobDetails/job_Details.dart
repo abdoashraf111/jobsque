@@ -53,9 +53,9 @@ class JobDetails extends StatelessWidget {
                           child: Column(
                             children: [
                               const SizedBox(
-                                height: 20,
+                                height: 10,
                               ),
-                              Image.asset(""),
+                              Image.asset("lib/images/Zoom Logo.png"),
                               const Text("Senior UI Designer"),
                               TextButton(
                                   onPressed: () async {
