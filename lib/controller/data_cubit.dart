@@ -14,9 +14,10 @@ class DataCubit extends Cubit<DataState> {
 
   SignInModel modelSign=SignInModel();
   Future<SignInModel> postSignIn ({required String password,required String email})async {
+    emit(DataSignLoading());
     try {
       http.Response response = await http.post(
-          Uri.parse("http://164.92.246.77/api/auth/login",),
+          Uri.parse("http://167.71.79.133/api/auth/login",),
           body: {
             "password":password ,
             "email": email,
@@ -24,11 +25,14 @@ class DataCubit extends Cubit<DataState> {
       );
       SignInModel user=SignInModel.fromJson(jsonDecode(response.body));
       modelSign=user;
+      emit(DataSignSuccess());
       // print(user.token);
       // print(user.user?.name.toString());
       return user;
     } on Exception catch (e) {
+      emit(DataJobFailure());
       throw Exception(e.toString());
+
     }
   }
 
@@ -56,11 +60,11 @@ class DataCubit extends Cubit<DataState> {
 
   Showjobs modelJob=Showjobs();
   Future<Showjobs> getJob() async {
-    emit(DataLoading());
+    emit(DataJobLoading());
     try {
       http.Response response = await http.get(
           Uri.parse(
-            "http://164.92.246.77/api/jobs",
+            "http://167.71.79.133/api/jobs",
           ),
           headers: {
             'Authorization': 'Bearer 649|cUYeN9T8Vgwikz3rBDPGVvAQnl8khwoda4A4jCuM'
@@ -70,8 +74,10 @@ class DataCubit extends Cubit<DataState> {
       print(model.status);
       // print(model.data![1].name);
       modelJob=model;
+      emit(DataJobSuccess());
       return model;
     } on Exception catch (e) {
+      emit(DataJobFailure());
       throw Exception(e.toString());
 
     }

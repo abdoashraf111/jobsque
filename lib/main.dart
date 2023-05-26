@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/Cubit/home_navigation_bar_cubit.dart';
+import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
+import 'package:jobsque/view/screens/JobDetails/job_Details.dart';
 import 'package:jobsque/view/screens/JobDetails/job_details_cubit.dart';
 import 'package:jobsque/view/screens/Signin/Cubit/sign_in_cubit.dart';
 import 'package:jobsque/view/screens/Signin/Signin.dart';
@@ -47,6 +49,7 @@ class MyApp extends StatelessWidget {
         // CreateAccount2(),
         // SplashScreen(),
         //   SearchScreen(),
+        // JobDetails(),
         // HomeNavigationBar() ,
       ),
     );

@@ -5,6 +5,7 @@ import 'package:jobsque/CustomItems/CustomButton.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 
 
+import '../../../CustomItems/CustomWorker.dart';
 import '../HomeScreen/HomeScreen.dart';
 import 'job_details_cubit.dart';
 
@@ -183,11 +184,9 @@ class JobDetails extends StatelessWidget {
                         child: PageView(
                            physics: const NeverScrollableScrollPhysics(),
                           controller: _controller,
-                          // onPageChanged: (value){
-                          //   groupValue=value;
-                          // },
                           children: [
-                          Column(
+                          const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("sdsfsdf"),
                               SizedBox(height: 8,),
@@ -202,19 +201,93 @@ class JobDetails extends StatelessWidget {
                             ],
                           ),
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("dfsdfs"),
-                              SizedBox(height: 20,),
+                              const Text("Contact Us"),
+                              const SizedBox(height: 20,),
                               Row(
                                 children: [
-                                  Container(),
-                                  Container(),
+                                  Container(
+                                    height:56 ,
+                                    width: 157,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(color: Colors.grey),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: const Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text("Email"),
+                                          Text("twitter@mail.com"),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  Container(
+                                    height:56 ,
+                                    width: 157,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(color: Colors.grey),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: const Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text("Email"),
+                                          Text("twitter@mail.com"),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 ],
-                              )
-
+                              ),
+                              SizedBox(height: 24,),
+                              const Text("About Company"),
+                              SizedBox(height: 16,),
+                              const Text("sdsfsdfddddddddddddddddddddddddddddddddddd"),
                             ],
                           ),
-                          Column(),
+                          Column(
+                            children: [
+                              Row(children: [
+                                Column(
+                                  children: [
+                                    Text("6 Employees For"),
+                                    Text("UI/UX Design"),
+                                  ],
+                                ),
+                                Spacer(),
+                                Container(
+                                  width: 150,
+                                  height: 38,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(color: Colors.grey),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const Text("      UI/UX Designer",style: TextStyle(fontSize: 12)),
+                                      IconButton(onPressed: (){},
+                                          icon: Icon(Icons.arrow_downward,size: 12,))
+                                    ],
+                                  ),
+                                )
+                              ],),
+                              SizedBox(height: 28,),
+                              SizedBox(
+                                height: 100,
+                                child: ListView.builder(
+
+                                  itemCount:6 ,
+                                  itemBuilder:(context, index) => CustomWorkers(), ),
+                              )
+                            ],
+                          ),
                         ],),
                       ),
 

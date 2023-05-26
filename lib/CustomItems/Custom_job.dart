@@ -6,10 +6,10 @@ class CustomJob extends StatefulWidget {
    CustomJob({Key? key,
      required this.name,
      // required this.image,
-     // required this.jobLevel,
-     // required this.jobTime,
-     // required this.salary,
-     // required this.companyName
+     required this.jobLevel,
+     required this.jobTime,
+     required this.salary,
+     required this.companyName
    }) : super(key: key);
 String name ;
 String image="sdfsdf";
