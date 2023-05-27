@@ -243,18 +243,21 @@ class _CreateAccountState extends State<CreateAccount> {
                           MyCache.SetString(
                               key: MyChachKey.email,
                               value: emailcontroller.text);
-                         Map<String, dynamic> data=await BlocProvider.of<DataCubit>(context).postRegister(
-                              url: "http://167.71.79.133/api/auth/register?name=${namecontroller.text}&email=${emailcontroller.text}&password=${passwordcontroller.text}");
-                          if (data['status'] == false) {
+                         await BlocProvider.of<DataCubit>(context).postRegister(
+                           name: namecontroller.text,
+                              email: emailcontroller.text,
+                              password: passwordcontroller.text,);
+                         var data=BlocProvider.of<DataCubit>(context).modelRegister.status;
+                          if (data == false) {
                             print(data);
                             ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content:Text("The email has already been taken") ));
-                          } else if (data['status'] == true) {
+                          } else if (data == true) {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content:Text("The email has already been taken") ));
                             print("done ssssssssssss");
                             Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) =>CreateAccount2() ,));
+                                MaterialPageRoute(builder: (context) =>SignIn() ,));
                           } else {
                             print("wronggggggggggg");
                           }

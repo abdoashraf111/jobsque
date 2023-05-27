@@ -30,7 +30,7 @@ class DataCubit extends Cubit<DataState> {
       // print(user.user?.name.toString());
       return user;
     } on Exception catch (e) {
-      emit(DataJobFailure());
+      emit(DataSignFailure());
       throw Exception(e.toString());
 
     }
@@ -49,12 +49,13 @@ class DataCubit extends Cubit<DataState> {
   //   }
   // }
   SignInModel modelRegister=SignInModel();
-  Future<dynamic> postRegister({required String url, dynamic body,}) async {
+  Future<dynamic> postRegister({required String name,required String email,required String password, dynamic body,}) async {
+    String url="http://167.71.79.133/api/auth/register?name=$name&email=$email&password=$password";
     http.Response response = await http.post(Uri.parse(url), body: body);
     Map<String, dynamic> json = jsonDecode(response.body);
       SignInModel model=SignInModel.fromJson(json);
       modelRegister=model;
-      print(modelRegister.token);
+      // print(modelRegister.token);
     return model;
   }
 
@@ -71,10 +72,12 @@ class DataCubit extends Cubit<DataState> {
           });
       Map<String,dynamic> json=jsonDecode(response.body);
       Showjobs model = Showjobs.fromJson(json);
-      print(model.status);
+      print("loooooooooooook");
+      emit(DataJobSuccess());
+
       // print(model.data![1].name);
       modelJob=model;
-      emit(DataJobSuccess());
+
       return model;
     } on Exception catch (e) {
       emit(DataJobFailure());

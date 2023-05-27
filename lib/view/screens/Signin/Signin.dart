@@ -217,6 +217,7 @@ class SignIn extends StatelessWidget {
                               //       "password": passwordcontroller.text,
                               //       "email": emailcontroller.text,
                               //     }, ) ;
+                             await BlocProvider.of<DataCubit>(context).getJob();
                                await BlocProvider.of<DataCubit>(context).postSignIn(
                                   password: passwordcontroller.text, email: emailcontroller.text);
                             var Data=BlocProvider.of<DataCubit>(context).modelSign;
