@@ -217,12 +217,12 @@ class SignIn extends StatelessWidget {
                               //       "password": passwordcontroller.text,
                               //       "email": emailcontroller.text,
                               //     }, ) ;
-                             await BlocProvider.of<DataCubit>(context).getJob();
+                              BlocProvider.of<DataCubit>(context).getJob();
                                await BlocProvider.of<DataCubit>(context).postSignIn(
                                   password: passwordcontroller.text, email: emailcontroller.text);
-                            var Data=BlocProvider.of<DataCubit>(context).modelSign;
-                           print(Data.status);
-                              if (Data.status == true) {
+                            var data=BlocProvider.of<DataCubit>(context).modelSign;
+                           print(data.status);
+                              if (data.status == true) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                         content:

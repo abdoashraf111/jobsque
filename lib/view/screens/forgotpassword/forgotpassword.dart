@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
+import 'package:jobsque/controller/data_cubit.dart';
 
 
 import '../Signin/Signin.dart';
@@ -88,11 +90,13 @@ class ForgotPassword extends StatelessWidget {
               ),
               CustomButton(
                   text: "Request password reset",
-                  fun: () {
+                  fun: () async{
                     if(FormKey.currentState!.validate()){
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) =>CheckEmail() ,));
                     }
+                    await BlocProvider.of<DataCubit>(context).sendEmail(email: emailcontroller.text);
+
                     },
                   buttoncolor: const Color(0xff3366FF),
                   textcolor: Colors.white),

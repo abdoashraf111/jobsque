@@ -179,7 +179,7 @@ class JobDetails extends StatelessWidget {
                         height: 27,
                       ),
                       SizedBox(
-                        height: 162+180+20+20+8+8,
+                        height: 490,
                         width: MediaQuery.of(context).size.width,
                         child: PageView(
                            physics: const NeverScrollableScrollPhysics(),
@@ -255,13 +255,13 @@ class JobDetails extends StatelessWidget {
                           Column(
                             children: [
                               Row(children: [
-                                Column(
+                                const Column(
                                   children: [
                                     Text("6 Employees For"),
                                     Text("UI/UX Design"),
                                   ],
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Container(
                                   width: 150,
                                   height: 38,
@@ -273,18 +273,23 @@ class JobDetails extends StatelessWidget {
                                     children: [
                                       const Text("      UI/UX Designer",style: TextStyle(fontSize: 12)),
                                       IconButton(onPressed: (){},
-                                          icon: Icon(Icons.arrow_downward,size: 12,))
+                                          icon: const Icon(Icons.arrow_downward,size: 12,))
                                     ],
                                   ),
                                 )
                               ],),
-                              SizedBox(height: 28,),
+                              const SizedBox(height: 28,),
                               SizedBox(
-                                height: 100,
-                                child: ListView.builder(
-
-                                  itemCount:6 ,
-                                  itemBuilder:(context, index) => CustomWorkers(), ),
+                                height: 420,
+                                child: ListView.separated(
+                                  separatorBuilder: (context, index) => const Column(
+                                    children: [
+                                      SizedBox(height: 10,),
+                                      Divider(height: 20,color: Colors.grey,),
+                                    ],
+                                  ),
+                                  itemCount:10 ,
+                                  itemBuilder:(context, index) => const CustomWorkers(), ),
                               )
                             ],
                           ),

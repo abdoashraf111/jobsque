@@ -1,6 +1,8 @@
 import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 import '../models/SignInModel.dart';
@@ -73,11 +75,9 @@ class DataCubit extends Cubit<DataState> {
       Map<String,dynamic> json=jsonDecode(response.body);
       Showjobs model = Showjobs.fromJson(json);
       print("loooooooooooook");
-      emit(DataJobSuccess());
-
-      // print(model.data![1].name);
+      print(model.data![1].compEmail);
       modelJob=model;
-
+      emit(DataJobSuccess());
       return model;
     } on Exception catch (e) {
       emit(DataJobFailure());
@@ -85,7 +85,20 @@ class DataCubit extends Cubit<DataState> {
 
     }
   }
-
+  Future<dynamic> sendEmail({required String email}) async {
+    try {
+      final smtpServer=gmail(email, psds);
+      final message=Message()
+      ..from=Address(email)
+        ..recipients=["abdoashraf11.aa@gmail.com"]
+        ..text="sdsdsdsd"
+        ..subject="sdsdsdsd";
+      await send(message, smtpServer);
+      print("gooood");
+    } on Exception catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 
 
 

@@ -42,6 +42,7 @@ class CheckEmail extends StatelessWidget {
                   fun: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) =>NewPass() ,));
+
                   },
                   buttoncolor: Color(0xff3366FF),
                   textcolor: Colors.white),
