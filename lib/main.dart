@@ -11,6 +11,7 @@ import 'package:jobsque/view/screens/forgotpassword/newpassword/new_pass_word_cu
 import 'package:jobsque/view/screens/onbording/Cubit/onbording_cubit.dart';
 
 
+import 'CustomItems/CustomJob/custom_job_cubit.dart';
 import 'CustomItems/Custom_Card/custom_card_cubit.dart';
 import 'Services/sharedprefeances.dart';
 import 'controller/data_cubit.dart';
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create:(context) => NewPassWordCubit(),),
           BlocProvider(create: (context) => JobDetailsCubit(),),
           BlocProvider(create:(context) => CustomCardCubit(),),
-          BlocProvider(create: (context) => DataCubit(),)
+          BlocProvider(create: (context) => DataCubit(),),
+          BlocProvider(create: (context) => CustomJobCubit(),)
         ],
         child:MaterialApp(
         debugShowCheckedModeBanner: false,

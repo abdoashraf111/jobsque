@@ -5,4 +5,10 @@ part 'custom_job_state.dart';
 
 class CustomJobCubit extends Cubit<CustomJobState> {
   CustomJobCubit() : super(CustomJobInitial());
+  bool click = false;
+  fun(){
+    emit(CustomJobChange());
+    click = !click;
+  }
+
 }

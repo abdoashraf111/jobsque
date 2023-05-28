@@ -1,16 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
-
-import '../controller/data_cubit.dart';
-import 'custom job/custom_job_cubit.dart';
+import '../../controller/data_cubit.dart';
+import 'custom_job_cubit.dart';
 
 
 class CustomJob extends StatelessWidget {
   CustomJob({Key? key, required this.index}) : super(key: key);
-  bool click = false;
   int index;
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class CustomJob extends StatelessWidget {
       var dataModel =
       BlocProvider.of<DataCubit>(context).modelJob.data![index];
       var jobId=BlocProvider.of<DataCubit>(context).modelJob.data![index].id;
+      var click=BlocProvider.of<CustomJobCubit>(context).click;
       return Column(
         children: [
           SizedBox(
@@ -54,13 +56,9 @@ class CustomJob extends StatelessWidget {
                     ),
                     IconButton(
                         onPressed: ()async {
-
-                          click = !click;
-                          BlocProvider.of<DataCubit>(context).addFavorites(jobId: jobId!.toInt());
-                          if(click==true){
-
-                            await BlocProvider.of<DataCubit>(context).addFavorites(jobId: jobId.toInt());
-
+                          BlocProvider.of<CustomJobCubit>(context).fun();
+                          if(click==false){
+                           await BlocProvider.of<DataCubit>(context).addFavorites(jobId: jobId!.toInt());
                           }
                         },
                         icon: click == true
