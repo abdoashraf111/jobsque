@@ -154,20 +154,9 @@ class HomeScreen extends StatelessWidget {
                         itemBuilder: (context, index) => InkWell(
                           onTap: () =>
                               Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => JobDetails(),
+                            builder: (context) => JobDetails(index: index),
                           )),
-                          child: CustomJob(
-                            // name:dataaa["data"][0]["name"],
-                            name: dataModel.status.toString(),
-                            jobTime:
-                                dataModel.data![index].jobTimeType.toString(),
-                            jobLevel:
-                                dataModel.data![index].jobLevel.toString(),
-                            companyName:
-                                dataModel.data![index].compName.toString(),
-                            salary: dataModel.data![index].salary.toString(),
-                            // date.data![index].name.toString(),
-                          ),
+                          child: CustomJob(index: index,),
                         ),
                       ),
                     );

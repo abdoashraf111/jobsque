@@ -95,7 +95,7 @@ class ForgotPassword extends StatelessWidget {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) =>CheckEmail() ,));
                     }
-                    await BlocProvider.of<DataCubit>(context).sendEmail(email: emailcontroller.text);
+                    // await BlocProvider.of<DataCubit>(context).sendEmail(email: emailcontroller.text);
 
                     },
                   buttoncolor: const Color(0xff3366FF),

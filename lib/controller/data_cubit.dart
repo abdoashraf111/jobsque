@@ -5,7 +5,10 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
+import '../Services/sharedprefeances.dart';
 import '../models/SignInModel.dart';
+import '../models/addFavModel.dart';
+import '../models/showFavModel.dart';
 import '../models/showjobsModel.dart';
 part 'data_state.dart';
 
@@ -28,7 +31,13 @@ class DataCubit extends Cubit<DataState> {
       SignInModel user=SignInModel.fromJson(jsonDecode(response.body));
       modelSign=user;
       emit(DataSignSuccess());
-      // print(user.token);
+      MyCache.SetString(
+          key: MyChachKey.token,
+          value: "Bearer ${user.token.toString()}");
+      MyCache.SetString(
+          key: MyChachKey.userId,
+          value: user.user!.id.toString());
+      print("id is ...............${user.user!.id}");
       // print(user.user?.name.toString());
       return user;
     } on Exception catch (e) {
@@ -70,7 +79,7 @@ class DataCubit extends Cubit<DataState> {
             "http://167.71.79.133/api/jobs",
           ),
           headers: {
-            'Authorization': 'Bearer 649|cUYeN9T8Vgwikz3rBDPGVvAQnl8khwoda4A4jCuM'
+            'Authorization':MyCache.GetString(key: MyChachKey.token),
           });
       Map<String,dynamic> json=jsonDecode(response.body);
       Showjobs model = Showjobs.fromJson(json);
@@ -85,22 +94,52 @@ class DataCubit extends Cubit<DataState> {
 
     }
   }
-  Future<dynamic> sendEmail({required String email}) async {
+  // Future<dynamic> sendEmail({required String email}) async {
+  //   try {
+  //     final smtpServer=gmail(email, psds);
+  //     final message=Message()
+  //     ..from=Address(email)
+  //       ..recipients=["abdoashraf11.aa@gmail.com"]
+  //       ..text="sdsdsdsd"
+  //       ..subject="sdsdsdsd";
+  //     await send(message, smtpServer);
+  //     print("gooood");
+  //   } on Exception catch (e) {
+  //     throw Exception(e.toString());
+  //   }
+  // }
+
+  AddFavorite modelAddFav=AddFavorite();
+  Future<dynamic> addFavorites({required int jobId}) async {
+    String userId=MyCache.GetString(key: MyChachKey.userId);
     try {
-      final smtpServer=gmail(email, psds);
-      final message=Message()
-      ..from=Address(email)
-        ..recipients=["abdoashraf11.aa@gmail.com"]
-        ..text="sdsdsdsd"
-        ..subject="sdsdsdsd";
-      await send(message, smtpServer);
-      print("gooood");
+      String url="http://167.71.79.133/api/favorites?user_id=$userId&job_id=$jobId";
+      http.Response response = await http.post(Uri.parse(url), headers:{
+        'Authorization':MyCache.GetString(key: MyChachKey.token)
+      } );
+      Map<String, dynamic> json = jsonDecode(response.body);
+      AddFavorite model=AddFavorite.fromJson(json);
+      modelAddFav=model;
+      print(modelAddFav.data!.id.toString());
+      // print(modelRegister.token);
+      return model;
     } on Exception catch (e) {
       throw Exception(e.toString());
     }
   }
 
-
+  ShowFavModel showFavModel=ShowFavModel();
+  Future<dynamic> showFavorites({required int jobId}) async {
+    String url="http://167.71.79.133/api/favorites/$jobId";
+    http.Response response = await http.post(Uri.parse(url), headers:{
+      'Authorization':MyCache.GetString(key: MyChachKey.token)
+    } );
+    Map<String, dynamic> json = jsonDecode(response.body);
+    ShowFavModel model=ShowFavModel.fromJson(json);
+    showFavModel=model;
+    // print(modelRegister.token);
+    return model;
+  }
 
 
 }

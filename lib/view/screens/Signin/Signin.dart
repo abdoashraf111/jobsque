@@ -10,13 +10,13 @@ import '../onbording/SlidingPage.dart';
 import 'Cubit/sign_in_cubit.dart';
 
 class SignIn extends StatelessWidget {
-  final TextEditingController namecontroller =
+  final TextEditingController nameController =
       TextEditingController(text: MyCache.GetString(key: MyChachKey.name));
-  final TextEditingController emailcontroller =
+  final TextEditingController emailController =
       TextEditingController(text: MyCache.GetString(key: MyChachKey.email));
-  final TextEditingController passwordcontroller =
+  final TextEditingController passwordController =
       TextEditingController(text: MyCache.GetString(key: MyChachKey.password));
-  final  GlobalKey<FormState> FormKey = GlobalKey<FormState>();
+  final  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
 // var modd=SignInModel();
   SignIn({super.key});
@@ -35,7 +35,7 @@ class SignIn extends StatelessWidget {
               padding: const EdgeInsets.only(left: 24, right: 24),
               child: SingleChildScrollView(
                 child: Form(
-                  key: FormKey,
+                  key: formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -78,7 +78,7 @@ class SignIn extends StatelessWidget {
                       ),
                       TextFormField(
                         onChanged: (value) {
-                          if (FormKey.currentState!.validate()) {
+                          if (formKey.currentState!.validate()) {
                             BlocProvider.of<SignInCubit>(context)
                                 .trueClickEnable();
                           } else {
@@ -93,7 +93,7 @@ class SignIn extends StatelessWidget {
                             return null;
                           }
                         },
-                        controller: emailcontroller,
+                        controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.email_outlined),
@@ -107,7 +107,7 @@ class SignIn extends StatelessWidget {
                       ),
                       TextFormField(
                         onChanged: (value) {
-                          if (FormKey.currentState!.validate()) {
+                          if (formKey.currentState!.validate()) {
                             BlocProvider.of<SignInCubit>(context)
                                 .trueClickEnable();
                           } else {
@@ -122,7 +122,7 @@ class SignIn extends StatelessWidget {
                             return null;
                           }
                         },
-                        controller: passwordcontroller,
+                        controller: passwordController,
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: !showPass,
                         decoration: InputDecoration(
@@ -198,17 +198,17 @@ class SignIn extends StatelessWidget {
                         child: CustomButton(
                           text: "Login",
                           fun: () async {
-                            if (FormKey.currentState!.validate()) {
+                            if (formKey.currentState!.validate()) {
                               if (checkBox == true) {
                                 MyCache.SetString(
                                     key: MyChachKey.password,
-                                    value: passwordcontroller.text);
+                                    value: passwordController.text);
                                 MyCache.SetString(
                                     key: MyChachKey.name,
-                                    value: namecontroller.text);
+                                    value: nameController.text);
                                 MyCache.SetString(
                                     key: MyChachKey.email,
-                                    value: emailcontroller.text);
+                                    value: emailController.text);
                               }
                               BlocProvider.of<SignInCubit>(context).trueClickEnable();
                               // Map<String,dynamic> data= await BlocProvider.of<DataCubit>(context).postAuth(
@@ -219,7 +219,7 @@ class SignIn extends StatelessWidget {
                               //     }, ) ;
                               BlocProvider.of<DataCubit>(context).getJob();
                                await BlocProvider.of<DataCubit>(context).postSignIn(
-                                  password: passwordcontroller.text, email: emailcontroller.text);
+                                  password: passwordController.text, email: emailController.text);
                             var data=BlocProvider.of<DataCubit>(context).modelSign;
                            print(data.status);
                               if (data.status == true) {
