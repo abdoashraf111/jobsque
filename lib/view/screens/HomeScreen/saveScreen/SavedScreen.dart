@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/controller/data_cubit.dart';
 import 'package:jobsque/view/screens/HomeScreen/saveScreen/saved_cubit.dart';
-
 import '../../../../CustomItems/CustomfavJob.dart';
-import '../HomeScreen.dart';
 
 class SavedScreen extends StatelessWidget {
     SavedScreen({Key? key}) : super(key: key);
@@ -51,8 +49,21 @@ class SavedScreen extends StatelessWidget {
                   ),
                 ) ,
               ),
-              SizedBox(
-                height: 500,
+              numb==0?SizedBox(
+                height: 600,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: [
+                    Spacer(),
+                    Image.asset("lib/images/Saved Ilustration.png"),
+                    const Text("Nothing has been saved yet"),
+                    const Text("Press the star icon on the job you want to save."),
+                    Spacer(),
+                  ],
+                ),
+              )
+                  : SizedBox(
+                height: 600,
                 width: MediaQuery.of(context).size.width,
                 child: ListView.separated(
                     itemBuilder: (context, index) => Padding(

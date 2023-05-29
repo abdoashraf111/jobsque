@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobsque/view/Apply%20Done.dart';
 import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/Cubit/home_navigation_bar_cubit.dart';
 import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
 import 'package:jobsque/view/screens/HomeScreen/saveScreen/saved_cubit.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         home:
         // SlidingPage(),
             SignIn(),
+        //     ApplyDone(),
         // CreateAccount2(),
         // SplashScreen(),
         //   SearchScreen(),

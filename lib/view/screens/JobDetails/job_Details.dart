@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 import 'package:jobsque/controller/data_cubit.dart';
+import 'package:jobsque/view/ApplyJob.dart';
 
 
 import '../../../CustomItems/CustomWorker.dart';
@@ -308,7 +309,9 @@ int index;
                     right: 0,
                     child: CustomButton(
                         text: "Apply now",
-                        fun: (){},
+                        fun: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ApplyJob(),));
+                        },
                         buttoncolor: Colors.blue,
                         textcolor: Colors.white),
                   )
