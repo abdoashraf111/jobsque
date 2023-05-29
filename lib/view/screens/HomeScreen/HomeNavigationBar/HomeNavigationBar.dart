@@ -4,11 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 
 
+import '../../../../controller/data_cubit.dart';
 import '../AppliedScreen.dart';
 import '../HomeScreen.dart';
 import '../MassageScreen.dart';
 import '../ProfileScreen.dart';
-import '../SavedScreen.dart';
+import '../saveScreen/SavedScreen.dart';
 import 'Cubit/home_navigation_bar_cubit.dart';
 
 
@@ -83,8 +84,10 @@ class HomeNavigationBar extends StatelessWidget {
                 label: "Saved",
                 backgroundColor: Colors.white,
                 icon: IconButton(
-                    onPressed: () {
+                    onPressed: ()async {
                       BlocProvider.of<HomeNavigationBarCubit>(context).pageNumber3();
+                      await BlocProvider.of<DataCubit>(context).showFavorites();
+
                     },
                     icon: pageNumber == 3
                         ? Icon(CustomIcons.archive_minus_bold)

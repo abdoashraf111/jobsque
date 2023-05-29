@@ -10,3 +10,4 @@ class DataSignFailure extends DataState {}
 class DataJobLoading extends DataState {}
 class DataJobSuccess extends DataState {}
 class DataJobFailure extends DataState {}
+class DataShowFavorites extends DataState {}

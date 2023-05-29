@@ -45,8 +45,8 @@ class SearchScreen extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: 36,
                 color: Color(0xffE5E7EB),
-                child:Padding(
-                  padding: const EdgeInsets.only(right:24 ,left: 24,),
+                child:const Padding(
+                  padding: EdgeInsets.only(right:24 ,left: 24,),
                   child: Row(mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text("Recent searches"),

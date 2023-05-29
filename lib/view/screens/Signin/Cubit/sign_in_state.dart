@@ -7,4 +7,4 @@ class SignInInitial extends SignInState {}
 class SignInActiveButton extends SignInState {}
 class SignInCheckBox extends SignInState {}
 class SignInShowPass extends SignInState {}
-class SignInApi extends SignInState {}
+

@@ -129,16 +129,30 @@ class DataCubit extends Cubit<DataState> {
   }
 
   ShowFavModel showFavModel=ShowFavModel();
-  Future<dynamic> showFavorites({required int jobId}) async {
-    String url="http://167.71.79.133/api/favorites/$jobId";
-    http.Response response = await http.post(Uri.parse(url), headers:{
+  Future<dynamic> showFavorites() async {
+    String userId=MyCache.GetString(key: MyChachKey.userId);
+    String url="http://167.71.79.133/api/favorites/$userId";
+    http.Response response = await http.get(Uri.parse(url), headers:{
       'Authorization':MyCache.GetString(key: MyChachKey.token)
     } );
     Map<String, dynamic> json = jsonDecode(response.body);
     ShowFavModel model=ShowFavModel.fromJson(json);
+    print(model.data?.length);
+    emit(DataShowFavorites());
     showFavModel=model;
     // print(modelRegister.token);
     return model;
+  }
+
+
+  Future<dynamic> deleteFavorites({required String jobId}) async {
+    String url="http://167.71.79.133/api/favorites/$jobId";
+    http.Response response = await http.delete(Uri.parse(url), headers:{
+      'Authorization':MyCache.GetString(key: MyChachKey.token)
+    } );
+    Map<String, dynamic> json = jsonDecode(response.body);
+    ShowFavModel model=ShowFavModel.fromJson(json);
+    print(model.data![5].jobId);
   }
 
 

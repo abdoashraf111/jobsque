@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/Cubit/home_navigation_bar_cubit.dart';
 import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
+import 'package:jobsque/view/screens/HomeScreen/saveScreen/saved_cubit.dart';
 import 'package:jobsque/view/screens/JobDetails/job_Details.dart';
 import 'package:jobsque/view/screens/JobDetails/job_details_cubit.dart';
 import 'package:jobsque/view/screens/Signin/Cubit/sign_in_cubit.dart';
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => JobDetailsCubit(),),
           BlocProvider(create:(context) => CustomCardCubit(),),
           BlocProvider(create: (context) => DataCubit(),),
-          BlocProvider(create: (context) => CustomJobCubit(),)
+          BlocProvider(create: (context) => CustomJobCubit(),),
+          BlocProvider(create:(context) => SavedCubit(),)
         ],
         child:MaterialApp(
         debugShowCheckedModeBanner: false,

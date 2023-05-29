@@ -5,3 +5,4 @@ abstract class CustomJobState {}
 
 class CustomJobInitial extends CustomJobState {}
 class CustomJobChange extends CustomJobState {}
+class CustomJobLike extends CustomJobState {}

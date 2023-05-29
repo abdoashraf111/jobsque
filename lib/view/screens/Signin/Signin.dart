@@ -27,8 +27,9 @@ class SignIn extends StatelessWidget {
     return BlocBuilder<SignInCubit, SignInState>(
       builder: (context, state) {
         bool clickEnable = BlocProvider.of<SignInCubit>(context).clickEnable;
-        bool checkBox = BlocProvider.of<SignInCubit>(context).checkBox;
         bool showPass = BlocProvider.of<SignInCubit>(context).showPass;
+        bool? checkBox=BlocProvider.of<SignInCubit>(context).checkBox;
+         checkBox = MyCache.GetBool(key: MyChachKey.checked);
         return Scaffold(
           body: SafeArea(
             child: Padding(
@@ -151,8 +152,11 @@ class SignIn extends StatelessWidget {
                                     BorderRadius.all(Radius.circular(10))),
                             value: checkBox,
                             onChanged: (value) {
-                              BlocProvider.of<SignInCubit>(context)
-                                  .checkBoxValue(value: value);
+                              if(value==false)
+                              { BlocProvider.of<SignInCubit>(context).checkBoxFalse();}
+                              else if (value==true)
+                              { BlocProvider.of<SignInCubit>(context).checkBoxTrue();}
+
                             },
                             activeColor: Colors.blue,
                           ),
@@ -200,17 +204,12 @@ class SignIn extends StatelessWidget {
                           fun: () async {
                             if (formKey.currentState!.validate()) {
                               if (checkBox == true) {
-                                MyCache.SetString(
-                                    key: MyChachKey.password,
-                                    value: passwordController.text);
-                                MyCache.SetString(
-                                    key: MyChachKey.name,
-                                    value: nameController.text);
-                                MyCache.SetString(
-                                    key: MyChachKey.email,
-                                    value: emailController.text);
+                                BlocProvider.of<SignInCubit>(context).saveData(
+                                    password: passwordController.text,
+                                    name: nameController.text,
+                                   email: emailController.text);
                               }
-                              BlocProvider.of<SignInCubit>(context).trueClickEnable();
+                               BlocProvider.of<SignInCubit>(context).trueClickEnable();
                               // Map<String,dynamic> data= await BlocProvider.of<DataCubit>(context).postAuth(
                               //     url: "http://164.92.246.77/api/auth/login",
                               //     body:{

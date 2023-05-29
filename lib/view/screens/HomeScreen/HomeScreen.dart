@@ -145,7 +145,6 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 BlocBuilder<DataCubit, DataState>(builder: (context, state) {
-                  var dataModel = BlocProvider.of<DataCubit>(context).modelJob;
                     return SizedBox(
                       height: 226,
                       child: ListView.builder(
