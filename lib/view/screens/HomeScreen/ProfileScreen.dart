@@ -3,6 +3,7 @@ import 'package:jobsque/view/screens/EditeProfile.dart';
 import 'package:jobsque/view/screens/Language.dart';
 import 'package:jobsque/view/screens/Portfolio.dart';
 import '../../../CustomItems/custom_icons.dart';
+import '../Notification.dart';
 import 'HomeNavigationBar/HomeNavigationBar.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -149,18 +150,18 @@ class ProfileScreen extends StatelessWidget {
                        children: [
                          Row(
                           children: [
-                            CircleAvatar(
+                            const CircleAvatar(
                               backgroundColor: Color(0xffD6E4FF),
                               radius: 25,
                               child:Icon(CustomIcons.profile) ,
                             ),
-                            SizedBox(width: 12,),
-                            Text("Edit Profile"),
-                            Spacer(),
+                            const SizedBox(width: 12,),
+                            const Text("Edit Profile"),
+                            const Spacer(),
                             IconButton(onPressed: (){
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => EditeProfile()));
-                            }, icon: Icon(Icons.arrow_forward))
+                            }, icon: const Icon(Icons.arrow_forward))
                           ],
                   ),
                          const Padding(
@@ -203,7 +204,7 @@ class ProfileScreen extends StatelessWidget {
                              }, icon: Icon(Icons.arrow_forward))
                            ],
                          ),
-                         const Padding(
+                          Padding(
                            padding: EdgeInsets.only(top: 14,bottom: 14),
                            child: Divider(height: 10,color: Colors.grey,thickness: 1,indent: 0),
                          ),
@@ -217,7 +218,10 @@ class ProfileScreen extends StatelessWidget {
                              SizedBox(width: 12,),
                              Text("Notification"),
                              Spacer(),
-                             IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward))
+                             IconButton(onPressed: (){
+                               Navigator.of(context).push(MaterialPageRoute(
+                                   builder: (context) => NotificationScreen()));
+                             }, icon: Icon(Icons.arrow_forward))
                            ],
                          ),
                          const Padding(

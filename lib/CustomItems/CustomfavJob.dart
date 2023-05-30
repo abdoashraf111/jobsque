@@ -42,7 +42,7 @@ class CustomFavJob extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: ()async {
-                      showBottomSheet(context: context,
+                      showModalBottomSheet(context: context,
                         builder: (context) =>
                             Container(
                               height: 230,

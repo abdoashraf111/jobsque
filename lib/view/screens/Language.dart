@@ -110,11 +110,7 @@ class _LanguageState extends State<Language> {
                                 },icon:press[index]==true?Icon(Icons.circle):Icon(Icons.circle_outlined))
                               ],
                             ),
-                            separatorBuilder:  (context, index) => const Column(
-                              children: [
-                                Divider(height: 20,color: Colors.grey,),
-                              ],
-                            ),
+                            separatorBuilder:  (context, index) => const Divider(height: 20,color: Colors.grey,),
                             itemCount: 10),
                       )
 
