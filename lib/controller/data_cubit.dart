@@ -128,6 +128,7 @@ class DataCubit extends Cubit<DataState> {
 
   ShowFavModel showFavModel=ShowFavModel();
   Future<dynamic> showFavorites() async {
+    emit(DataShowLoadingFavorites());
     String userId=MyCache.GetString(key: MyChachKey.userId);
     String url="http://167.71.79.133/api/favorites/$userId";
     http.Response response = await http.get(Uri.parse(url), headers:{
@@ -143,13 +144,19 @@ class DataCubit extends Cubit<DataState> {
 
 
   Future<dynamic> deleteFavorites({required String jobId}) async {
-    String url="http://167.71.79.133/api/favorites/$jobId";
-    http.Response response = await http.delete(Uri.parse(url), headers:{
-      'Authorization':MyCache.GetString(key: MyChachKey.token)
-    } );
-    Map<String, dynamic> json = jsonDecode(response.body);
-    ShowFavModel model=ShowFavModel.fromJson(json);
-    print(model.data![5].jobId);
+    emit(DataDeleteLoadingFavorites());
+    try {
+      String url="http://167.71.79.133/api/favorites/$jobId";
+      http.Response response = await http.delete(Uri.parse(url), headers:{
+        'Authorization':MyCache.GetString(key: MyChachKey.token)
+      } );
+      Map<String, dynamic> json = jsonDecode(response.body);
+      ShowFavModel model=ShowFavModel.fromJson(json);
+      emit(DataDeleteFavorites());
+      print(model.data![5].jobId);
+    } on Exception catch (e) {
+      throw Exception(e.toString());
+    }
   }
 
 

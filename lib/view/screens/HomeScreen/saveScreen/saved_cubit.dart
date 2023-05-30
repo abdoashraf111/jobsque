@@ -5,7 +5,4 @@ part 'saved_state.dart';
 
 class SavedCubit extends Cubit<SavedState> {
   SavedCubit() : super(SavedInitial());
-  count({required int x}){
-
-  }
 }
