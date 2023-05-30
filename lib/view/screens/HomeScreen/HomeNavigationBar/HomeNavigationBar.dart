@@ -17,7 +17,7 @@ import 'Cubit/home_navigation_bar_cubit.dart';
 class HomeNavigationBar extends StatelessWidget {
   HomeNavigationBar({super.key});
   final List<Widget> pages = [
-    HomeScreen(),
+     HomeScreen(),
     MassageScreen(),
     AppliedScreen(),
     SavedScreen(),

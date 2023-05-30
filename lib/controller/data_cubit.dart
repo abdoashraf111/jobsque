@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 import '../Services/sharedprefeances.dart';
@@ -67,7 +65,7 @@ class DataCubit extends Cubit<DataState> {
       SignInModel model=SignInModel.fromJson(json);
       modelRegister=model;
       // print(modelRegister.token);
-    return model;
+
   }
 
   Showjobs modelJob=Showjobs();
@@ -141,7 +139,6 @@ class DataCubit extends Cubit<DataState> {
     emit(DataShowFavorites());
     showFavModel=model;
     // print(modelRegister.token);
-    return model;
   }
 
 

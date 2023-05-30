@@ -71,6 +71,7 @@ flutter:
     - lib/images/
     - lib/images/Logo1.png
     - lib/images/cities/
+    - lib/images/languages/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
