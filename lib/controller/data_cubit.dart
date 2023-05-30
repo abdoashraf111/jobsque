@@ -129,16 +129,20 @@ class DataCubit extends Cubit<DataState> {
   ShowFavModel showFavModel=ShowFavModel();
   Future<dynamic> showFavorites() async {
     emit(DataShowLoadingFavorites());
-    String userId=MyCache.GetString(key: MyChachKey.userId);
-    String url="http://167.71.79.133/api/favorites/$userId";
-    http.Response response = await http.get(Uri.parse(url), headers:{
-      'Authorization':MyCache.GetString(key: MyChachKey.token)
-    } );
-    Map<String, dynamic> json = jsonDecode(response.body);
-    ShowFavModel model=ShowFavModel.fromJson(json);
-    print(model.data?.length);
-    emit(DataShowFavorites());
-    showFavModel=model;
+    try {
+      String userId=MyCache.GetString(key: MyChachKey.userId);
+      String url="http://167.71.79.133/api/favorites/$userId";
+      http.Response response = await http.get(Uri.parse(url), headers:{
+        'Authorization':MyCache.GetString(key: MyChachKey.token)
+      } );
+      Map<String, dynamic> json = jsonDecode(response.body);
+      ShowFavModel model=ShowFavModel.fromJson(json);
+      print(model.data?.length);
+      emit(DataShowFavorites());
+      showFavModel=model;
+    } on Exception catch (e) {
+      throw Exception(e.toString());
+    }
     // print(modelRegister.token);
   }
 

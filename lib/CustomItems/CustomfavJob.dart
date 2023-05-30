@@ -98,7 +98,6 @@ class CustomFavJob extends StatelessWidget {
                                         Navigator.pop(context);
                                         var x=BlocProvider.of<DataCubit>(context).showFavModel.data![index].id;
                                         await BlocProvider.of<DataCubit>(context).deleteFavorites(jobId:x.toString() );
-
                                       },
                                       child: Container(height: 50,decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(100),
