@@ -48,4 +48,12 @@ class SignInCubit extends Cubit<SignInState> {
         key: MyChachKey.email,
         value: email);
   }
+  // showData(){
+  //   final TextEditingController nameController =
+  //   TextEditingController(text: MyCache.GetString(key: MyChachKey.name));
+  //   final TextEditingController emailController =
+  //   TextEditingController(text: MyCache.GetString(key: MyChachKey.email));
+  //   final TextEditingController passwordController =
+  //   TextEditingController(text: MyCache.GetString(key: MyChachKey.password));
+  // }
 }
