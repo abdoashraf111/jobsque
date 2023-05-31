@@ -5,8 +5,8 @@ part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {
   SignInCubit() : super(SignInInitial());
-  bool clickEnable = false;
-  bool checkBox = false;
+  bool clickEnable = true;
+  bool checkBox = false ;
   bool showPass = false;
 
   trueClickEnable(){
@@ -53,5 +53,8 @@ class SignInCubit extends Cubit<SignInState> {
         key: MyChachKey.email,
         value: email);
   }
+  // sharePref(){
+  //   checkBox = MyCache.GetBool(key: MyChachKey.checked)!;
+  // }
 
 }

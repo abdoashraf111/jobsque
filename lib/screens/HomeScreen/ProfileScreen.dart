@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:jobsque/view/screens/EditeProfile.dart';
-import 'package:jobsque/view/screens/Language.dart';
-import 'package:jobsque/view/screens/Portfolio.dart';
+
 import '../../../CustomItems/custom_icons.dart';
+import '../EditeProfile.dart';
+import '../Language.dart';
 import '../Login and security.dart';
 import '../Notification.dart';
+import '../Portfolio.dart';
 import 'HomeNavigationBar/HomeNavigationBar.dart';
 
 class ProfileScreen extends StatelessWidget {

@@ -77,6 +77,7 @@ class SignIn extends StatelessWidget {
                         height: 44,
                       ),
                       TextFormField(
+
                         onChanged: (value) {
                           if (formKey.currentState!.validate()) {
                             BlocProvider.of<SignInCubit>(context)

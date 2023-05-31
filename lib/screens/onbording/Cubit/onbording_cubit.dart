@@ -7,7 +7,6 @@ class OnbordingCubit extends Cubit<OnbordingState> {
   OnbordingCubit() : super(OnbordingInitial());
   int numPage = 0;
    changePage({required value}){
-    emit(OnbordingInitial());
     numPage=value;
     emit(OnbordingScroll());
 

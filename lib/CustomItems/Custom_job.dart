@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
-import '../../controller/data_cubit.dart';
-import 'custom_job_cubit.dart';
+import '../controller/data_cubit.dart';
 
 
-class CustomJob extends StatelessWidget {
+class CustomJob extends StatefulWidget {
    CustomJob({Key? key, required this.index}) : super(key: key);
    int index;
 
+  @override
+  State<CustomJob> createState() => _CustomJobState();
+}
+
+class _CustomJobState extends State<CustomJob> {
+   bool click = false;
 
   @override
   Widget build(BuildContext context) {
 
 
-    return BlocBuilder<CustomJobCubit,CustomJobState>(builder: (context, state) {
+    return BlocBuilder<DataCubit,DataState>(builder: (context, state) {
 
       var dataModel =
-      BlocProvider.of<DataCubit>(context).modelJob.data![index];
-      var jobId=BlocProvider.of<DataCubit>(context).modelJob.data![index].id;
-      var click=BlocProvider.of<CustomJobCubit>(context).click;
+      BlocProvider.of<DataCubit>(context).modelJob.data![widget.index];
+      var jobId=BlocProvider.of<DataCubit>(context).modelJob.data![widget.index].id;
+
 
       return Column(
         children: [
@@ -55,14 +60,13 @@ class CustomJob extends StatelessWidget {
                     ),
                     IconButton(
                         onPressed: ()async {
-                          BlocProvider.of<CustomJobCubit>(context).fun();
+                          setState(() {
+                            click = !click;
+                          });
                           if(click==false){
                            await BlocProvider.of<DataCubit>(context).addFavorites(jobId: jobId!.toInt());
                           }
-                          else{
-                          //   var x=BlocProvider.of<DataCubit>(context).showFavModel.data![index].id;
-                          // await BlocProvider.of<DataCubit>(context).deleteFavorites(jobId:x.toString() );
-    }
+                          else{}
                         },
                         icon: click == true
                             ? const Icon(

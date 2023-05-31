@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jobsque/view/screens/profile%20and%20setting/TwoStepVerification.dart';
-import 'package:jobsque/view/screens/profile%20and%20setting/changePassword.dart';
-import 'package:jobsque/view/screens/profile%20and%20setting/emailAddress.dart';
-import 'package:jobsque/view/screens/profile%20and%20setting/faceID.dart';
-import 'package:jobsque/view/screens/profile%20and%20setting/phoneNumber.dart';
+import 'package:jobsque/screens/profile%20and%20setting/TwoStepVerification.dart';
+import 'package:jobsque/screens/profile%20and%20setting/changePassword.dart';
+import 'package:jobsque/screens/profile%20and%20setting/emailAddress.dart';
+import 'package:jobsque/screens/profile%20and%20setting/faceID.dart';
+import 'package:jobsque/screens/profile%20and%20setting/phoneNumber.dart';
 
 class LoginAndSecurity extends StatelessWidget {
    LoginAndSecurity({Key? key}) : super(key: key);

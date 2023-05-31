@@ -16,7 +16,7 @@ class DataCubit extends Cubit<DataState> {
 
 
   SignInModel modelSign=SignInModel();
-  Future<SignInModel> postSignIn ({required String password,required String email})async {
+  Future<dynamic> postSignIn ({required String password,required String email})async {
     emit(DataSignLoading());
     try {
       http.Response response = await http.post(
@@ -36,8 +36,7 @@ class DataCubit extends Cubit<DataState> {
           key: MyChachKey.userId,
           value: user.user!.id.toString());
       print("id is ...............${user.user!.id}");
-      // print(user.user?.name.toString());
-      return user;
+
     } on Exception catch (e) {
       emit(DataSignFailure());
       throw Exception(e.toString());
@@ -48,11 +47,15 @@ class DataCubit extends Cubit<DataState> {
 
   SignInModel modelRegister=SignInModel();
   Future<dynamic> postRegister({required String name,required String email,required String password, dynamic body,}) async {
-    String url="http://167.71.79.133/api/auth/register?name=$name&email=$email&password=$password";
-    http.Response response = await http.post(Uri.parse(url), body: body);
-    Map<String, dynamic> json = jsonDecode(response.body);
-      SignInModel model=SignInModel.fromJson(json);
-      modelRegister=model;
+    try {
+      String url="http://167.71.79.133/api/auth/register?name=$name&email=$email&password=$password";
+      http.Response response = await http.post(Uri.parse(url), body: body);
+      Map<String, dynamic> json = jsonDecode(response.body);
+        SignInModel model=SignInModel.fromJson(json);
+        modelRegister=model;
+    } on Exception catch (e) {
+      throw Exception(e.toString());
+    }
       // print(modelRegister.token);
 
   }

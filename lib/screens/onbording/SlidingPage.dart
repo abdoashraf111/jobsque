@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobsque/view/screens/onbording/pageview.dart';
+import 'package:jobsque/screens/onbording/pageview.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../CustomItems/CustomButton.dart';
 import '../Signin/Signin.dart';
@@ -91,6 +91,7 @@ class SlidingPage extends StatelessWidget {
                       text: BlocProvider.of<OnbordingCubit>(context).numPage == 2 ? "Get Start" : "Next",
                       fun: () {
                         if (BlocProvider.of<OnbordingCubit>(context).numPage == 2) {
+                          // BlocProvider.of<SignInCubit>(context).sharePref();
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => SignIn(),
                           ));

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/Custom_Credit.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 import 'package:jobsque/controller/data_cubit.dart';
-import '../../../CustomItems/CustomJob/Custom_job.dart';
+import '../../../CustomItems/Custom_job.dart';
 import '../JobDetails/job_Details.dart';
 import 'SearchScreen.dart';
 

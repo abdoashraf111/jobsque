@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/controller/data_cubit.dart';
-import '../view/screens/HomeScreen/saveScreen/saved_cubit.dart';
+
 import 'custom_icons.dart';
 class CustomFavJob extends StatelessWidget {
    CustomFavJob({Key? key,required this.index}) : super(key: key);

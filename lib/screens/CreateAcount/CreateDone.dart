@@ -1,11 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
+import 'package:jobsque/CustomItems/CustomButton.dart';
 
 
-import '../../CustomItems/CustomButton.dart';
+import '../HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
+import '../Signin/Signin.dart';
+import 'CreatAcount2.dart';
 
-class ApplyDone extends StatelessWidget {
-  const ApplyDone({Key? key}) : super(key: key);
+
+class CreateDone extends StatelessWidget {
+  const CreateDone({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,41 +31,38 @@ class ApplyDone extends StatelessWidget {
                     icon: const Icon(Icons.arrow_back_outlined, size: 24),
                     color: Colors.black,
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) =>CreateAccount2() ,));
                     },
                   ),
-                  Text("Apply Job"),
                 ],
               ),
               const Spacer(
                 flex: 1,
               ),
-              Image.asset("lib/images/Data Ilustration.png"),
+              Image.asset("lib/images/Success Account Ilustration.png"),
               const SizedBox(
                 height: 24,
               ),
-               const Text("Your data has been",
-                   style: TextStyle(fontSize: 24)),
-              const Text("successfully sent",
+              const Text("Your account has been set up!",
                   style: TextStyle(fontSize: 24)),
               const SizedBox(
                 height: 8,
               ),
-              const SizedBox(
-                width: 300,
-                child: Text("You will get a message from our team, about the announcement of employee acceptance",
-                    style: TextStyle(fontSize: 14, color: Color(0xff6B7280))),
-              ),
+              const Text("We have customized feeds according to your",
+                  style: TextStyle(fontSize: 14, color: Color(0xff6B7280))),
+              const Text(" preferences",
+                  style: TextStyle(fontSize: 14, color: Color(0xff6B7280))),
               const Spacer(
                 flex: 1,
               ),
               CustomButton(
-                  text: "Back to home",
+                  text: "Get Started",
                   fun: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) =>HomeNavigationBar() ,));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) =>SignIn() ,));
                   },
-                  buttoncolor: const Color(0xff3366FF),
+                  buttoncolor: Color(0xff3366FF),
                   textcolor: Colors.white),
               const SizedBox(
                 height: 40,
