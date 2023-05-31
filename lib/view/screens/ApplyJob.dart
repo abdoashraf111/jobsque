@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobsque/view/screens/JobDetails/job_Details.dart';
 
-import '../CustomItems/CustomButton.dart';
-import '../CustomItems/Custom_Card/Custom_Card.dart';
-import '../CustomItems/custom_icons.dart';
+import '../../CustomItems/CustomButton.dart';
+import '../../CustomItems/Custom_Card/Custom_Card.dart';
+import '../../CustomItems/custom_icons.dart';
 import 'Apply Done.dart';
 
 class ApplyJob extends StatelessWidget {

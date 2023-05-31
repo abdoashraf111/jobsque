@@ -47,16 +47,16 @@ class HomeNavigationBar extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 label: "Home",
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
                 icon: IconButton(
                     onPressed: () {
                       BlocProvider.of<HomeNavigationBarCubit>(context).pageNumber0();
                     },
                     icon: pageNumber == 0
-                        ? Icon(
+                        ? const Icon(
                             CustomIcons.home,
                           )
-                        : Icon(CustomIcons.home)),
+                        : const Icon(CustomIcons.home)),
               ),
               BottomNavigationBarItem(
                 label: "Massages",
@@ -66,8 +66,8 @@ class HomeNavigationBar extends StatelessWidget {
                       BlocProvider.of<HomeNavigationBarCubit>(context).pageNumber1();
                     },
                     icon: pageNumber == 1
-                        ? Icon(CustomIcons.message)
-                        : Icon(CustomIcons.message)),
+                        ? const Icon(CustomIcons.message)
+                        : const Icon(CustomIcons.message)),
               ),
               BottomNavigationBarItem(
                 label: "Applied",
@@ -77,8 +77,8 @@ class HomeNavigationBar extends StatelessWidget {
                       BlocProvider.of<HomeNavigationBarCubit>(context).pageNumber2();
                     },
                     icon: pageNumber == 2
-                        ? Icon(CustomIcons.briefcase)
-                        : Icon(CustomIcons.briefcase)),
+                        ? const Icon(CustomIcons.briefcase)
+                        : const Icon(CustomIcons.briefcase)),
               ),
               BottomNavigationBarItem(
                 label: "Saved",
@@ -90,8 +90,8 @@ class HomeNavigationBar extends StatelessWidget {
 
                     },
                     icon: pageNumber == 3
-                        ? Icon(CustomIcons.archive_minus_bold)
-                        : Icon(CustomIcons.archive_minus)),
+                        ? const Icon(CustomIcons.archive_minus_bold)
+                        : const Icon(CustomIcons.archive_minus)),
               ),
               BottomNavigationBarItem(
                 label: "Profile",

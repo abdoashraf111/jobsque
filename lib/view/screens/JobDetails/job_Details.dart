@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 import 'package:jobsque/controller/data_cubit.dart';
-import 'package:jobsque/view/ApplyJob.dart';
+import 'package:jobsque/view/screens/ApplyJob.dart';
 
 
 import '../../../CustomItems/CustomWorker.dart';

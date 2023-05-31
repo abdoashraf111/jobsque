@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
+import 'package:jobsque/view/screens/Signin/Signin.dart';
 
 import '../HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
 import 'CreatAcount2.dart';
@@ -58,7 +59,7 @@ class CreateDone extends StatelessWidget {
                   text: "Get Started",
                   fun: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) =>HomeNavigationBar() ,));
+                        MaterialPageRoute(builder: (context) =>SignIn() ,));
                   },
                   buttoncolor: Color(0xff3366FF),
                   textcolor: Colors.white),

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobsque/view/Apply%20Done.dart';
+import 'package:jobsque/view/screens/Apply%20Done.dart';
 import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/Cubit/home_navigation_bar_cubit.dart';
 import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
 import 'package:jobsque/view/screens/HomeScreen/saveScreen/saved_cubit.dart';
@@ -44,13 +44,14 @@ class MyApp extends StatelessWidget {
           BlocProvider(create:(context) => CustomCardCubit(),),
           BlocProvider(create: (context) => DataCubit()..showFavorites(),),
           BlocProvider(create: (context) => CustomJobCubit(),),
-          BlocProvider(create:(context) => SavedCubit(),)
+          BlocProvider(create:(context) => SavedCubit(),),
         ],
         child:MaterialApp(
         debugShowCheckedModeBanner: false,
         home:
         // SlidingPage(),
             SignIn(),
+
         //     ApplyDone(),
         // CreateAccount2(),
         // SplashScreen(),

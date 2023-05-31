@@ -10,9 +10,16 @@ class SavedScreen extends StatelessWidget {
     int numb=0;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DataCubit,DataState>(builder: (context, state) {
+    return BlocConsumer<DataCubit,DataState>(
+        listener:(context, state)  async {
+          if(state is DataDeleteFavorites){
+            await BlocProvider.of<DataCubit>(context).showFavorites();
+          }
+        } ,
+        builder: (context, state) {
        numb =BlocProvider.of<DataCubit>(context).showFavModel.data!.length;
-       if(state is DataShowFavorites){return SafeArea(
+
+         return SafeArea(
          child: SingleChildScrollView(
            child: Column(
              children: [
@@ -82,8 +89,8 @@ class SavedScreen extends StatelessWidget {
              ],
            ),
          ),
-       );}
-      else{return Center(child: CircularProgressIndicator(),);}
+       );
+      // else{return Center(child: CircularProgressIndicator(),);}
     });
   }
 }

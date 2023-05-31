@@ -59,6 +59,10 @@ class CustomJob extends StatelessWidget {
                           if(click==false){
                            await BlocProvider.of<DataCubit>(context).addFavorites(jobId: jobId!.toInt());
                           }
+                          else{
+                          //   var x=BlocProvider.of<DataCubit>(context).showFavModel.data![index].id;
+                          // await BlocProvider.of<DataCubit>(context).deleteFavorites(jobId:x.toString() );
+    }
                         },
                         icon: click == true
                             ? const Icon(

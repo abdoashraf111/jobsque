@@ -45,18 +45,7 @@ class DataCubit extends Cubit<DataState> {
     }
   }
 
-  // Future<dynamic> getAuth({required String url}) async {
-  //   http.Response response = await http.get(Uri.parse(url));
-  //   if (response.statusCode == 200) {
-  //     var data = jsonDecode(response.body);
-  //     token = data["token"];
-  //     print(token);
-  //     return data;
-  //   } else {
-  //     throw Exception(
-  //         'there is a problem with status code ${response.statusCode}');
-  //   }
-  // }
+
   SignInModel modelRegister=SignInModel();
   Future<dynamic> postRegister({required String name,required String email,required String password, dynamic body,}) async {
     String url="http://167.71.79.133/api/auth/register?name=$name&email=$email&password=$password";
@@ -92,20 +81,6 @@ class DataCubit extends Cubit<DataState> {
 
     }
   }
-  // Future<dynamic> sendEmail({required String email}) async {
-  //   try {
-  //     final smtpServer=gmail(email, psds);
-  //     final message=Message()
-  //     ..from=Address(email)
-  //       ..recipients=["abdoashraf11.aa@gmail.com"]
-  //       ..text="sdsdsdsd"
-  //       ..subject="sdsdsdsd";
-  //     await send(message, smtpServer);
-  //     print("gooood");
-  //   } on Exception catch (e) {
-  //     throw Exception(e.toString());
-  //   }
-  // }
 
   AddFavorite modelAddFav=AddFavorite();
   Future<dynamic> addFavorites({required int jobId}) async {
@@ -154,10 +129,7 @@ class DataCubit extends Cubit<DataState> {
       http.Response response = await http.delete(Uri.parse(url), headers:{
         'Authorization':MyCache.GetString(key: MyChachKey.token)
       } );
-      Map<String, dynamic> json = jsonDecode(response.body);
-      ShowFavModel model=ShowFavModel.fromJson(json);
       emit(DataDeleteFavorites());
-      print(model.data![5].jobId);
     } on Exception catch (e) {
       throw Exception(e.toString());
     }

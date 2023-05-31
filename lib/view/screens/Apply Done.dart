@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jobsque/view/screens/HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
 
 
-import '../CustomItems/CustomButton.dart';
+import '../../CustomItems/CustomButton.dart';
 
 class ApplyDone extends StatelessWidget {
   const ApplyDone({Key? key}) : super(key: key);

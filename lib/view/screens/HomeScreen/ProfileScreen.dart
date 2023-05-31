@@ -3,6 +3,7 @@ import 'package:jobsque/view/screens/EditeProfile.dart';
 import 'package:jobsque/view/screens/Language.dart';
 import 'package:jobsque/view/screens/Portfolio.dart';
 import '../../../CustomItems/custom_icons.dart';
+import '../Login and security.dart';
 import '../Notification.dart';
 import 'HomeNavigationBar/HomeNavigationBar.dart';
 
@@ -238,7 +239,11 @@ class ProfileScreen extends StatelessWidget {
                              const SizedBox(width: 12,),
                              const Text("Login and security"),
                              const Spacer(),
-                             IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_forward))
+                             IconButton(onPressed: (){
+
+                               Navigator.of(context).push(MaterialPageRoute(
+                                   builder: (context) => LoginAndSecurity()));
+                             }, icon: const Icon(Icons.arrow_forward))
                            ],
                          ),
                          const Padding(

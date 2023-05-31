@@ -41,35 +41,35 @@ class _NotificationScreenState extends State<NotificationScreen> {
         body: SafeArea(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const SizedBox(
-        height: 24,
-      ),
-      Padding(
-        padding: const EdgeInsets.only(right: 24, left: 24),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back_outlined, size: 24),
-              color: Colors.black,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            const Spacer(
-              flex: 3,
-            ),
-            const Text("Notification"),
-            const Spacer(
-              flex: 4,
-            ),
+                  const SizedBox(
+                    height: 24,
+                    ),
+                 Padding(
+                  padding: const EdgeInsets.only(right: 24, left: 24),
+                   child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                   children: [
+                       IconButton(
+                           icon: const Icon(Icons.arrow_back_outlined, size: 24),
+                          color: Colors.black,
+                         onPressed: () {
+                            Navigator.of(context).pop();
+                            },
+                     ),
+                      const Spacer(
+                        flex: 3,
+                       ),
+                      const Text("Notification"),
+                       const Spacer(
+                        flex: 4,
+              ),
           ],
         ),
-      ),
-      const SizedBox(
-        height: 50,
-      ),
-      Container(
+                    ),
+                  const SizedBox(
+                  height: 50,
+                  ),
+              Container(
         width: MediaQuery.of(context).size.width,
         height: 36,
         color: Color(0xffE5E7EB),
@@ -142,9 +142,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
           ),
         ),
       ),
-                  SizedBox(
-                    height: 20,
-                  ),
+      SizedBox(
+        height: 20,
+      ),
       Padding(
         padding: const EdgeInsets.only(right: 24, left: 24),
         child: SizedBox(
@@ -164,9 +164,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           })
                     ],
                   ),
-              separatorBuilder: (context, index) => Column(
+              separatorBuilder: (context, index) => const Column(
                     children: [
-                      const Divider(
+                      Divider(
                         height: 20,
                         color: Colors.grey,
                       ),

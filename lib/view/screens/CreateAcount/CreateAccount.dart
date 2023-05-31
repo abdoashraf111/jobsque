@@ -257,7 +257,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 SnackBar(content:Text("The email has already been taken") ));
                             print("done ssssssssssss");
                             Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) =>SignIn() ,));
+                                MaterialPageRoute(builder: (context) =>CreateAccount2() ,));
                           } else {
                             print("wronggggggggggg");
                           }

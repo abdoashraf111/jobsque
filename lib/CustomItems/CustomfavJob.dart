@@ -9,6 +9,8 @@ class CustomFavJob extends StatelessWidget {
   int index;
   @override
   Widget build(BuildContext context) {
+
+    var favMode=BlocProvider.of<DataCubit>(context).showFavModel;
     return BlocBuilder<DataCubit,DataState>(builder: (context, state) {
       return SizedBox(
         height: 103,
@@ -26,14 +28,14 @@ class CustomFavJob extends StatelessWidget {
                  Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(BlocProvider.of<DataCubit>(context).showFavModel.data![index].id.toString(),
+                    Text(favMode.data![index].name.toString(),
                         style: const TextStyle(
                             color: Colors.black, fontSize: 18)),
                     const SizedBox(
                       height: 4,
                     ),
-                    const Text("compName • United States",
-                        style: TextStyle(
+                     Text("${favMode.data![index].id.toString()} • United States",
+                        style: const TextStyle(
                             color: Colors.black, fontSize: 12)),
                   ],
                 ),
@@ -42,7 +44,7 @@ class CustomFavJob extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: ()async {
-                      showModalBottomSheet(context: context,
+                      showBottomSheet(context: context,
                         builder: (context) =>
                             Container(
                               height: 230,
@@ -132,51 +134,8 @@ class CustomFavJob extends StatelessWidget {
             ),
             Row(
               children: [
-                Container(
-                  height: 26,
-                  width: 73,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                    color: Color.fromRGBO(214, 228, 255, 1),
-                  ),
-                  child: const Center(
-                      child: Text("jobTimeType",
-                          style: TextStyle(
-                              color: Colors.blue, fontSize: 12))),
-                ),
-                const Spacer(
-                  flex: 1,
-                ),
-                Container(
-                  height: 26,
-                  width: 73,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                    color: Color.fromRGBO(214, 228, 255, 1),
-                  ),
-                  child: const Center(
-                      child: Text("Remote",
-                          style:
-                          TextStyle(color: Colors.blue, fontSize: 12))),
-                ),
-                const Spacer(
-                  flex: 1,
-                ),
-                Container(
-                  height: 26,
-                  width: 73,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                    color: Color.fromRGBO(214, 228, 255, 1),
-                  ),
-                  child: Center(
-                      child: Text("jobLevel",
-                          style: const TextStyle(
-                              color: Colors.blue, fontSize: 12))),
-                ),
-                const Spacer(
-                  flex: 1,
-                ),
+               Text(favMode.data![index].createdAt.toString()),
+                Spacer(),
                 Text(" salary",
                     style:
                     const TextStyle(color: Colors.green, fontSize: 16)),
