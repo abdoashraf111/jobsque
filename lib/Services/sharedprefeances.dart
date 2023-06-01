@@ -38,6 +38,19 @@ class MyCache {
   static double? GetDouble({required MyChachKey key}) {
     return preferences?.getDouble(key.name)?? 0.0;
   }
+
+
+
+
+  // static void SetStringList({required MyChachKey key, required String value}) {
+  //     preferences?.setStringList(key.name, value as List<String>);
+  // }
+  // static List<String>? GetStringList({required MyChachKey key}) {
+  //   return preferences?.getStringList(key.name);
+  // }
+
+
+
 }
 enum MyChachKey{
 
@@ -48,4 +61,5 @@ enum MyChachKey{
   onBoarding,
   token,
   userId,
+  faveList
 }

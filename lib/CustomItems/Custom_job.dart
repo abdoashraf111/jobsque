@@ -63,7 +63,7 @@ class _CustomJobState extends State<CustomJob> {
                           setState(() {
                             click = !click;
                           });
-                          if(click==false){
+                          if(click==true){
                            await BlocProvider.of<DataCubit>(context).addFavorites(jobId: jobId!.toInt());
                           }
                           else{}

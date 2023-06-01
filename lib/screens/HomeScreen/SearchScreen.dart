@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/Custom_job.dart';
 import 'package:jobsque/screens/JobDetails/job_Details.dart';
 import '../../../CustomItems/custom_icons.dart';
@@ -71,6 +72,7 @@ List searchHistory=[];
               SizedBox(
                 height: searchHistory.length.toDouble()*60,
                 child: ListView.separated(
+                   // key: BlocProvider.of<a>(context).,
                     itemBuilder: (context, index) => InkWell(
                         onTap: (){
                         },
@@ -81,7 +83,7 @@ List searchHistory=[];
                             Spacer(),
                             IconButton(onPressed: (){
                               setState(() {
-                                searchHistory.removeAt(0);
+                                searchHistory.remove(searchHistory[index]);
                               });
                             }, icon: Icon(CustomIcons.close_circle))
                           ],),

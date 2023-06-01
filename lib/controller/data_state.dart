@@ -14,3 +14,4 @@ class DataShowLoadingFavorites extends DataState {}
 class DataShowFavorites extends DataState {}
 class DataDeleteLoadingFavorites extends DataState {}
 class DataDeleteFavorites extends DataState {}
+class LocalListFav extends DataState {}

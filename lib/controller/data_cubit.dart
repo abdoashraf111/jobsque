@@ -14,6 +14,24 @@ class DataCubit extends Cubit<DataState> {
   DataCubit() : super(DataInitial());
 
 
+List favoIdList=[];
+List favoNameList=[];
+funAddFav({required int value}){
+  favoIdList.add(value);
+  emit(LocalListFav());
+}
+funDeleteFav({required int value}){
+  favoIdList.remove(value);
+  emit(LocalListFav());
+}
+saveList(){
+  for(int i=0;i<modelJob.data!.length;i++){
+    favoIdList.add(modelJob.data![i].id);
+    favoNameList.add(modelJob.data![i].name);
+  }
+  emit(LocalListFav());
+
+}
 
   SignInModel modelSign=SignInModel();
   Future<dynamic> postSignIn ({required String password,required String email})async {
@@ -76,6 +94,7 @@ class DataCubit extends Cubit<DataState> {
       print("loooooooooooook");
       print(model.data![1].compEmail);
       modelJob=model;
+      saveList();
       emit(DataJobSuccess());
       return model;
     } on Exception catch (e) {
@@ -97,6 +116,7 @@ class DataCubit extends Cubit<DataState> {
       AddFavorite model=AddFavorite.fromJson(json);
       modelAddFav=model;
       print(modelAddFav.data!.id.toString());
+      // funAddFav(value: model.data!.id!.toInt());
       // print(modelRegister.token);
       return model;
     } on Exception catch (e) {
@@ -118,6 +138,7 @@ class DataCubit extends Cubit<DataState> {
       print(model.data?.length);
       emit(DataShowFavorites());
       showFavModel=model;
+      // print(favoriteList);
     } on Exception catch (e) {
       throw Exception(e.toString());
     }
@@ -125,13 +146,14 @@ class DataCubit extends Cubit<DataState> {
   }
 
 
-  Future<dynamic> deleteFavorites({required String jobId}) async {
+  Future<dynamic> deleteFavorites({required int jobId}) async {
     emit(DataDeleteLoadingFavorites());
     try {
-      String url="http://167.71.79.133/api/favorites/$jobId";
+      String url="http://167.71.79.133/api/favorites/${jobId.toString()}";
       http.Response response = await http.delete(Uri.parse(url), headers:{
         'Authorization':MyCache.GetString(key: MyChachKey.token)
       } );
+      // funDeleteFav(value: jobId);
       emit(DataDeleteFavorites());
     } on Exception catch (e) {
       throw Exception(e.toString());
