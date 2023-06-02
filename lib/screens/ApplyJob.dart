@@ -6,14 +6,26 @@ import '../../CustomItems/Custom_Card/Custom_Card.dart';
 import '../../CustomItems/custom_icons.dart';
 import 'Apply Done.dart';
 
-class ApplyJob extends StatelessWidget {
+class ApplyJob extends StatefulWidget {
    ApplyJob({Key? key}) : super(key: key);
+
+  @override
+  State<ApplyJob> createState() => _ApplyJobState();
+}
+
+class _ApplyJobState extends State<ApplyJob> {
   final _controller = PageController();
+
    final TextEditingController nameController = TextEditingController();
+
    final TextEditingController emailController = TextEditingController();
+
    final TextEditingController phoneController = TextEditingController();
+
    GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   int numPage = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -311,7 +323,7 @@ class ApplyJob extends StatelessWidget {
                       else{
                         _controller.nextPage(
                           duration: const Duration(seconds: 1), curve: Curves.linear);}
-                      
+
                     },
                     buttoncolor: Colors.blue,
                     textcolor: Colors.white),

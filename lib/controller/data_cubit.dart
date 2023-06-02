@@ -14,21 +14,14 @@ class DataCubit extends Cubit<DataState> {
   DataCubit() : super(DataInitial());
 
 
-List favoIdList=[];
-List favoNameList=[];
-funAddFav({required int value}){
-  favoIdList.add(value);
-  emit(LocalListFav());
-}
-funDeleteFav({required int value}){
-  favoIdList.remove(value);
-  emit(LocalListFav());
-}
-saveList(){
+  List idList=[];
+  List nameList=[];
+ saveList(){
   for(int i=0;i<modelJob.data!.length;i++){
-    favoIdList.add(modelJob.data![i].id);
-    favoNameList.add(modelJob.data![i].name);
+    idList.add(modelJob.data![i].id);
+    nameList.add(modelJob.data![i].name);
   }
+  print("lllllllllllisssssssttt${nameList}");
   emit(LocalListFav());
 
 }
@@ -95,6 +88,7 @@ saveList(){
       print(model.data![1].compEmail);
       modelJob=model;
       saveList();
+
       emit(DataJobSuccess());
       return model;
     } on Exception catch (e) {
@@ -104,6 +98,9 @@ saveList(){
     }
   }
 
+
+  bool like=false;
+  List likes=[];
   AddFavorite modelAddFav=AddFavorite();
   Future<dynamic> addFavorites({required int jobId}) async {
     String userId=MyCache.GetString(key: MyChachKey.userId);
@@ -115,7 +112,14 @@ saveList(){
       Map<String, dynamic> json = jsonDecode(response.body);
       AddFavorite model=AddFavorite.fromJson(json);
       modelAddFav=model;
-      print(modelAddFav.data!.id.toString());
+
+      for(int i=0;i<modelJob.data!.length;i++){
+        if(modelJob.data![i].id.toString()==modelAddFav.data!.jobId.toString()){
+          like=true;
+          print("compatable goood job");
+        }
+      }
+      // likefuc();
       // funAddFav(value: model.data!.id!.toInt());
       // print(modelRegister.token);
       return model;
@@ -123,6 +127,19 @@ saveList(){
       throw Exception(e.toString());
     }
   }
+
+  // likefuc(){
+  //   for(int i=0;i<modelJob.data!.length;i++){
+  //     if(modelJob.data![i].id==modelAddFav.data!.jobId){
+  //       like=true;
+  //       print("compatable goood job");
+  //     }
+  //   }
+  //   emit(Likes());
+  //   print("state is $like");
+  // }
+
+
 
   ShowFavModel showFavModel=ShowFavModel();
   Future<dynamic> showFavorites() async {
@@ -138,6 +155,7 @@ saveList(){
       print(model.data?.length);
       emit(DataShowFavorites());
       showFavModel=model;
+      print(model.data![0].jobId);
       // print(favoriteList);
     } on Exception catch (e) {
       throw Exception(e.toString());
@@ -153,6 +171,7 @@ saveList(){
       http.Response response = await http.delete(Uri.parse(url), headers:{
         'Authorization':MyCache.GetString(key: MyChachKey.token)
       } );
+      likes.remove(jobId);
       // funDeleteFav(value: jobId);
       emit(DataDeleteFavorites());
     } on Exception catch (e) {

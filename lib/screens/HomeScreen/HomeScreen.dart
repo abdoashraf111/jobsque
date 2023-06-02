@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/Custom_Credit.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
+import 'package:jobsque/Services/SearchService.dart';
 import 'package:jobsque/controller/data_cubit.dart';
 import '../../../CustomItems/Custom_job.dart';
 import '../JobDetails/job_Details.dart';
@@ -57,6 +58,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
+                      // showSearch(context: context, delegate: search());
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => SearchScreen(),
                       ));

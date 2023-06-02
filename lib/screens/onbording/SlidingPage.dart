@@ -63,7 +63,7 @@ class SlidingPage extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
+                            Navigator.of(context).pushReplacement(MaterialPageRoute(
                               builder: (context) => SignIn(),
                             ));
                           },
@@ -92,7 +92,7 @@ class SlidingPage extends StatelessWidget {
                       fun: () {
                         if (BlocProvider.of<OnbordingCubit>(context).numPage == 2) {
                           // BlocProvider.of<SignInCubit>(context).sharePref();
-                          Navigator.of(context).push(MaterialPageRoute(
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => SignIn(),
                           ));
                         } else {

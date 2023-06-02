@@ -19,8 +19,27 @@ int index;
   Widget build(BuildContext context) {
     return BlocBuilder<JobDetailsCubit, JobDetailsState>(
       builder: (context, state) {
-        int groupValue = BlocProvider.of<JobDetailsCubit>(context).groupValue;
-        var job=BlocProvider.of<DataCubit>(context).modelJob.data![index];
+
+      var modelFav=BlocProvider.of<DataCubit>(context).showFavModel;
+
+      var modelJob =BlocProvider.of<DataCubit>(context).modelJob;
+        var job=modelJob.data![index];
+        var id= modelJob.data![index].id;
+        BlocProvider.of<JobDetailsCubit>(context).likeAction(
+          index: index,
+          modelFav: modelFav,
+          modelJob:modelJob
+        );
+      int groupValue = BlocProvider.of<JobDetailsCubit>(context).groupValue;
+        bool like=BlocProvider.of<JobDetailsCubit>(context).like;
+
+        // for(int i=0;i<modelFav.data!.length;i++){
+        //   if(id==modelFav.data![i].jobId){
+        //     like=true;
+        //   }
+        //   else{like=false;}
+        // }
+
         return Scaffold(
           body: SafeArea(
             child: Padding(
@@ -45,7 +64,8 @@ int index;
                           const Spacer(),
                           IconButton(
                               onPressed: () {},
-                              icon: const Icon(CustomIcons.archive_minus))
+                              icon: like==true? Icon(CustomIcons.archive_minus)
+                                  :Icon(CustomIcons.archive_minus_bold,color: Colors.blue,))
                         ],
                       ),
                       Center(

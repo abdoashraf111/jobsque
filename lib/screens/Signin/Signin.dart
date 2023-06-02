@@ -226,7 +226,7 @@ class SignIn extends StatelessWidget {
                                     const SnackBar(
                                         content:
                                             Text("you Sign in Successfully")));
-                                Navigator.of(context).push(MaterialPageRoute(
+                                Navigator.of(context).pushReplacement(MaterialPageRoute(
                                   builder: (context) => HomeNavigationBar(),
                                 ));
                                 // BlocProvider.of<DataCubit>(context).getJob();

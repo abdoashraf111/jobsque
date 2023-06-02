@@ -15,15 +15,17 @@ class CustomJob extends StatefulWidget {
 class _CustomJobState extends State<CustomJob> {
    bool click = false;
 
+
   @override
   Widget build(BuildContext context) {
 
 
     return BlocBuilder<DataCubit,DataState>(builder: (context, state) {
 
-      var dataModel =
-      BlocProvider.of<DataCubit>(context).modelJob.data![widget.index];
-      var jobId=BlocProvider.of<DataCubit>(context).modelJob.data![widget.index].id;
+      var modelJob = BlocProvider.of<DataCubit>(context).modelJob;
+      var dataModel=modelJob.data![widget.index];
+      var jobId=modelJob.data![widget.index].id;
+      bool like=BlocProvider.of<DataCubit>(context).like;
 
 
       return Column(
@@ -65,6 +67,7 @@ class _CustomJobState extends State<CustomJob> {
                           });
                           if(click==true){
                            await BlocProvider.of<DataCubit>(context).addFavorites(jobId: jobId!.toInt());
+
                           }
                           else{}
                         },
