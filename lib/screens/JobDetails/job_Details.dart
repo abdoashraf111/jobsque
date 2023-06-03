@@ -10,28 +10,27 @@ import '../HomeScreen/HomeScreen.dart';
 import 'job_details_cubit.dart';
 
 class JobDetails extends StatelessWidget {
-  JobDetails({Key? key,required this.index}) : super(key: key);
-int index;
+  JobDetails({Key? key, required this.index}) : super(key: key);
+  int index;
 
-  final _controller=PageController();
+  final _controller = PageController();
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<JobDetailsCubit, JobDetailsState>(
+    return BlocConsumer<JobDetailsCubit, JobDetailsState>(
+      listener: (context, state) {
+        BlocProvider.of<DataCubit>(context).likes;
+      },
       builder: (context, state) {
+        var modelFav = BlocProvider.of<DataCubit>(context).showFavModel;
 
-      var modelFav=BlocProvider.of<DataCubit>(context).showFavModel;
+        var modelJob = BlocProvider.of<DataCubit>(context).modelJob;
+        var job = modelJob.data![index];
+        var id = modelJob.data![index].id;
 
-      var modelJob =BlocProvider.of<DataCubit>(context).modelJob;
-        var job=modelJob.data![index];
-        var id= modelJob.data![index].id;
-        BlocProvider.of<JobDetailsCubit>(context).likeAction(
-          index: index,
-          modelFav: modelFav,
-          modelJob:modelJob
-        );
-      int groupValue = BlocProvider.of<JobDetailsCubit>(context).groupValue;
-        bool like=BlocProvider.of<JobDetailsCubit>(context).like;
+        int groupValue = BlocProvider.of<JobDetailsCubit>(context).groupValue;
+
+        List likes = BlocProvider.of<DataCubit>(context).likes;
 
         // for(int i=0;i<modelFav.data!.length;i++){
         //   if(id==modelFav.data![i].jobId){
@@ -43,7 +42,7 @@ int index;
         return Scaffold(
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(left: 24,right: 24,top: 24),
+              padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
               child: Stack(
                 children: [
                   Column(
@@ -60,12 +59,23 @@ int index;
                             },
                           ),
                           const Spacer(),
-                          const Text("Job Details"),
+                          const Text("Job Details",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w500)),
                           const Spacer(),
                           IconButton(
-                              onPressed: () {},
-                              icon: like==true? Icon(CustomIcons.archive_minus)
-                                  :Icon(CustomIcons.archive_minus_bold,color: Colors.blue,))
+                              onPressed: () async {
+                                if (likes[index] == false) {
+                                  await BlocProvider.of<DataCubit>(context)
+                                      .addFavorites(jobId: id!.toInt());
+                                }
+                              },
+                              icon: likes[index] == true
+                                  ? const Icon(
+                                      CustomIcons.archive_minus_bold,
+                                      color: Colors.blue,
+                                    )
+                                  : const Icon(CustomIcons.archive_minus))
                         ],
                       ),
                       Center(
@@ -78,26 +88,35 @@ int index;
                                 height: 10,
                               ),
                               Image.asset("lib/images/Zoom Logo.png"),
-                               Text(job.name.toString()),
-                              TextButton(
-                                  onPressed: () async {
-
-                                  },
-                                  child: const Text("Twitter • Jakarta, Indonesia ")),
+                              Text(job.name.toString(),
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500)),
+                              const SizedBox(
+                                height: 4,
+                              ),
+                              Text(
+                                "${job.compName.toString()} . ${job.location!.split(",")[3].toString()} . ${job.location!.split(",").last.toString()}",
+                                style: TextStyle(fontSize: 12),
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
                               Row(
                                 children: [
                                   Container(
                                     height: 26,
                                     width: 65,
                                     decoration: const BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(100)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(100)),
                                       color: Color.fromRGBO(214, 228, 255, 1),
                                     ),
-                                    child: const Center(
-                                        child: Text("sdascasc",
-                                            style: TextStyle(
-                                                color: Colors.blue, fontSize: 12))),
+                                    child: Center(
+                                        child: Text(job.jobTimeType.toString(),
+                                            style: const TextStyle(
+                                                color: Colors.blue,
+                                                fontSize: 12))),
                                   ),
                                   const Spacer(
                                     flex: 1,
@@ -106,14 +125,15 @@ int index;
                                     height: 26,
                                     width: 65,
                                     decoration: const BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(100)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(100)),
                                       color: Color.fromRGBO(214, 228, 255, 1),
                                     ),
-                                    child: const Center(
-                                        child: Text("Remote",
+                                    child: Center(
+                                        child: Text("Onsite",
                                             style: TextStyle(
-                                                color: Colors.blue, fontSize: 12))),
+                                                color: Colors.blue,
+                                                fontSize: 12))),
                                   ),
                                   const Spacer(
                                     flex: 1,
@@ -122,14 +142,15 @@ int index;
                                     height: 26,
                                     width: 65,
                                     decoration: const BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(100)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(100)),
                                       color: Color.fromRGBO(214, 228, 255, 1),
                                     ),
-                                    child: const Center(
-                                        child: Text("adass",
-                                            style: TextStyle(
-                                                color: Colors.blue, fontSize: 12))),
+                                    child: Center(
+                                        child: Text(job.jobLevel.toString(),
+                                            style: const TextStyle(
+                                                color: Colors.blue,
+                                                fontSize: 12))),
                                   ),
                                   const Spacer(
                                     flex: 1,
@@ -154,7 +175,7 @@ int index;
                               height: 50,
                               child: Center(
                                   child: Text(
-                                "Work From Office",
+                                "Desicription",
                                 style: TextStyle(
                                     color: groupValue == 0
                                         ? Colors.white
@@ -166,7 +187,7 @@ int index;
                               height: 50,
                               child: Center(
                                   child: Text(
-                                "Remote Work",
+                                "Company",
                                 style: TextStyle(
                                     color: groupValue == 1
                                         ? Colors.white
@@ -178,7 +199,7 @@ int index;
                               height: 50,
                               child: Center(
                                   child: Text(
-                                "Remote Work",
+                                "People",
                                 style: TextStyle(
                                     color: groupValue == 2
                                         ? Colors.white
@@ -189,134 +210,199 @@ int index;
                           onValueChanged: (value) {
                             BlocProvider.of<JobDetailsCubit>(context)
                                 .groupchange(value!);
-                            if(value==0){
-                            _controller.jumpToPage(0);}
-                            if(value==1){
-                              _controller.jumpToPage(1);}
-                            if(value==2){
-                              _controller.jumpToPage(2);}
+                            if (value == 0) {
+                              _controller.jumpToPage(0);
+                            }
+                            if (value == 1) {
+                              _controller.jumpToPage(1);
+                            }
+                            if (value == 2) {
+                              _controller.jumpToPage(2);
+                            }
                           }),
                       const SizedBox(
                         height: 27,
                       ),
                       Expanded(
                         child: PageView(
-                           physics: const NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           controller: _controller,
                           children: [
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("sdsfsdf"),
-                              SizedBox(height: 8,),
-                              Text(
-                                  "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Text("dfsdfsd"),
-                              SizedBox(height: 8,),
-                              Text("dsssssssssssssssssssssssssssssssssssss"),
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text("Contact Us"),
-                              const SizedBox(height: 20,),
-                              Row(
-                                children: [
-                                  Container(
-                                    height:56 ,
-                                    width: 157,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(color: Colors.grey),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10),
-                                      child: const Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text("Email"),
-                                          Text("twitter@mail.com"),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  Container(
-                                    height:56 ,
-                                    width: 157,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(color: Colors.grey),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10),
-                                      child: const Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text("Email"),
-                                          Text("twitter@mail.com"),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 24,),
-                              const Text("About Company"),
-                              SizedBox(height: 16,),
-                              const Text("sdsfsdfddddddddddddddddddddddddddddddddddd"),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Row(children: [
-                                const Column(
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("Job Description",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500)),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Text(job.jobDescription.toString(),
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400)),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                const Text("Skill Required",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500)),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Text(job.jobSkill.toString(),
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400)),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("Contact Us",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500)),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
                                   children: [
-                                    Text("6 Employees For"),
-                                    Text("UI/UX Design"),
+                                    Container(
+                                      height: 70,
+                                      width: 157,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(color: Colors.grey),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Text("Email",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.grey)),
+                                            Text(job.compEmail.toString(),
+                                                style: TextStyle(fontSize: 14)),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    Container(
+                                      height: 70,
+                                      width: 157,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(color: Colors.grey),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text("Website",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.grey)),
+                                            Text(job.compWebsite.toString(),
+                                                style: TextStyle(fontSize: 14)),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
-                                const Spacer(),
-                                Container(
-                                  width: 150,
-                                  height: 38,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    border: Border.all(color: Colors.grey),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      const Text("      UI/UX Designer",style: TextStyle(fontSize: 12)),
-                                      IconButton(onPressed: (){},
-                                          icon: const Icon(Icons.arrow_downward,size: 12,))
-                                    ],
+                                const SizedBox(
+                                  height: 24,
+                                ),
+                                const Text("About Company",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500)),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                Text(job.aboutComp.toString(),
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400)),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        const Text("6 Employees For",
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500)),
+                                        Text(job.jobType.toString(),
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey)),
+                                      ],
+                                    ),
+                                    const Spacer(),
+                                    Container(
+                                      width: 150,
+                                      height: 38,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        border: Border.all(color: Colors.grey),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          const Text("      UI/UX Designer",
+                                              style: TextStyle(fontSize: 12)),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: const Icon(
+                                                Icons.arrow_downward,
+                                                size: 12,
+                                              ))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 28,
+                                ),
+                                Expanded(
+                                  child: ListView.separated(
+                                    separatorBuilder: (context, index) =>
+                                        const Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Divider(
+                                          height: 20,
+                                          color: Colors.grey,
+                                        ),
+                                      ],
+                                    ),
+                                    itemCount: 10,
+                                    itemBuilder: (context, index) =>
+                                        const CustomWorkers(),
                                   ),
                                 )
-                              ],),
-                              const SizedBox(height: 28,),
-                              Expanded(
-                                child: ListView.separated(
-                                  separatorBuilder: (context, index) => const Column(
-                                    children: [
-                                      SizedBox(height: 10,),
-                                      Divider(height: 20,color: Colors.grey,),
-                                    ],
-                                  ),
-                                  itemCount:10 ,
-                                  itemBuilder:(context, index) => const CustomWorkers(), ),
-                              )
-                            ],
-                          ),
-                        ],),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-
-
-
-
                     ],
                   ),
                   Positioned(
@@ -325,8 +411,12 @@ int index;
                     right: 0,
                     child: CustomButton(
                         text: "Apply now",
-                        fun: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => ApplyJob(),));
+                        fun: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ApplyJob(),
+                              ));
                         },
                         buttoncolor: Colors.blue,
                         textcolor: Colors.white),

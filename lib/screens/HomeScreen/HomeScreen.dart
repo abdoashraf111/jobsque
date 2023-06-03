@@ -23,26 +23,26 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 40,
                   ),
-                  const Row(
+                   Row(
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Hi, Rafif Dian👋",
-                              style: TextStyle(
+                          Text("Hi, ${BlocProvider.of<DataCubit>(context).modelSign.user!.name}👋",
+                              style: const TextStyle(
                                   fontSize: 24, fontWeight: FontWeight.bold)),
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
-                          Text("Create a better future for yourself here",
+                          const Text("Create a better future for yourself here",
                               style:
                                   TextStyle(fontSize: 14, color: Colors.grey)),
                         ],
                       ),
-                      Spacer(
+                      const Spacer(
                         flex: 1,
                       ),
-                      CircleAvatar(
+                      const CircleAvatar(
                         radius: 25,
                         backgroundColor: Color(0xffD1D5DB),
                         child: CircleAvatar(

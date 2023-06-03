@@ -181,7 +181,7 @@ class DataCubit extends Cubit<DataState> {
     // print(modelRegister.token);
   }
 
-
+  DeleteFavModel deletmodel=DeleteFavModel();
   Future<dynamic> deleteFavorites({required int jobId}) async {
     emit(DataDeleteLoadingFavorites());
     try {
@@ -189,8 +189,11 @@ class DataCubit extends Cubit<DataState> {
       http.Response response = await http.delete(Uri.parse(url), headers:{
         'Authorization':MyCache.GetString(key: MyChachKey.token)
       } );
+      deletmodel=DeleteFavModel.fromJson(jsonDecode(response.body));
+      removeLikeFun(jobId:deletmodel.data!.jobId.toString());
+     print(deletmodel.data!.name);
+     print(deletmodel.data!.jobId);
 
-      removeLikeFun(jobId:DeleteFavModel.fromJson(jsonDecode(response.body)).data!.jobId.toString());
 
       emit(DataDeleteFavorites());
     } on Exception catch (e) {
