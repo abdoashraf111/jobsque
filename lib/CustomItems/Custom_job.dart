@@ -13,19 +13,15 @@ class CustomJob extends StatefulWidget {
 }
 
 class _CustomJobState extends State<CustomJob> {
-   bool click = false;
-
-
   @override
   Widget build(BuildContext context) {
-
 
     return BlocBuilder<DataCubit,DataState>(builder: (context, state) {
 
       var modelJob = BlocProvider.of<DataCubit>(context).modelJob;
       var dataModel=modelJob.data![widget.index];
       var jobId=modelJob.data![widget.index].id;
-      bool like=BlocProvider.of<DataCubit>(context).like;
+      List likes=BlocProvider.of<DataCubit>(context).likes;
 
 
       return Column(
@@ -62,16 +58,17 @@ class _CustomJobState extends State<CustomJob> {
                     ),
                     IconButton(
                         onPressed: ()async {
-                          setState(() {
-                            click = !click;
-                          });
-                          if(click==true){
+
+                          if(likes[widget.index]==false){
                            await BlocProvider.of<DataCubit>(context).addFavorites(jobId: jobId!.toInt());
 
                           }
-                          else{}
+                          else{
+                            var x=BlocProvider.of<DataCubit>(context).showFavModel.data![widget.index].id;
+                            await BlocProvider.of<DataCubit>(context).deleteFavorites(jobId:x!.toInt() );
+                          }
                         },
-                        icon: click == true
+                        icon: likes[widget.index] == true
                             ? const Icon(
                           CustomIcons.archive_minus_bold,
                           color: Colors.blue,

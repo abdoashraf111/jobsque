@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 
 
-import '../HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
+import '../HomeScreen/HomeNavigationBar.dart';
 import '../Signin/Signin.dart';
 import 'CreatAcount2.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../CustomItems/CustomButton.dart';
-import '../HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
+import '../HomeScreen/HomeNavigationBar.dart';
 
 
 class PassDone extends StatelessWidget {
@@ -46,7 +46,7 @@ class PassDone extends StatelessWidget {
                   text: "Get Started",
                   fun: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) =>HomeNavigationBar() ,));
+                        MaterialPageRoute(builder: (context) =>HomeNavigationBar(pageNumber: 0) ,));
                   },
                   buttoncolor: Color(0xff3366FF),
                   textcolor: Colors.white),

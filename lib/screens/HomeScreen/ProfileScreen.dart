@@ -6,7 +6,7 @@ import '../Language.dart';
 import '../Login and security.dart';
 import '../Notification.dart';
 import '../Portfolio.dart';
-import 'HomeNavigationBar/HomeNavigationBar.dart';
+import 'HomeNavigationBar.dart';
 
 class ProfileScreen extends StatelessWidget {
    ProfileScreen({Key? key}) : super(key: key);
@@ -336,8 +336,8 @@ class ProfileScreen extends StatelessWidget {
                         IconButton(
                           icon:  Icon(Icons.arrow_back),
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomeNavigationBar(),
+                            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                              builder: (context) => HomeNavigationBar(pageNumber: 0),
                             ));
                           },
                         ),

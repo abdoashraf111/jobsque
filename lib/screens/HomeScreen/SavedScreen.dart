@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/controller/data_cubit.dart';
-import '../../../../CustomItems/CustomfavJob.dart';
+import 'package:jobsque/screens/HomeScreen/HomeNavigationBar.dart';
+import 'package:jobsque/screens/HomeScreen/HomeScreen.dart';
+import '../../../CustomItems/CustomfavJob.dart';
 
 class SavedScreen extends StatelessWidget {
     SavedScreen({Key? key}) : super(key: key);
@@ -31,7 +33,9 @@ class SavedScreen extends StatelessWidget {
                    children: [
                      IconButton(
                        icon: const Icon(Icons.arrow_back),
-                       onPressed: () {},
+                       onPressed: () {
+                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeNavigationBar(pageNumber: 0),));
+                       },
                      ),
                      const Spacer(flex: 3,),
                      const Text("Saved"),

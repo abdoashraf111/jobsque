@@ -4,7 +4,7 @@ import '../../../CustomItems/CustomButton.dart';
 import '../../../Services/sharedprefeances.dart';
 import '../../../controller/data_cubit.dart';
 import '../CreateAcount/CreateAccount.dart';
-import '../HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
+import '../HomeScreen/HomeNavigationBar.dart';
 import '../forgotpassword/forgotpassword.dart';
 import '../onbording/SlidingPage.dart';
 import 'Cubit/sign_in_cubit.dart';
@@ -227,7 +227,7 @@ class SignIn extends StatelessWidget {
                                         content:
                                             Text("you Sign in Successfully")));
                                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                  builder: (context) => HomeNavigationBar(),
+                                  builder: (context) => HomeNavigationBar(pageNumber: 0),
                                 ));
                                 // BlocProvider.of<DataCubit>(context).getJob();
                               } else  {

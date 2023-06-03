@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import '../Services/sharedprefeances.dart';
 import '../models/SignInModel.dart';
 import '../models/addFavModel.dart';
+import '../models/deleteFavModel.dart';
 import '../models/showFavModel.dart';
 import '../models/showjobsModel.dart';
 part 'data_state.dart';
@@ -13,6 +14,8 @@ part 'data_state.dart';
 class DataCubit extends Cubit<DataState> {
   DataCubit() : super(DataInitial());
 
+  bool like=false;
+  List likes=[false,false];
 
   List idList=[];
   List nameList=[];
@@ -99,8 +102,7 @@ class DataCubit extends Cubit<DataState> {
   }
 
 
-  bool like=false;
-  List likes=[];
+
   AddFavorite modelAddFav=AddFavorite();
   Future<dynamic> addFavorites({required int jobId}) async {
     String userId=MyCache.GetString(key: MyChachKey.userId);
@@ -112,32 +114,47 @@ class DataCubit extends Cubit<DataState> {
       Map<String, dynamic> json = jsonDecode(response.body);
       AddFavorite model=AddFavorite.fromJson(json);
       modelAddFav=model;
+      addLikeFun();
 
-      for(int i=0;i<modelJob.data!.length;i++){
-        if(modelJob.data![i].id.toString()==modelAddFav.data!.jobId.toString()){
-          like=true;
-          print("compatable goood job");
-        }
-      }
-      // likefuc();
-      // funAddFav(value: model.data!.id!.toInt());
-      // print(modelRegister.token);
       return model;
     } on Exception catch (e) {
       throw Exception(e.toString());
     }
   }
 
-  // likefuc(){
-  //   for(int i=0;i<modelJob.data!.length;i++){
-  //     if(modelJob.data![i].id==modelAddFav.data!.jobId){
-  //       like=true;
-  //       print("compatable goood job");
-  //     }
-  //   }
-  //   emit(Likes());
-  //   print("state is $like");
-  // }
+  addLikeFun(){
+    for(int i=0;i<modelJob.data!.length;i++){
+      if(modelJob.data![i].id.toString()==modelAddFav.data!.jobId.toString()){
+        like=true;
+        likes[i]=true;
+      }
+    }
+    print("goood job $likes");
+    emit(Likes());
+  }
+
+  removeLikeFun({required String jobId}){
+    for(int i=0;i<modelJob.data!.length;i++){
+      if(modelJob.data![i].id.toString()==jobId.toString()){
+        like=true;
+        likes[i]=false;
+      }
+    }
+    print("goood job $likes");
+    emit(Likes());
+  }
+  showlIkes(){
+    for(int i=0;i<nameList.length;i++){
+      for(int j=0;j<showFavModel.data!.length;j++){
+        if(showFavModel.data![j].name==nameList[i]){
+          likes[i]=true;
+      }
+        else{likes[i]=false;}
+      }
+    }
+    print(likes);
+    emit(Likes());
+  }
 
 
 
@@ -155,7 +172,7 @@ class DataCubit extends Cubit<DataState> {
       print(model.data?.length);
       emit(DataShowFavorites());
       showFavModel=model;
-      print(model.data![0].jobId);
+      // showlIkes();
       // print(favoriteList);
     } on Exception catch (e) {
       throw Exception(e.toString());
@@ -171,8 +188,9 @@ class DataCubit extends Cubit<DataState> {
       http.Response response = await http.delete(Uri.parse(url), headers:{
         'Authorization':MyCache.GetString(key: MyChachKey.token)
       } );
-      likes.remove(jobId);
-      // funDeleteFav(value: jobId);
+
+      removeLikeFun(jobId:DeleteFavModel.fromJson(jsonDecode(response.body)).data!.jobId.toString());
+
       emit(DataDeleteFavorites());
     } on Exception catch (e) {
       throw Exception(e.toString());

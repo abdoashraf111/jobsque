@@ -1,12 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/CustomItems/Custom_job.dart';
 import 'package:jobsque/screens/JobDetails/job_Details.dart';
 import '../../../CustomItems/custom_icons.dart';
 import '../../controller/data_cubit.dart';
-import 'HomeNavigationBar/HomeNavigationBar.dart';
+import 'HomeNavigationBar.dart';
 
 class SearchScreen extends StatefulWidget {
    SearchScreen({Key? key}) : super(key: key);
@@ -37,7 +35,7 @@ List filterList=[];
                     children: [
                       IconButton(onPressed: (){
                         Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) =>HomeNavigationBar() ,));
+                            MaterialPageRoute(builder: (context) =>HomeNavigationBar(pageNumber: 0) ,));
                       },
                           icon: const Icon(Icons.arrow_back,color: Colors.black,)),
                       const Spacer(flex: 1,),

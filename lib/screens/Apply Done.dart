@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../CustomItems/CustomButton.dart';
-import 'HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
+import 'HomeScreen/HomeNavigationBar.dart';
 
 class ApplyDone extends StatelessWidget {
   const ApplyDone({Key? key}) : super(key: key);
@@ -57,7 +57,7 @@ class ApplyDone extends StatelessWidget {
                   text: "Back to home",
                   fun: () {
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) =>HomeNavigationBar() ,));
+                        MaterialPageRoute(builder: (context) =>HomeNavigationBar(pageNumber: 0) ,));
                   },
                   buttoncolor: const Color(0xff3366FF),
                   textcolor: Colors.white),

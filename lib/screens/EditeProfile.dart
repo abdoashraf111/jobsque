@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jobsque/CustomItems/CustomButton.dart';
 import 'package:jobsque/CustomItems/custom_icons.dart';
 
-import 'HomeScreen/HomeNavigationBar/HomeNavigationBar.dart';
+import 'HomeScreen/HomeNavigationBar.dart';
 
 class EditeProfile extends StatelessWidget {
    EditeProfile({Key? key}) : super(key: key);
@@ -137,7 +137,7 @@ class EditeProfile extends StatelessWidget {
                         CustomButton(
                             text: "Save",
                             fun: (){ Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => HomeNavigationBar()));},
+                                builder: (context) => HomeNavigationBar(pageNumber: 0,)));},
                             buttoncolor: Color(0xff3366FF),
                             textcolor: Colors.white)
                       ]),
