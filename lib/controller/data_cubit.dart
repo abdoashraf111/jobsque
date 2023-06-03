@@ -143,6 +143,7 @@ class DataCubit extends Cubit<DataState> {
     print("goood job $likes");
     emit(Likes());
   }
+  //////////////////////////////////testlikes/////////////////////////////////////
   showlIkes(){
     for(int i=0;i<nameList.length;i++){
       for(int j=0;j<showFavModel.data!.length;j++){
@@ -155,7 +156,7 @@ class DataCubit extends Cubit<DataState> {
     print(likes);
     emit(Likes());
   }
-
+  //////////////////////////////////testlikes/////////////////////////////////////
 
 
   ShowFavModel showFavModel=ShowFavModel();
