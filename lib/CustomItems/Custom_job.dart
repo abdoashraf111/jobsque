@@ -63,12 +63,12 @@ class _CustomJobState extends State<CustomJob> {
                            await BlocProvider.of<DataCubit>(context).addFavorites(jobId: jobId!.toInt());
 
                           }
-                          // else if (likes[widget.index]==true){
-                          //   await BlocProvider.of<DataCubit>(context).showFavorites();
-                          //   var x=BlocProvider.of<DataCubit>(context).showFavModel.data![widget.index].id;
-                          //   await BlocProvider.of<DataCubit>(context).deleteFavorites(jobId:x!.toInt() );
-                          //
-                          // }
+                          else if (likes[widget.index]==true){
+                            await BlocProvider.of<DataCubit>(context).showFavorites();
+                          var x=BlocProvider.of<DataCubit>(context).getDataToDelete( index: widget.index);
+                            await BlocProvider.of<DataCubit>(context).deleteFavorites(jobId:x!.toInt() );
+
+                          }
                         },
                         icon: likes[widget.index] == true
                             ? const Icon(

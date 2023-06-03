@@ -17,27 +17,12 @@ class JobDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<JobDetailsCubit, JobDetailsState>(
-      listener: (context, state) {
-        BlocProvider.of<DataCubit>(context).likes;
-      },
+    return BlocBuilder<DataCubit, DataState>(
       builder: (context, state) {
-        var modelFav = BlocProvider.of<DataCubit>(context).showFavModel;
 
-        var modelJob = BlocProvider.of<DataCubit>(context).modelJob;
-        var job = modelJob.data![index];
-        var id = modelJob.data![index].id;
-
-        int groupValue = BlocProvider.of<JobDetailsCubit>(context).groupValue;
-
+        var job = BlocProvider.of<DataCubit>(context).modelJob.data![index];
+        int groupValue = BlocProvider.of<DataCubit>(context).groupValue;
         List likes = BlocProvider.of<DataCubit>(context).likes;
-
-        // for(int i=0;i<modelFav.data!.length;i++){
-        //   if(id==modelFav.data![i].jobId){
-        //     like=true;
-        //   }
-        //   else{like=false;}
-        // }
 
         return Scaffold(
           body: SafeArea(
@@ -67,7 +52,13 @@ class JobDetails extends StatelessWidget {
                               onPressed: () async {
                                 if (likes[index] == false) {
                                   await BlocProvider.of<DataCubit>(context)
-                                      .addFavorites(jobId: id!.toInt());
+                                      .addFavorites(jobId: job.id!.toInt());
+                                }
+                                else if (likes[index]==true){
+                                  await BlocProvider.of<DataCubit>(context).showFavorites();
+                                  var x=BlocProvider.of<DataCubit>(context).getDataToDelete( index: index);
+                                  await BlocProvider.of<DataCubit>(context).deleteFavorites(jobId:x!.toInt() );
+
                                 }
                               },
                               icon: likes[index] == true
@@ -97,7 +88,7 @@ class JobDetails extends StatelessWidget {
                               ),
                               Text(
                                 "${job.compName.toString()} . ${job.location!.split(",")[3].toString()} . ${job.location!.split(",").last.toString()}",
-                                style: TextStyle(fontSize: 12),
+                                style: const TextStyle(fontSize: 12),
                               ),
                               const SizedBox(
                                 height: 16,
@@ -129,7 +120,7 @@ class JobDetails extends StatelessWidget {
                                           Radius.circular(100)),
                                       color: Color.fromRGBO(214, 228, 255, 1),
                                     ),
-                                    child: Center(
+                                    child: const Center(
                                         child: Text("Onsite",
                                             style: TextStyle(
                                                 color: Colors.blue,
@@ -208,7 +199,7 @@ class JobDetails extends StatelessWidget {
                             ),
                           },
                           onValueChanged: (value) {
-                            BlocProvider.of<JobDetailsCubit>(context)
+                            BlocProvider.of<DataCubit>(context)
                                 .groupchange(value!);
                             if (value == 0) {
                               _controller.jumpToPage(0);

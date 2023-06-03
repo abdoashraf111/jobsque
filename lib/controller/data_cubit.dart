@@ -91,7 +91,7 @@ class DataCubit extends Cubit<DataState> {
       print(model.data![1].compEmail);
       modelJob=model;
       saveList();
-
+      showlIkes();
       emit(DataJobSuccess());
       return model;
     } on Exception catch (e) {
@@ -149,6 +149,7 @@ class DataCubit extends Cubit<DataState> {
       for(int j=0;j<showFavModel.data!.length;j++){
         if(showFavModel.data![j].name==nameList[i]){
           likes[i]=true;
+          break;
       }
         else{likes[i]=false;}
       }
@@ -157,7 +158,19 @@ class DataCubit extends Cubit<DataState> {
     emit(Likes());
   }
   //////////////////////////////////testlikes/////////////////////////////////////
+int? getDataToDelete({required index}){
 
+  var x=modelJob.data![index].id;
+  for(int i=0;i<showFavModel.data!.length;i++)
+    {
+      if(showFavModel.data![i].jobId==x){
+        var idForDelete=showFavModel.data![i].id;
+        return idForDelete;
+      }
+    }
+  return null;
+
+}
 
   ShowFavModel showFavModel=ShowFavModel();
   Future<dynamic> showFavorites() async {
@@ -200,6 +213,10 @@ class DataCubit extends Cubit<DataState> {
       throw Exception(e.toString());
     }
   }
+  int groupValue=0;
+  groupchange(int value){
+    groupValue=value;
+    emit(JobDetailsGroupValue());}
 
 
 }

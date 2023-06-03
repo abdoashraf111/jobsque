@@ -119,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                     width: 16,
                   ),
                   CustomCredit(
-                    colorBack: const Color(0XFFF4F4F5),
+                    colorBack: const Color(0XffF4F4F5),
                     colorText: Colors.black,
                   ),
                   const SizedBox(

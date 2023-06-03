@@ -6,11 +6,11 @@ part 'job_details_state.dart';
 
 class JobDetailsCubit extends Cubit<JobDetailsState> {
   JobDetailsCubit() : super(JobDetailsInitial());
-  int groupValue=0;
-  groupchange(int value){
-        groupValue=value;
-        emit(JobDetailsGroupValue());}
-  bool like=true;
+  // int groupValue=0;
+  // groupchange(int value){
+  //       groupValue=value;
+  //       emit(JobDetailsGroupValue());}
+  //
 
 
 }
