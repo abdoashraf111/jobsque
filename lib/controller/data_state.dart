@@ -17,3 +17,4 @@ class DataDeleteFavorites extends DataState {}
 class LocalListFav extends DataState {}
 class Likes extends DataState {}
 class JobDetailsGroupValue extends DataState {}
+class IndexLisener extends DataState {}

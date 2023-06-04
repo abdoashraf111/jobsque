@@ -59,16 +59,16 @@ class SavedScreen extends StatelessWidget {
                    ),
                  ) ,
                ),
-               numb==0?SizedBox(
+               numb==0? SizedBox(
                  height: 600,
                  width: MediaQuery.of(context).size.width,
                  child: Column(
                    children: [
-                     Spacer(),
+                     const Spacer(),
                      Image.asset("lib/images/Saved Ilustration.png"),
                      const Text("Nothing has been saved yet"),
                      const Text("Press the star icon on the job you want to save."),
-                     Spacer(),
+                     const Spacer(),
                    ],
                  ),
                )

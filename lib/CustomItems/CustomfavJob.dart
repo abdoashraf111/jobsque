@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobsque/controller/data_cubit.dart';
 
+import '../screens/JobDetails/job_Details.dart';
 import 'custom_icons.dart';
 class CustomFavJob extends StatelessWidget {
    CustomFavJob({Key? key,required this.index}) : super(key: key);
@@ -64,7 +65,13 @@ class CustomFavJob extends StatelessWidget {
                                         child: Divider(height: 10,color: Colors.black,thickness: 2,)),
                                     const SizedBox(height: 10,),
                                     InkWell(
-                                      onTap: (){},
+                                      onTap: (){
+                                        Navigator.pop(context);
+                                        BlocProvider.of<DataCubit>(context).showFavorites();
+                                       int ind=BlocProvider.of<DataCubit>(context).getIndex(index: index)!.toInt();
+                                        Navigator.of(context).push(MaterialPageRoute(
+                                            builder: (context) => JobDetails(index: ind)));
+                                      },
                                       child: Container(height: 50,decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(100),
                                           border: Border.all(color: Colors.grey)),

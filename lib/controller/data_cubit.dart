@@ -158,19 +158,35 @@ class DataCubit extends Cubit<DataState> {
     emit(Likes());
   }
   //////////////////////////////////testlikes/////////////////////////////////////
-int? getDataToDelete({required index}){
+
+int? getIdToDelete({required index}){
 
   var x=modelJob.data![index].id;
   for(int i=0;i<showFavModel.data!.length;i++)
     {
       if(showFavModel.data![i].jobId==x){
         var idForDelete=showFavModel.data![i].id;
+        emit(IndexLisener());
         return idForDelete;
       }
     }
   return null;
 
 }
+  int? getIndex({required index}){
+
+    var x=showFavModel.data![index].jobId;
+    for(int i=0;i<modelJob.data!.length;i++)
+    {
+      if(modelJob.data![i].id==x){
+        int inex=i;
+        emit(IndexLisener());
+        return inex;
+      }
+    }
+    return null;
+
+  }
 
   ShowFavModel showFavModel=ShowFavModel();
   Future<dynamic> showFavorites() async {

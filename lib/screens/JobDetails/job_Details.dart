@@ -56,7 +56,7 @@ class JobDetails extends StatelessWidget {
                                 }
                                 else if (likes[index]==true){
                                   await BlocProvider.of<DataCubit>(context).showFavorites();
-                                  var x=BlocProvider.of<DataCubit>(context).getDataToDelete( index: index);
+                                  var x=BlocProvider.of<DataCubit>(context).getIdToDelete( index: index);
                                   await BlocProvider.of<DataCubit>(context).deleteFavorites(jobId:x!.toInt() );
 
                                 }

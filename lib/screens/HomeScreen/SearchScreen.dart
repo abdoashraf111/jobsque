@@ -38,8 +38,7 @@ List filterList=[];
                             MaterialPageRoute(builder: (context) =>HomeNavigationBar(pageNumber: 0) ,));
                       },
                           icon: const Icon(Icons.arrow_back,color: Colors.black,)),
-                      const Spacer(flex: 1,),
-                      SizedBox(width: 315,
+                      Expanded(
                         child: TextFormField(
                           onFieldSubmitted: (value) {
                             setState(() {
