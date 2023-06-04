@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../CustomItems/CustomButton.dart';
 import '../../CustomItems/Custom_Card/Custom_Card.dart';
 import '../../CustomItems/custom_icons.dart';
+import '../CustomItems/Custom_TypeOfWork.dart';
 import 'Apply Done.dart';
 
 class ApplyJob extends StatefulWidget {
@@ -44,7 +45,7 @@ class _ApplyJobState extends State<ApplyJob> {
                       {Navigator.of(context).pop();}
                         else {
                           _controller.previousPage(
-                          duration: const Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.linear);}
                       },
                     ),
@@ -58,14 +59,25 @@ class _ApplyJobState extends State<ApplyJob> {
                  Row(
                   children: [
                     Spacer(),
-                    const Column(
+                     Column(
                       children: [
-                        CircleAvatar(
-                          child: Icon(Icons.done,color: Colors.white,),
+                       numPage==0? const CircleAvatar(
+                          child: CircleAvatar(
+                            child: Center(
+                              child: Text("1"),
+                            ),
+                            backgroundColor: Colors.white,
+                            radius: 21.5,
+                          ),radius: 23,
                           backgroundColor: Colors.blue,
-                          radius: 23,
-                        ),
-                        Text("Biodata",style: TextStyle(fontSize: 12,color: Colors.blue)),
+                        )
+                           :const CircleAvatar(
+                         radius: 23,
+                         backgroundColor: Colors.blue,
+                         child: Icon(Icons.done,color: Colors.white,),
+                       ),
+                        const SizedBox(height: 10,),
+                        const Text("Biodata",style: TextStyle(fontSize: 12,color: Colors.blue)),
                       ],
                     ),
                     const Spacer(),
@@ -83,13 +95,14 @@ class _ApplyJobState extends State<ApplyJob> {
                             radius: 21.5,
                           ),
                         ),
+                        const SizedBox(height: 10,),
                         Text("Type of work",style: TextStyle(fontSize: 12,
                             color: numPage==1?Colors.blue :numPage==2?Colors.blue:Colors.grey)),
                       ],
                     ),
                     const Spacer(),
                     Text("-----",style: TextStyle(color: numPage==2?Colors.blue:Colors.grey)),
-                    Spacer(),
+                    const Spacer(),
                     Column(
                       children: [
                         CircleAvatar(
@@ -101,11 +114,12 @@ class _ApplyJobState extends State<ApplyJob> {
                             radius: 21.5,
                           ),
                         ),
+                        const SizedBox(height: 10,),
                         Text("Upload portfolio",
                             style: TextStyle(fontSize: 12,color: numPage==2?Colors.blue:Colors.grey)),
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
                 const SizedBox(height: 32,),
@@ -199,21 +213,18 @@ class _ApplyJobState extends State<ApplyJob> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Type of work",style: TextStyle(
+                            const Text("Type of work",style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500
                             )),
-                            Text("Fill in your bio data correctly"),
-                            SizedBox(height: 28,),
-
+                            const Text("Fill in your bio data correctly"),
+                            const SizedBox(height: 28,),
                               SizedBox(
                                 height: 430,
                                 child: ListView.separated(
-                                  separatorBuilder: (context, index) => SizedBox(height: 20,),
-                                    itemBuilder:  (context, index) => Container(
-                                      height: 81,
-                                      width: 327,
-                                      color: Colors.grey,),
+                                  separatorBuilder: (context, index) => const SizedBox(height: 20,),
+                                    itemBuilder:  (context, index) =>
+                                    CustomTypeOfWork(index: index),
                                   itemCount: 4,
                                 ),
                               )
@@ -327,12 +338,12 @@ class _ApplyJobState extends State<ApplyJob> {
                       else if(numPage==0) {
                         if (formKey.currentState!.validate()) {
                           _controller.nextPage(
-                              duration: const Duration(seconds: 1),
+                              duration: const Duration(milliseconds: 300),
                               curve: Curves.linear);
                         }
                       }
                       else{_controller.nextPage(
-                          duration: const Duration(seconds: 1),
+                          duration: const Duration(milliseconds: 300,),
                           curve: Curves.linear);}
                     },
                     buttoncolor: Colors.blue,
